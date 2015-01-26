@@ -31,5 +31,5 @@ Admin::menu()->label('Menu with subitems')->icon('fa-book')->items(function (){
 	// Admin::menu(\Viatge::Class);
 
 });
-Admin::menu(\Administrator::Class);
+//Admin::menu(\Administrator::Class);
  
