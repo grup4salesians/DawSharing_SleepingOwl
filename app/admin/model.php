@@ -1,8 +1,12 @@
 <?php
 
 Admin::model(\Model::Class)->title('Model')->columns(function (){
-	Column::string('model', 'Model');
+    Column::string('id', 'id');
+    Column::string('id_marca', 'id_marca');
+    Column::string('model', 'Model');
         
 })->form(function (){
+        FormItem::text('id', 'id');
+        FormItem::text('id_marca', 'id_marca');
 	FormItem::text('model', 'Model');
 });
