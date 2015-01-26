@@ -24,7 +24,7 @@ Admin::menu()->label('Menu with subitems')->icon('fa-book')->items(function (){
 	Admin::menu(\Model::Class);
 	// Admin::menu(\Passatger::Class);
 	// Admin::menu(\Periodicitat::Class);
-	// Admin::menu(\Rtua::Class);
+	// Admin::menu(\Ruta::Class);
 	// Admin::menu(\Usuari::Class);
 	// Admin::menu(\Vehicle::Class);
 	// Admin::menu(\VehiclesUsuari::Class);
