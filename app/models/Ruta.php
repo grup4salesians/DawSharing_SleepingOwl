@@ -3,7 +3,7 @@
 use SleepingOwl\Models\SleepingOwlModel;
 
 class Ruta extends SleepingOwlModel{
-        protected $table = "ruta";
+        protected $table = "rutas";
 	protected $fillable = ['inici_ruta', 'fi_ruta', 'km'];
         
 

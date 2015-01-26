@@ -3,7 +3,7 @@
 use SleepingOwl\Models\SleepingOwlModel;
 
 class Passatger extends SleepingOwlModel{
-        protected $table = "passatger";
+        protected $table = "passatgers";
 	
 
 	public function scopeDefaultSort($query){
