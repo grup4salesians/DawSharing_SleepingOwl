@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'jona-PC',
 			'database'  => 'dawsharing',
 			'username'  => 'jona',
 			'password'  => '1234',
