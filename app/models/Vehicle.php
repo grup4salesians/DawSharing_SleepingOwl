@@ -15,6 +15,10 @@ class Vehicle extends SleepingOwlModel {
     	return implode(' ', [$this->tipus, $this->model->marca->marca, $this->model->model]);
     }
 
+    public static function getList() {
+        return static::lists('id', 'id');
+    }
+
     public function model() {
         return $this->belongsTo('Model', 'id_model');
     }
