@@ -8,8 +8,9 @@ Admin::model(\Correu::Class)->title('Correu')->columns(function (){
         Column::string('vist', 'Vist');
         
 })->form(function (){
-        FormItem::text('id', 'id');	
-        FormItem::text('id_usuari', 'id_usuari');
-	FormItem::text('contingut', 'Contingut');
-        FormItem::text('vist', 'Vist');
+        //FormItem::text('id', 'id');	
+        FormItem::select('id_usuari', 'Usuari')->list(\Usuari::class)->required();
+	FormItem::ckeditor('contingut', 'Contingut');
+        FormItem::checkbox('vist', 'Vist');
+
 });
