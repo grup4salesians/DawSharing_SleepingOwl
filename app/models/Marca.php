@@ -10,8 +10,8 @@ class Marca extends SleepingOwlModel{
 	public function scopeDefaultSort($query){
 		return $query->orderBy('marca', 'asc');
 	}
-	public static function getmarca(){
-		return static::lists('marca', 'id');
+	public static function getList(){
+		return static::lists('Marca', 'id');
 	}
 
 }
