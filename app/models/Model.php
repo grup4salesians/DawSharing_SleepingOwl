@@ -10,5 +10,8 @@ class Model extends SleepingOwlModel{
 	public function scopeDefaultSort($query){
 		return $query->orderBy('id', 'asc');
 	}
-
+        
+           public function marca(){
+               return $this->belongsTo('Marca','id_marca');
+           }
 }
