@@ -13,7 +13,7 @@ class Model extends SleepingOwlModel {
     }
 
     public static function getList() {
-        return static::lists('Model', 'id');
+        return static::lists('model', 'id');
     }
 
     public function marca() {
