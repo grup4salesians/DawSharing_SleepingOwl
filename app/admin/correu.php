@@ -2,7 +2,8 @@
 
 Admin::model(\Correu::Class)->title('Correu')->columns(function (){
     	Column::string('id', 'id');	
-        Column::string('id_usuari', 'id_usuari');
+        //Column::string('id_usuari', 'id_usuari');
+        Column::string('usuari.nom', 'Usari');
 	Column::string('contingut', 'Contingut');
         Column::string('vist', 'Vist');
         

@@ -10,5 +10,9 @@ class Correu extends SleepingOwlModel{
 	public function scopeDefaultSort($query){
 		return $query->orderBy('contingut', 'asc');
 	}
+        
+        public function usuari(){
+            return $this->belongsTo('Usuari','id_usuari');
+        }
 
 }

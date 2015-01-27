@@ -22,7 +22,7 @@ Admin::menu()->label('Menu with subitems')->icon('fa-book')->items(function (){
 	Admin::menu(\Caracteristiques::Class);
 	Admin::menu(\Correu::Class);
 	Admin::menu(\Model::Class);
-	Admin::menu(\Passatger::Class);
+	//Admin::menu(\Passatger::Class);
 	Admin::menu(\Periodicitat::Class);
 	Admin::menu(\Ruta::Class);
 	Admin::menu(\Usuari::Class);

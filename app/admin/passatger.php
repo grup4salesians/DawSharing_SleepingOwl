@@ -5,6 +5,8 @@ Admin::model(\Passatger::Class)->title('Passatgers')->columns(function () {
     Column::string('id', 'id');
     Column::string('id_viatge', 'id_viatge');
     Column::string('id_usuari', 'id_usuari');
+  
+    
 })->form(function () {
     FormItem::text('id', 'id');
     FormItem::text('id_viatge', 'id_viatge');
