@@ -12,15 +12,11 @@ class Vehicle extends SleepingOwlModel {
     }
 
     public function getFullNameAttribute() {
-    	return implode(' ', [$this->tipus, $this->model->model, $this->marca->marca]);
+    	return implode(' ', [$this->tipus, $this->model->marca->marca, $this->model->model]);
     }
 
     public function model() {
         return $this->belongsTo('Model', 'id_model');
-    }
-
-    public function marca() {
-        return $this->belongsToMany('Marca', 'id_marca');
     }
 
 }
