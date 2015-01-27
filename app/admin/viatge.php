@@ -1,11 +1,10 @@
 <?php
 
 Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
-	Column::string('id', 'id');
-	Column::string('id_ruta', 'id Ruta');
-	Column::string('id_usuari', 'id Usuari');
-	Column::string('id_vehicle', 'id Vehicle');
-	Column::string('id_periodicitat', 'id periodicitat');
+	Column::string('ruta.inici_ruta', 'Ruta');
+	Column::string('usuaris.nom', 'Usuari');
+	Column::string('vehicles.tipus', 'Tipus vehicle');
+	Column::string('periodicitat.data_limit', 'Final periodicitat');
 	Column::string('preu', 'Preu');
 	Column::string('numSeientDisponible', 'Seients Disponibles');
 	Column::string('numSeientRestant', 'Seients Restants');
@@ -14,7 +13,6 @@ Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 	Column::string('data', 'Data');
         
 })->form(function (){
-	FormItem::text('id', 'id');
 	FormItem::text('id_ruta', 'id Ruta');
 	FormItem::text('id_usuari', 'id Usuari');
 	FormItem::text('id_vehicle', 'id Vehicle');
