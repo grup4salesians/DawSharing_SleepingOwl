@@ -11,7 +11,7 @@ class Model extends SleepingOwlModel{
 		return $query->orderBy('id', 'asc');
 	}
         
-           public function marca(){
+           public function foranea_marca(){
                return $this->belongsTo('Marca','id_marca');
            }
 }
