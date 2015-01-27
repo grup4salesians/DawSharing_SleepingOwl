@@ -12,6 +12,10 @@ class Model extends SleepingOwlModel {
         return $query->orderBy('id', 'asc');
     }
 
+    public static function getList() {
+        return static::lists('Model', 'id');
+    }
+
     public function marca() {
         return $this->belongsTo('Marca', 'id_marca');
     }
