@@ -11,4 +11,8 @@ class VehiclesUsuari extends SleepingOwlModel{
 		return $query->orderBy('id', 'asc');
 	}
 
+	public function vehicle() {
+		return $this->belongsTo('Vehicle', 'id_vehicle');
+	}
+
 }

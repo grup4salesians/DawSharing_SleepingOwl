@@ -1,7 +1,7 @@
 <?php
 
 Admin::model(\VehiclesUsuari::Class)->title('Vehicles d\'usuaris')->columns(function (){
-	Column::string('id_vehicle', 'Id Vehicle');
+	Column::string('vehicle.model', 'Vehicle');
 	Column::string('id_usuaris', 'Id Usuaris');
 	Column::string('matricula', 'Matricula');
         
