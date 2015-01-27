@@ -1,9 +1,9 @@
 <?php
 
 Admin::model(\Correu::Class)->title('Correu')->columns(function (){
-    	Column::string('id', 'id');	
+    	//Column::string('id', 'id');	
         //Column::string('id_usuari', 'id_usuari');
-        Column::string('foranea_usuari.nom', 'Usari');
+        Column::string('usuari.nom', 'Usari');
 	Column::string('contingut', 'Contingut');
         Column::string('vist', 'Vist');
         

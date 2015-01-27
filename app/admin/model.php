@@ -3,7 +3,7 @@
 Admin::model(\Model::Class)->title('Model')->columns(function (){
     Column::string('id', 'id');
     //Column::string('id_marca', 'id_marca');
-    Column::string('foranea_marca.marca', 'Marca');
+    Column::string('marca.marca', 'Marca');
     Column::string('model', 'Model');
         
 })->form(function (){

@@ -11,7 +11,7 @@ class Correu extends SleepingOwlModel{
 		return $query->orderBy('contingut', 'asc');
 	}
         
-        public function foranea_usuari(){
+        public function usuari(){
             return $this->belongsTo('Usuari','id_usuari');
         }
 
