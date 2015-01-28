@@ -2,7 +2,7 @@
 
 Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 	Column::string('ruta.inici_ruta', 'Ruta');
-	Column::string('usuaris.nom', 'Usuari');
+	Column::string('usuari.nom', 'Usuari');
 	Column::string('vehicles.tipus', 'Tipus vehicle');
 	Column::string('periodicitat.data_limit', 'Final periodicitat');
 	Column::string('preu', 'Preu');
