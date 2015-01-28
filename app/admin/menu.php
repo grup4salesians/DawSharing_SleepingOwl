@@ -15,8 +15,8 @@
  * 		});
  */
 
-Admin::menu()->url('/')->label('Start page')->icon('fa-dashboard')->uses('\SleepingOwl\Admin\Controllers\DummyController@getIndex');
-Admin::menu()->label('Menu with subitems')->icon('fa-book')->items(function (){
+Admin::menu()->url('/')->label('Inici')->icon('fa-dashboard')->uses('\SleepingOwl\Admin\Controllers\DummyController@getIndex');
+Admin::menu()->label('Manteniment Taules')->icon('fa-book')->items(function (){
 
 	Admin::menu(\Marca::Class);
 	Admin::menu(\Caracteristiques::Class);
