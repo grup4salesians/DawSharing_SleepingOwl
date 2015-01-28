@@ -28,7 +28,7 @@ Admin::menu()->label('Manteniment Taules')->icon('fa-book')->items(function (){
 	Admin::menu(\Usuari::Class);
 	Admin::menu(\Vehicle::Class);
   	Admin::menu(\VehiclesUsuari::Class);
-	Admin::menu(\Viatge::Class);
+	Admin::menu(\ViewViatge::Class);
 
 });
 //Admin::menu(\Administrator::Class);

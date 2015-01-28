@@ -2,12 +2,12 @@
 
 use SleepingOwl\Models\SleepingOwlModel;
 
-class Ruta extends SleepingOwlModel{
-        protected $table = "rutas";
+class ViewRuta extends SleepingOwlModel{
+    protected $table = "viewrutas";
 	protected $fillable = ['inici_ruta', 'fi_ruta', 'km'];
         
 
-        public function scopeDefaultSort($query){
+    public function scopeDefaultSort($query){
 		return $query->orderBy('inici_ruta', 'asc');
 	}
 

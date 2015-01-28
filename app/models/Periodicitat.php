@@ -3,7 +3,7 @@
 use SleepingOwl\Models\SleepingOwlModel;
 
 class Periodicitat extends SleepingOwlModel{
-        protected $table = "periodicitats";
+    protected $table = "periodicitats";
 	protected $fillable = ['data_limit', 'dies'];
 
 	public function scopeDefaultSort($query){
