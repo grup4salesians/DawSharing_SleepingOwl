@@ -49,10 +49,10 @@ Route::group(array('prefix'=>'api/v1'),function(){
 
 });
 
-Route::get('marcawhere/{nombrecampo}/{model}', function($nombrecampo,$model)
+/*Route::get('marcawhere/{nombrecampo}/{model}', function($nombrecampo,$model)
 {
         return Marca::where($nombrecampo, '=', $model)
         ->get();
-});
+});*/
 
 
