@@ -6,7 +6,7 @@ Admin::model(\VehiclesUsuari::Class)->title('Vehicles d\'usuaris')->columns(func
 	Column::string('matricula', 'Matricula');
         
 })->form(function (){
-	FormItem::text('id_vehicles', 'Id Vehicles');
+	FormItem::select('id_vehicles', 'Vehicle')->list(\Vehicle::Class)->required();
 	FormItem::text('id_usuaris', 'Id Usuaris');
 	FormItem::text('matricula', 'Matricula');
 
