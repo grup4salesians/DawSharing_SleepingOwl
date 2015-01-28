@@ -3,7 +3,7 @@
 use SleepingOwl\Models\SleepingOwlModel;
 
 class VehiclesUsuari extends SleepingOwlModel{
-    protected $table = "VehiclesUsuaris";
+	protected $table = "VehiclesUsuaris";
 	protected $fillable = ['id_vehicles', 'id_usuaris', 'matricula'];
 	protected $hidden = ['created_at','updated_at'];
 
