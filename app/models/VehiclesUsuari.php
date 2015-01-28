@@ -15,4 +15,8 @@ class VehiclesUsuari extends SleepingOwlModel{
 		return $this->belongsTo('Vehicle', 'id_vehicles');
 	}
 
+	public function usuari() {
+		return $this->belongsTo('Usuari', 'id_usuaris');
+	}
+
 }
