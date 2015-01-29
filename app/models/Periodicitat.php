@@ -9,6 +9,9 @@ class Periodicitat extends SleepingOwlModel{
 	public function scopeDefaultSort($query){
 		return $query->orderBy('data_limit', 'asc');
 	}
+            public function getDates() {    
+        return array_merge(parent::getDates(), ['data_limit']);//,'fecha_inscripcion']);
+    }
 
 }
 
