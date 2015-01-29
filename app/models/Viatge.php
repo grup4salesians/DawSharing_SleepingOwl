@@ -6,7 +6,7 @@ use SleepingOwl\Models\SleepingOwlModel;
 class Viatge extends SleepingOwlModel {
 
     protected $table = "ViewViatges";
-    protected $fillable = ['preu', 'numSeientDisponible', 'numSeientRestant', 'duracio', 'permissos', 'data', 'dies', 'data_limit'];
+    protected $fillable = ['preu', 'numSeientDisponible', 'numSeientRestant', 'duracio', 'permissos', 'data'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function scopeDefaultSort($query) {
@@ -31,6 +31,10 @@ class Viatge extends SleepingOwlModel {
 
     public function passatgers() {
         return $this->hasMany('Passatger');
+    }
+
+    public function getDates() {
+        return array_merge(parent::getDates(), ['data_limit']); //,'fecha_inscripcion']);
     }
 
 }

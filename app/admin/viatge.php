@@ -5,7 +5,7 @@ Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 	Column::string('usuari.full_name', 'Usuari');
 	Column::string('vehicles.full_name', 'Vehicle');
 	Column::string('periodicitat.dies', 'Dies Periodicitat');
-	Column::string('periodicitat.data_limit', 'Final periodicitat');
+	Column::date('periodicitat.data_limit', 'Final periodicitat')->formatdate('short');
 	Column::string('preu', 'Preu');
 	Column::string('numSeientDisponible', 'Seients Disponibles');
 	Column::string('numSeientRestant', 'Seients Restants');
@@ -16,10 +16,10 @@ Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 
 })->form(function (){
 	FormItem::select('ruta_id', 'Ruta')->list(\ViewRuta::Class)->required();
-	FormItem::select('usuaris_id', 'Usuari')->list(\ViewUsuari::Class)->required();
+	FormItem::select('usuari_id', 'Usuari')->list(\ViewUsuari::Class)->required();
 	FormItem::select('vehicles_id', 'Vehicle')->list(\ViewVehicle::Class)->required();
 	FormItem::text('dies', 'Dies Periodicitat');
-	FormItem::text('data_limit', 'Final periodicitat');
+	FormItem::date('data_limit', 'Final periodicitat');
 	FormItem::text('preu', 'Preu');
 	FormItem::text('numSeientDisponible', 'Seients Disponibles');
 	FormItem::text('numSeientRestant', 'Seients Restants');
