@@ -1,10 +1,10 @@
 <?php
 
 use SleepingOwl\Models\SleepingOwlModel;
-
+//// Usa la vista de viatges en vez de la tabla
 class Viatge extends SleepingOwlModel {
-    protected $table = "viatges";
-    protected $fillable = ['preu', 'numSeientDisponible', 'numSeientRestant', 'duracio', 'permissos', 'data'];
+    protected $table = "ViewViatges";
+    protected $fillable = ['preu', 'numSeientDisponible', 'numSeientRestant', 'duracio', 'permissos', 'data', 'dies', 'data_limit'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function scopeDefaultSort($query) {
@@ -15,8 +15,8 @@ class Viatge extends SleepingOwlModel {
         return $this->belongsTo('Ruta', 'ruta_id');
     }
 
-    public function usuaris() {
-        return $this->belongsTo('Usuari', 'usuaris_id');
+    public function usuari() {
+        return $this->belongsTo('Usuari', 'usuari_id');
     }
     
     public function vehicles() {
@@ -25,9 +25,5 @@ class Viatge extends SleepingOwlModel {
     
     public function periodicitat() {
         return $this->belongsTo('Periodicitat', 'periodicitat_id');
-    }
-    
-    public function passatgers(){
-        return $this->hasMany('Passatger');
     }
 }

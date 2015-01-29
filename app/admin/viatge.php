@@ -1,6 +1,6 @@
 <?php
 
-Admin::model(\ViewViatge::Class)->title('Viatges')->columns(function (){
+Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 	Column::string('ruta.full_name', 'Ruta');
 	Column::string('usuari.full_name', 'Usuari');
 	Column::string('vehicles.full_name', 'Vehicle');
