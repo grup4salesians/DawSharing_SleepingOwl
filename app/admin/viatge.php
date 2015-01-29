@@ -12,6 +12,7 @@ Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 	Column::string('duracio', 'Duració');
 	Column::string('permissos', 'Permissos');
 	Column::string('data', 'Data');
+        Column::count('passatgers', 'Passatgers')->append(Column::filter('viatge_id')->model(\Passatger::Class));
 
 })->form(function (){
 	FormItem::select('ruta_id', 'Ruta')->list(\ViewRuta::Class)->required();
