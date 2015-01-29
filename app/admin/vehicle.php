@@ -11,7 +11,7 @@ Admin::model(\Vehicle::Class)->title('Vehicle')->columns(function (){
         
 })->form(function (){
         FormItem::text('tipus', 'Tipus');
-        FormItem::select('id_model', 'Model')->list(\Model::Class)->required();
+        FormItem::select('model_id', 'Model')->list(\Model::Class)->required();
         FormItem::text('combustio', 'Combustió');
         FormItem::text('places', 'Places');
         FormItem::text('custom_marca', 'Custom Marca');

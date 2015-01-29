@@ -4,7 +4,7 @@ use SleepingOwl\Models\SleepingOwlModel;
 
 class VehiclesUsuari extends SleepingOwlModel{
 	protected $table = "VehiclesUsuaris";
-	protected $fillable = ['id_vehicles', 'id_usuaris', 'matricula'];
+	protected $fillable = ['vehicles_id', 'usuaris_id', 'matricula'];
 	protected $hidden = ['created_at','updated_at'];
 
 	public function scopeDefaultSort($query){
@@ -12,11 +12,11 @@ class VehiclesUsuari extends SleepingOwlModel{
 	}
 
 	public function vehicle() {
-		return $this->belongsTo('Vehicle', 'id_vehicles');
+		return $this->belongsTo('Vehicle', 'vehicles_id');
 	}
 
 	public function usuari() {
-		return $this->belongsTo('Usuari', 'id_usuaris');
+		return $this->belongsTo('Usuari', 'usuaris_id');
 	}
 
 }

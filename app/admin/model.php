@@ -9,6 +9,6 @@ Admin::model(\Model::Class)->title('Model')->columns(function (){
 })->form(function (){
        // FormItem::text('id', 'id');
         //FormItem::text('id_marca', 'id_marca');
-        FormItem::select('id_marca', 'Marcas')->list(\Marca::class)->required();
+        FormItem::select('marca_id', 'Marcas')->list(\Marca::class)->required();
 	FormItem::text('model', 'Model');
 });

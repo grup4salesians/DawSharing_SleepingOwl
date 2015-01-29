@@ -10,8 +10,8 @@ Admin::model(\Correu::Class)->title('Correu')->columns(function (){
         
 })->form(function (){
         //FormItem::text('id', 'id');	
-        FormItem::select('id_usuari', 'Usari Envia')->list(\Usuari::class)->required();
-        FormItem::select('id_destinatari', 'Destinatari')->list(\Usuari::class)->required();
+        FormItem::select('usuari_id', 'Usari Envia')->list(\Usuari::class)->required();
+        FormItem::select('destinatari_id', 'Destinatari')->list(\Usuari::class)->required();
 	FormItem::ckeditor('contingut', 'Contingut');
         FormItem::checkbox('vist', 'Vist');
 

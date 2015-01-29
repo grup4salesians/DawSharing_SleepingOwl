@@ -4,7 +4,7 @@ use SleepingOwl\Models\SleepingOwlModel;
 
 class ViewVehicle extends SleepingOwlModel{
 	protected $table = "viewvehicles";
-    protected $fillable = ['id_model', 'tipus', 'combustio', 'places', 'custom_marca', 'custom_model'];
+    protected $fillable = ['model_id', 'tipus', 'combustio', 'places', 'custom_marca', 'custom_model'];
 
     public function scopeDefaultSort($query) {
         return $query->orderBy('tipus', 'asc');
@@ -19,7 +19,7 @@ class ViewVehicle extends SleepingOwlModel{
     }
 
     public function model() {
-        return $this->belongsTo('Model', 'id_model');
+        return $this->belongsTo('Model', 'model_id');
     }
 
 

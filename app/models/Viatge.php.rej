@@ -1,0 +1,15 @@
+diff a/app/models/Viatge.php b/app/models/Viatge.php	(rejected hunks)
+@@ -16,11 +16,11 @@
+     }
+ 
+     public function usuaris() {
+-        return $this->belongsTo('Usuaris', 'id_usuari');
++        return $this->belongsTo('Usuari', 'id_usuari');
+     }
+     
+     public function vehicles() {
+-        return $this->belongsTo('Vehicles', 'id_vehicle');
++        return $this->belongsTo('Vehicle', 'id_vehicle');
+     }
+     
+     public function periodicitat() {

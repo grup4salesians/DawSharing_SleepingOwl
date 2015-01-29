@@ -5,7 +5,7 @@ use SleepingOwl\Models\SleepingOwlModel;
 class Model extends SleepingOwlModel {
 
     protected $table = "models";
-    protected $fillable = [ 'id_marca', 'model'];
+    protected $fillable = [ 'marca_id', 'model'];
     protected $hidden = ['id','created_at', 'updated_at'];
 
     public function scopeDefaultSort($query) {
@@ -17,7 +17,7 @@ class Model extends SleepingOwlModel {
     }
 
     public function marca() {
-        return $this->belongsTo('Marca', 'id_marca');
+        return $this->belongsTo('Marca', 'marca_id');
     }
 
 }

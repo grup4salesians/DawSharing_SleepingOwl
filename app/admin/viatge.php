@@ -14,9 +14,9 @@ Admin::model(\ViewViatge::Class)->title('Viatges')->columns(function (){
 	Column::string('data', 'Data');
 
 })->form(function (){
-	FormItem::select('id_ruta', 'Ruta')->list(\ViewRuta::Class)->required();
-	FormItem::select('id_usuaris', 'Usuari')->list(\ViewUsuari::Class)->required();
-	FormItem::select('id_vehicles', 'Vehicle')->list(\ViewVehicle::Class)->required();
+	FormItem::select('ruta_id', 'Ruta')->list(\ViewRuta::Class)->required();
+	FormItem::select('usuaris_id', 'Usuari')->list(\ViewUsuari::Class)->required();
+	FormItem::select('vehicles_id', 'Vehicle')->list(\ViewVehicle::Class)->required();
 	FormItem::text('dies', 'Dies Periodicitat');
 	FormItem::text('data_limit', 'Final periodicitat');
 	FormItem::text('preu', 'Preu');

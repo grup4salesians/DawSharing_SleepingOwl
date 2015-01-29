@@ -4,7 +4,7 @@ use SleepingOwl\Models\SleepingOwlModel;
 
 class Correu extends SleepingOwlModel{
         protected $table = "correus";
-        protected $fillable = [ 'id_usuari', 'id_destinatari','contingut','vist'];
+        protected $fillable = [ 'usuari_id', 'destinatari_id','contingut','vist'];
 	protected $hidden = ['created_at','updated_at'];
 
 	public function scopeDefaultSort($query){
@@ -12,10 +12,10 @@ class Correu extends SleepingOwlModel{
 	}
         
         public function usuari(){
-            return $this->belongsTo('Usuari','id_usuari');
+            return $this->belongsTo('Usuari','usuari_id');
         }
         public function usuariDest(){
-            return $this->belongsTo('Usuari','id_destinatari');
+            return $this->belongsTo('Usuari','destinatari_id');
         }
 
 }

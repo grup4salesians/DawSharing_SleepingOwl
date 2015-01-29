@@ -2,12 +2,12 @@
 
 Admin::model(\Passatger::Class)->title('Passatgers')->columns(function () {
     /* Column::{type}('{field name}', '{column label}') */
-    Column::string('id_viatge', 'id_viatge');
-    Column::string('usuari.nom', 'id_usuari');
-  
+    Column::string('viatge_id', 'id_viatge');
+    Column::string('usuari.full_name', 'Passatgers');
+    //Column::lists('usuari.full_name', 'Passatgers');
     
 })->form(function () {
-    FormItem::text('id_viatge', 'id_viatge');
-    FormItem::select('id_usuari', 'Usuari')->list(\Usuari::class)->required();
+    FormItem::text('viatge_id', 'viatge_id');
+    FormItem::Select('usuari_id', 'Usuari')->list(\Usuari::class)->required();
 });
 
