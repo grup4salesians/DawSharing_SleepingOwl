@@ -16,11 +16,11 @@ class Viatge extends SleepingOwlModel {
     }
 
     public function usuaris() {
-        return $this->belongsTo('Usuari', 'usuari_id');
+        return $this->belongsTo('Usuari', 'usuaris_id');
     }
     
     public function vehicles() {
-        return $this->belongsTo('Vehicle', 'vehicle_id');
+        return $this->belongsTo('Vehicle', 'vehicles_id');
     }
     
     public function periodicitat() {
