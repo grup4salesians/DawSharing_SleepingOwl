@@ -29,7 +29,7 @@ class Usuari extends SleepingOwlModel implements ModelWithImageFieldsInterface {
     }
 
     public function getDates() {    
-        return array_merge(parent::getDates(), ['data_naixement']);//,'fecha_inscripcion']);
+        return array_merge(parent::getDates(), ['data_naixement','fecha_inscripcion']);
     }
 //    public function getTimeStamps() {    
 //        return array_merge(parent::getTimeStamps(), ['fecha_inscripcion']);
