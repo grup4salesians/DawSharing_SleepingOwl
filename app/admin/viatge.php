@@ -11,7 +11,7 @@ Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 	Column::string('numSeientRestant', 'Seients Restants');
 	Column::string('duracio', 'Duració');
 	Column::string('permissos', 'Permissos');
-	Column::string('data', 'Data');
+	Column::date('data', 'Data')->format('short','short');
         Column::count('passatgers', 'Passatgers')->append(Column::filter('viatge_id')->model(\Passatger::Class));
 
 })->form(function (){
@@ -25,5 +25,5 @@ Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 	FormItem::text('numSeientRestant', 'Seients Restants');
 	FormItem::text('duracio', 'Duració');
 	FormItem::text('permissos', 'Permissos');
-	FormItem::text('data', 'Data');
+	//FormItem::timestamp('data', 'Data');
 });

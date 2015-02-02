@@ -12,7 +12,7 @@ class Periodicitat extends SleepingOwlModel {
     }
 
     public function getDates() {
-        return array_merge(parent::getDates(), ['data_limit']); //,'fecha_inscripcion']);
+        return array_merge(parent::getDates(), ['data_limit']);
     }
 
 }
