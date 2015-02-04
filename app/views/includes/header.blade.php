@@ -2,7 +2,8 @@
 	 <div class="top-header">
 		 <div class="container">
 			 <div class="logo">
-				 	<a href="index.html"><img src="images/logo.png"/></a>
+				 	<!--<a href="index.html"><img src="images/logo.png"/></a>-->
+					
 			 </div>
 			 <span class="menu"> </span>
 			 <div class="m-clear"></div>
@@ -33,15 +34,8 @@
 	  </div>
 	  <div class="banner">
 			<div class="banner-info text-center">
-			<h3><label>Hello,</label> You've Reached</h3>
-			<h1>HOTEL FORTUNE</h1>
-			<span></span>
-			<ul>
-			 <li><a class="scroll" href="#">HOTEL</a><i class="line"></i></li>
-			 <li><a class="scroll" href="#">SPA SALOON</a><i class="line2"></i></li>
-			 <li><a class="scroll" href="#">FINE DINING</a></li>
-			 <div class="clearfix"></div>
-			</ul>
+				<h1>DawSharing</h1>
+				<span></span>
 			</div>
 	  </div>
 </div>

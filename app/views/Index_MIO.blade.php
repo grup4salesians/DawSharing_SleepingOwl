@@ -9,22 +9,7 @@
 @include ('includes\header')
 <!---strat-date-piker---->
 
-<script src="js/jquery-ui.js"></script>
-		  <script>
-				  $(function() {
-				    $( "#datepicker,#datepicker1" ).datepicker();
-				  });
-		  </script>
-<!---/End-date-piker---->
 
-<!-- Set here the key for your domain in order to hide the watermark on the web server -->
-<script type="text/javascript">
-	(function() {
-		JC.init({
-			domainKey: ''
-		});
-	})();
-</script>
 <div class="online_reservation">
 		   <div class="b_room">
 			  <div class="booking_room">
@@ -34,7 +19,9 @@
 							<h5>Origen</h5>
 							<div class="book_date">
 								<form>
-									<input class="date" id="datepicker" type="text" value="2/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '2/08/2013';}">
+								<!--	<input class="date" id="datepicker" type="text" value="2/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '2/08/2013';}">
+								-->
+								<input id="idText1" type="text">
 								</form>
 							</div>					
 						 </li>
@@ -42,7 +29,9 @@
 							<h5>Destinació</h5>
 							<div class="book_date">
 								<form>
-									<input class="date" id="datepicker1" type="text" value="22/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '22/08/2013';}">
+									<!--<input class="date" id="datepicker1" type="text" value="22/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '22/08/2013';}">
+									-->
+									<input id="idText2" type="text">
 								</form>
 						    </div>		
 						 </li>
