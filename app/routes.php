@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function(){
-	return View::make('Index_MIO');
+	return View::make('pages.home');
 });
 
 

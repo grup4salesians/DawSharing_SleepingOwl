@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'jona-PC',
+			'host'      => 'localhost',
 			'database'  => 'dawsharing',
 			'username'  => 'jona',
-			'password'  => '1234',
+			'password'  => '12345',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
