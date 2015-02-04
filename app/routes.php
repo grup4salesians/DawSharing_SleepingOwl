@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function(){
-	return View::make('index');
+	return View::make('Index_MIO');
 });
 
 
