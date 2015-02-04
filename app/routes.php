@@ -12,10 +12,58 @@
 */
 
 Route::get('/', function(){
-	return View::make('pages.home');
+    return View::make('pages.home');
 });
 
+Route::get('login', function(){
+    return Redirect::to('/');
+    //return View::make('pages.login');
+});
 
+Route::get('registre', function(){
+    return Redirect::to('/');
+    //return View::make('pages.registre');
+});
+
+Route::group(array('prefix'=>'perfil'),function(){
+    Route::get('/', function(){
+        return Redirect::to('/');
+        //return View::make('pages.home');
+    });
+    
+    Route::get('missatges', function(){
+        return Redirect::to('/');
+        //return View::make('pages.missatges');
+    });
+    
+    Route::get('viatges', function(){
+        return Redirect::to('/');
+        //return View::make('pages.viatges');
+    });
+
+});
+
+Route::get('publicarViatge', function(){
+    return Redirect::to('/');
+    //return View::make('pages.publicarViatge');
+});
+
+Route::get('publicarViatge', function(){
+    return Redirect::to('/');
+    //return View::make('pages.publicarViatge');
+});
+
+Route::get('buscar', function(){
+    return Redirect::to('/');
+    //return View::make('pages.buscar');
+});
+
+Route::get('detallViatge', function(){
+    return Redirect::to('/');
+    //return View::make('pages.detallViatge');
+});
+
+// ----- //
 Route::get('marca',array('uses'=>'MarcaController@mostrarMarcas'));
 
 Route::group(array('prefix'=>'api/v1'),function(){
