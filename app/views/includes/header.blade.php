@@ -28,9 +28,3 @@
         <div class="clearfix"></div>
     </div>
 </div>
-<div class="banner">
-    <div class="banner-info text-center">
-        <h1>Troba companys per viatjar</h1>
-        <span></span>
-    </div>
-</div>

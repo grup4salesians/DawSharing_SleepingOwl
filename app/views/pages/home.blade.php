@@ -1,5 +1,10 @@
 @extends('layouts.buscar')
-
+@section('title')
+	Home
+@stop
+@section('subtitle')
+	Troba companys per viatjar
+@stop
 @section('content')
 	<div class="package text-center">
 		 <div class="container">
