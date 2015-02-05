@@ -8,7 +8,7 @@
 						<form>
 						<!--	<input class="date" id="datepicker" type="text" value="2/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '2/08/2013';}">
 						-->
-						<input id="idText1" type="text">
+						<input id="searchTextField" type="text">
 						</form>
 					</div>					
 				 </li>
@@ -18,14 +18,14 @@
 						<form>
 							<!--<input class="date" id="datepicker1" type="text" value="22/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '22/08/2013';}">
 							-->
-							<input id="idText2" type="text">
+							<input  id="searchTextFieldFin" type="text">
 						</form>
 				    </div>		
 				 </li>
 				 <li class="span1_of_3">
 					<div class="date_btn">
 							<form>
-								<input type="submit" value="Buscar" />
+								<input type="submit"  value="Buscar" />
 							</form>
 						</div>
 				 </li>
