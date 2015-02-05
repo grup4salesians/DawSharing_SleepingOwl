@@ -10,8 +10,8 @@
             {{ Session::get('mensaje_error') }}
         @endif
         {{ Form::open(array('url' => '/login')) }}
-            {{ Form::label('usuario', 'Nombre de usuario') }}
-            {{ Form::text('username', Input::old('username')); }}
+            {{ Form::label('correu', 'Correu') }}
+            {{ Form::text('correu', Input::old('correu')); }}
             {{ Form::label('contraseña', 'Contraseña') }}
             {{ Form::password('password'); }}
             {{ Form::label('lblRememberme', 'Recordar contraseña') }}

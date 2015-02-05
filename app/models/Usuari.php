@@ -15,7 +15,7 @@ class Usuari extends SleepingOwlModel implements ModelWithImageFieldsInterface, 
     use ModelWithImageOrFileFieldsTrait;
 
     protected $table = "usuaris";
-    protected $fillable = ['nom', 'cognoms', 'dni', 'grup_escolar', 'foto', 'correu', 'rol', 'fecha_inscripcion', 'contrasenya', 'sexe', 'data_naixement', 'idioma'];
+    protected $fillable = ['nom', 'cognoms', 'dni', 'grup_escolar', 'foto', 'correu', 'rol', 'fecha_inscripcion', 'contrasenya', 'sexe', 'data_naixement', 'idioma', 'remember_token'];
     
     protected $hidden = array('contrasenya', 'remember_token');
     
