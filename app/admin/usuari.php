@@ -1,6 +1,6 @@
 <?php
 
-Admin::model(\Usuari::Class)->title('Usuaris')->columns(function () {
+Admin::model('\Usuari')->title('Usuaris')->columns(function () {
     Column::string('nom', 'Nom');
     Column::string('cognoms', 'Cognoms');
     Column::string('dni', 'Dni');

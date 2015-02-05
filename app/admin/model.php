@@ -1,14 +1,10 @@
 <?php
 
-Admin::model(\Model::Class)->title('Model')->columns(function (){
-    //Column::string('id', 'id');
-    //Column::string('id_marca', 'id_marca');
+Admin::model('\Model')->title('Model')->columns(function (){
     Column::string('marca.marca', 'Marca');
     Column::string('model', 'Model');
         
 })->form(function (){
-       // FormItem::text('id', 'id');
-        //FormItem::text('id_marca', 'id_marca');
-        FormItem::select('marca_id', 'Marcas')->list(\Marca::class)->required();
+        FormItem::select('marca_id', 'Marcas')->list('\Marca')->required();
 	FormItem::text('model', 'Model');
 });

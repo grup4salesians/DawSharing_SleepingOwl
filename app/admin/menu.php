@@ -18,17 +18,17 @@
 Admin::menu()->url('/')->label('Inici')->icon('fa-dashboard')->uses('\SleepingOwl\Admin\Controllers\DummyController@getIndex');
 Admin::menu()->label('Manteniment Taules')->icon('fa-book')->items(function (){
 
-	Admin::menu(\Marca::Class);
-	Admin::menu(\Caracteristiques::Class);
-	Admin::menu(\Correu::Class);
-	Admin::menu(\Model::Class);
-	Admin::menu(\Passatger::Class);
-	Admin::menu(\Periodicitat::Class);
-	Admin::menu(\Ruta::Class);
-	Admin::menu(\Usuari::Class);
-	Admin::menu(\Vehicle::Class);
-  	Admin::menu(\VehiclesUsuari::Class);
-	Admin::menu(\Viatge::Class);
+	Admin::menu('\Marca');
+	Admin::menu('\Caracteristiques');
+	Admin::menu('\Correu');
+	Admin::menu('\Model');
+	Admin::menu('\Passatger');
+	Admin::menu('\Periodicitat');
+	Admin::menu('\Ruta');
+	Admin::menu('\Usuari');
+	Admin::menu('\Vehicle');
+  	Admin::menu('\VehiclesUsuari');
+	Admin::menu('\Viatge');
 
 });
 //Admin::menu(\Administrator::Class);

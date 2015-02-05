@@ -1,6 +1,6 @@
 <?php
 
-Admin::model(\Vehicle::Class)->title('Vehicle')->columns(function (){
+Admin::model('\Vehicle')->title('Vehicle')->columns(function (){
         /*Column::{type}('{field name}', '{column label}')*/
         Column::string('tipus', 'Tipus');
         Column::string('model.model', 'Model');
@@ -11,7 +11,7 @@ Admin::model(\Vehicle::Class)->title('Vehicle')->columns(function (){
         
 })->form(function (){
         FormItem::text('tipus', 'Tipus');
-        FormItem::select('model_id', 'Model')->list(\Model::Class)->required();
+        FormItem::select('model_id', 'Model')->list('\Model')->required();
         FormItem::text('combustio', 'Combustió');
         FormItem::text('places', 'Places');
         FormItem::text('custom_marca', 'Custom Marca');

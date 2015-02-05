@@ -1,6 +1,6 @@
 <?php
 
-Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
+Admin::model('\Viatge')->title('Viatges')->columns(function (){
 	Column::string('ruta.full_name', 'Ruta');
 	Column::string('usuari.full_name', 'Usuari');
 	Column::string('vehicles.full_name', 'Vehicle');
@@ -12,12 +12,12 @@ Admin::model(\Viatge::Class)->title('Viatges')->columns(function (){
 	Column::string('duracio', 'Duració');
 	Column::string('permissos', 'Permissos');
 	Column::date('data', 'Data')->format('short','short');
-        Column::count('passatgers', 'Passatgers')->append(Column::filter('viatge_id')->model(\Passatger::Class));
+        Column::count('passatgers', 'Passatgers')->append(Column::filter('viatge_id')->model('\Passatger'));
 
 })->form(function (){
-	FormItem::select('ruta_id', 'Ruta')->list(\ViewRuta::Class)->required();
-	FormItem::select('usuari_id', 'Usuari')->list(\ViewUsuari::Class)->required();
-	FormItem::select('vehicles_id', 'Vehicle')->list(\ViewVehicle::Class)->required();
+	FormItem::select('ruta_id', 'Ruta')->list('\ViewRuta')->required();
+	FormItem::select('usuari_id', 'Usuari')->list('\ViewUsuari')->required();
+	FormItem::select('vehicles_id', 'Vehicle')->list('\ViewVehicle')->required();
 	FormItem::text('dies', 'Dies Periodicitat');
 	FormItem::date('data_limit', 'Final periodicitat');
 	FormItem::text('preu', 'Preu');

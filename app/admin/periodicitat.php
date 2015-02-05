@@ -1,6 +1,6 @@
 <?php
 
-Admin::model(\Periodicitat::Class)->title('Periodicitat')->columns(function () {
+Admin::model('\Periodicitat')->title('Periodicitat')->columns(function () {
     /* Column::{type}('{field name}', '{column label}') */
     Column::date('data_limit', 'data_limit')->formatdate('short');
     Column::string('dies', 'dies');

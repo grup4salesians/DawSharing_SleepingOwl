@@ -1,6 +1,6 @@
 <?php
 
-Admin::model(\Administrator::Class)->title('Administradors')->columns(function (){
+Admin::model('\Administrator')->title('Administradors')->columns(function (){
 	Column::string('username', 'Nom Usuari');
         Column::string('password', 'Contrasenya');
         Column::string('name', 'Nom');
