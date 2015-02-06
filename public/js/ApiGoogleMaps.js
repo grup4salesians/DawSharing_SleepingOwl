@@ -3,7 +3,7 @@ $(function () {
     var directionsService = new google.maps.DirectionsService();
     var directionsDisplay = new google.maps.DirectionsRenderer();
 
-    var mapOptions = {center: new google.maps.LatLng(lat, lng), zoom: 14, mapTypeId: google.maps.MapTypeId.ROADMAP,
+    var mapOptions = {scrollwheel: false,center: new google.maps.LatLng(lat, lng), zoom: 14, mapTypeId: google.maps.MapTypeId.ROADMAP,
         panControl: true, panControlOptions: {position: google.maps.ControlPosition.TOP_RIGHT},
         zoomControl: true, zoomControlOptions: {style: google.maps.ZoomControlStyle.LARGE, position: google.maps.ControlPosition.TOP_left}
     },
