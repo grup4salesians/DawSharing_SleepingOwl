@@ -338,7 +338,7 @@ select option{
 .copy p a:hover{
 	color: #9c9c9c;
 }
-}
+
 /* start soc_icons */
 .soc_icons {
 	text-align: center;
@@ -2600,4 +2600,8 @@ margin-top: 3px;
 .contact-form textarea {
 height: 89px;
 }
+}
+
+.fixChekbox{
+    margin-top: -17px;
 }

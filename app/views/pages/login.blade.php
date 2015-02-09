@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Login</title>
-    </head>
-    <body>
-        {{-- Preguntamos si hay algún mensaje de error y si hay lo mostramos  --}}
-        @if(Session::has('mensaje_error'))
-            {{ Session::get('mensaje_error') }}
-        @endif
-        {{ Form::open(array('url' => '/login')) }}
-            {{ Form::label('correu', 'Correu') }}
-            {{ Form::text('correu', Input::old('correu')); }}
-            {{ Form::label('contraseña', 'Contraseña') }}
-            {{ Form::password('password'); }}
-            {{ Form::label('lblRememberme', 'Recordar contraseña') }}
-            {{ Form::checkbox('rememberme', true) }}
-            {{ Form::submit('Enviar') }}
-        {{ Form::close() }}
-    </body>
-</html>
+@extends('layouts.default')
+@section('title')
+Login
+@stop
+@section('content')
+@include('includes.login')
+@stop
