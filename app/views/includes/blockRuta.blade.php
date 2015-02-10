@@ -16,7 +16,29 @@ class blockRuta {
 
     public function mostrarMapa() {
         $code = "";
-
+        $code = '<a href="viatges?idViatge=$id" class="linkViatge">
+            <div class="blockRuta">
+                <div class="careto">
+                    <img src="" alt="">
+                </div>
+                <div class="info">
+                    <h4>$data</h4>
+                    <div class="row">
+                        <p class="origen">
+                            <i class="icon-map-marker"></i> $rutaInici
+                        </p>
+                        <p class="fi">
+                            <i class="icon-map-marker"></i> $rutaFi
+                        </p>
+                    </div>
+                    <div class="rowDown">
+                        <div class="seientsRestants">$seientsRestants</div>
+                        <div class="permisos">$permisos</div>
+                        <div class="preu">$preu €</div>
+                    </div>
+                </div>
+            </div>
+        </a>';
 
 
         return $code;

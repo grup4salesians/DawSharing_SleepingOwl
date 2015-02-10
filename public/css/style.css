@@ -2652,3 +2652,58 @@ select.arrival{
     position:relative;
     top:1px;
 }
+
+
+
+/******************************** Block Ruta ********************************/
+.blockRuta {
+    position: absolute;
+    width: 550px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+.linkViatge {
+    text-decoration: none;
+    color: black;
+}
+.blockRuta h4 {
+    margin: 0;
+    background-color: #46CD4D;;
+    display: block;
+    padding: 5px;
+    color: white;
+}
+.blockRuta .careto{
+    float: left;
+    width: 150px;
+    height:150px;
+    background: url("http://i.imgur.com/k7YGKnA.png") no-repeat center;
+}
+.blockRuta .info {
+    float:left;
+    width: 400px;
+}
+.blockRuta .row {
+    padding: 0 5px 0 5px;
+    background-color: white;
+}
+.blockRuta .rowDown{
+    position: absolute;
+    width: 400px;
+    height: 38px;
+    background-color: rgb(228, 247, 230);
+}
+.blockRuta .rowDown * {
+    padding: 5px;
+    float: left;
+}
+.blockRuta .preu {
+    float: right!important;
+}
+.blockRuta .origen i {
+    color: #33b134;
+}
+.blockRuta .fi i {
+    color: #5d9fe1;
+}
