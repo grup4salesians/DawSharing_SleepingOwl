@@ -12,13 +12,26 @@ class RegistreController extends BaseController {
             'nom' => Input::get('nom'),
             'cognom' => Input::get('cognom'),
             'email' => Input::get('email'),
+            'contrasenya' => Input::get('contrasenya'),
             'telefon' => Input::get('telefon')
         );
+        $rules = [
+            'nom' => 'required|min:1',
+            'cognom' => 'required|min:1',
+            'email' => 'required|email|unique:Usuari',
+            'contrasenya' => 'required|confirmed|min:6',
+            'telefon' => 'min:9|max:20'
+        ];
 
-        if (Auth::attempt($userdata, Input::get('remember-me', 0))) {
-            return Redirect::to('/');
+        if (Input::get('chkRegistreCondicions') === 'yes') {
+            $validator = Validator::make($userdata, $rules);
+            if ($validator->fails()) {
+                return Redirect::back()->withInput()->withErrors($validator);
+            }
+            return Redirect::to('/login');
+        } else {
+            //error
         }
-        return Redirect::to('login')->with('mensaje_error', 'Tus datos son incorrectos')->withInput();
     }
 
 }

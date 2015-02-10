@@ -5,6 +5,7 @@ Registre
 @section('content')
 <div class="Registre_Titol">Registra't per compartir cotxe i viatja amb nosaltres!</div>
 <div class="panel-body" style="width: 390px; margin: auto;">
+    {{ Form::open(array('url' => 'registre')) }}
     <div class="form-group">
         {{ Form::label('Nom', 'Nom') }}
         {{ Form::text('nom', Input::old('nom'),array('class' => 'Registre_TextBox')) }}
@@ -18,11 +19,15 @@ Registre
         {{ Form::text('email', Input::old('email'),array('class' => 'Registre_TextBox')) }}
     </div>
     <div class="form-group">
+        {{ Form::label('Contrasenya', 'Contrasenya') }}
+        {{ Form::password('contrasenya',array('class' => 'Registre_TextBox')) }}
+    </div>
+    <div class="form-group">
         {{ Form::label('Telèfon', 'Telèfon (opcional)') }}
         {{ Form::text('telefon', Input::old('telefon'),array('class' => 'Registre_TextBox')) }}
     </div>
     <div class="checkbox" style="margin-left: 23px;">
-        {{ Form::checkbox('rememberme', true) }}     
+        {{ Form::checkbox('chkRegistreCondicions', true) }}     
         Accepto les <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">condicions d'ús</a>
 
         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -62,6 +67,6 @@ Registre
     </div>
 
     {{ Form::submit('Registra\'t!',array('class'=> 'Registre_button'))}}
-
+    {{ Form::close() }}
 </div>
 @stop
