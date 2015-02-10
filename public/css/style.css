@@ -628,7 +628,7 @@ p.para{
     -moz-background-size: cover;
     -o-background-size: cover;
     min-height:788px;
-    padding:2% 0 8% 0;
+    padding:4% 0 8% 0;
 }
 .rooms h3{
     font-family: 'Pinyon Script', cursive;
@@ -2657,11 +2657,13 @@ select.arrival{
 
 /******************************** Block Ruta ********************************/
 .blockRuta {
-    position: absolute;
+/*    position: absolute;*/
     width: 550px;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    height: 150px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+    background-color: white;
 }
 .linkViatge {
     text-decoration: none;
@@ -2680,22 +2682,25 @@ select.arrival{
     height:150px;
     background: url("http://i.imgur.com/k7YGKnA.png") no-repeat center;
 }
-.blockRuta .info {
+.blockRuta .infomio {
     float:left;
     width: 400px;
 }
-.blockRuta .row {
+.blockRuta .fila {
     padding: 0 5px 0 5px;
-    background-color: white;
+}
+.blockRuta .fila p{
+    font-size: 17px!important;
 }
 .blockRuta .rowDown{
     position: absolute;
+    bottom: 0;
     width: 400px;
     height: 38px;
     background-color: rgb(228, 247, 230);
 }
 .blockRuta .rowDown * {
-    padding: 5px;
+    padding: 9px;
     float: left;
 }
 .blockRuta .preu {
@@ -2706,4 +2711,11 @@ select.arrival{
 }
 .blockRuta .fi i {
     color: #5d9fe1;
+}
+.blockRuta .seientsRestants i,  .preu i{
+    padding: 3px!important;
+}
+
+.fa-eur, .fa-user-plus {
+    float: right!important;
 }

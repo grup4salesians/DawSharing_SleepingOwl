@@ -21,6 +21,8 @@
 <link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css">
 <link type="text/css" rel="stylesheet" href="css/JFGrid.css" />
 
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 <script>
     $(function () {
         $("#datepicker,#datepicker1").datepicker();

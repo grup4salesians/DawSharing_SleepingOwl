@@ -16,29 +16,29 @@ class blockRuta {
 
     public function mostrarMapa() {
         $code = "";
-        $code = '<a href="viatges?idViatge=$id" class="linkViatge">
-            <div class="blockRuta">
-                <div class="careto">
-                    <img src="" alt="">
+        $code = "<a href='viatges?idViatge=$this->id' class='linkViatge'>
+            <div class='blockRuta'>
+                <div class='careto'>
+                    <img src='' alt=''>
                 </div>
-                <div class="info">
-                    <h4>$data</h4>
-                    <div class="row">
-                        <p class="origen">
-                            <i class="icon-map-marker"></i> $rutaInici
+                <div class='infomio'>
+                    <h4>$this->data</h4>
+                    <div class='fila'>
+                        <p class='origen'>
+                            <i class='fa fa-map-marker'></i> $this->rutaInici
                         </p>
-                        <p class="fi">
-                            <i class="icon-map-marker"></i> $rutaFi
+                        <p class='fi'>
+                            <i class='fa fa-map-marker'></i> $this->rutaFi
                         </p>
                     </div>
-                    <div class="rowDown">
-                        <div class="seientsRestants">$seientsRestants</div>
-                        <div class="permisos">$permisos</div>
-                        <div class="preu">$preu €</div>
+                    <div class='rowDown'>
+                        <div class='seientsRestants'><i class='fa fa-user-plus'></i> $this->seientsRestants</div>
+                        <div class='permisos'>$this->permisos</div>
+                        <div class='preu'>$this->preu <i class='fa fa-eur'></i></div>
                     </div>
                 </div>
             </div>
-        </a>';
+        </a>";
 
 
         return $code;
