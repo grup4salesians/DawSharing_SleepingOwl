@@ -2605,3 +2605,50 @@ select.arrival{
 .fixChekbox{
     margin-top: -17px;
 }
+
+.Registre_Titol{
+    width: 740px;
+    margin: auto;
+    font-size: 31px;
+    padding: 10px;
+}
+
+.Registre_TextBox{
+    float:right;
+}
+
+.Registre_TitolCondicionsDus{
+    margin: auto;
+    width: 354px;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+.Registre_ParagrafCondicionsDus{
+    margin:20px;
+    font-size: 12px;
+}
+
+.Registre_button {
+    background-color:#44c767;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding: 8px;
+    text-decoration: none;
+    width: 100%;
+}
+.Registre_button:hover {
+    background-color:#5cbf2a;
+}
+.Registre_button:active {
+    position:relative;
+    top:1px;
+}
