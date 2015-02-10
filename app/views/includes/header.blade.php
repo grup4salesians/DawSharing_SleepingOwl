@@ -13,7 +13,7 @@
 
                 <?php if (Auth::check()) { ?>
                     <li role="presentation" class="dropdown">
-                        <a id="dLabel" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style="color:white;">
+                        <a id="dLabel" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" style="color:white;">
                              <?php echo Auth::user()->getFullNameAttribute(); ?> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">

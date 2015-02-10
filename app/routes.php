@@ -15,10 +15,8 @@ Route::get('/', function() {   // Esta será nuestra ruta de bienvenida.
     return View::make('pages.home');
 });
 
-Route::get('registre', function() {
-    return Redirect::to('/');
-    //return View::make('pages.registre');
-});
+Route::get('registre','RegistreController@showFormulari');  // Nos mostrará el formulario de registro.
+Route::post('registre','RegistreController@postRegistre');  // Validamos los datos de inserción del usuario.
 
 Route::get('login', 'AuthController@showLogin'); // Nos mostrará el formulario de login.
 Route::post('login', 'AuthController@postLogin'); // Validamos los datos de inicio de sesión.
