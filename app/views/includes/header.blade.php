@@ -14,7 +14,7 @@
                 <?php if (Auth::check()) { ?>
                     <li role="presentation" class="dropdown">
                         <a id="dLabel" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" style="color:white;">
-                             <?php echo Auth::user()->getFullNameAttribute(); ?> <span class="caret"></span>
+                            <?php echo Auth::user()->getFullNameAttribute(); ?> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li role="presentation">
@@ -52,7 +52,12 @@
 
 
                 <!--<li><a class="scroll" href="facilities.html"></a></li>-->
-                <li><a class="scroll" href="facilities.html">Usuaris</a></li>
+                <?php if (!Auth::check()) { ?>
+                    <li><a class="scroll" href="registre">Registra't</a></li>                
+                    <?php
+                }
+                ?>
+
                 <li>
                     <select id="country" onchange="change_country(this.value)" class="frm-field required">
                         <option value="null">CA</option>
