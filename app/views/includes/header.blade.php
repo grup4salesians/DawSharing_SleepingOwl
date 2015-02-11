@@ -24,7 +24,7 @@
                                 <a role="menuitem" tabindex="-1" href="#">Missatges</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">Perfil</a>
+                                <a role="menuitem" tabindex="-1" href="perfil">Perfil</a>
                             </li>
                             <li role="presentation">
                                 <a role="menuitem" tabindex="-1" href="#">Ajuda</a>

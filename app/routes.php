@@ -26,8 +26,8 @@ Route::post('login', 'AuthController@postLogin'); // Validamos los datos de inic
 Route::group(array('before' => 'auth'), function() {
     Route::group(array('prefix' => 'perfil'), function() {
         Route::get('/', function() {
-            return Redirect::to('/');
-            //return View::make('pages.home');
+            //return Redirect::to('/');
+            return View::make('pages.perfil');
         });
         Route::get('missatges', function() {
             return Redirect::to('/');
