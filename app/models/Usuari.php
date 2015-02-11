@@ -45,6 +45,7 @@ class Usuari extends SleepingOwlModel implements ModelWithImageFieldsInterface, 
     }
 
     public function getAuthPassword() {
-        return Hash::make($this->contrasenya);
+        return $this->contrasenya;
+        
     }
 }
