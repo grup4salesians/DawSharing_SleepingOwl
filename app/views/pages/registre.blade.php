@@ -5,7 +5,14 @@ Registre
 @section('content')
 <div class="Registre_Titol">Registra't per compartir cotxe i viatja amb nosaltres!</div>
 <div class="panel-body" style="width: 390px; margin: auto;">
-    {{ Form::open(array('url' => 'registre')) }}
+    @if ($errors->has())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+        {{ $error }}<br>        
+        @endforeach
+    </div>
+    @endif
+    {{ Form::open(array('url' => '/registre')) }}
     <div class="form-group">
         {{ Form::label('Nom', 'Nom') }}
         {{ Form::text('nom', Input::old('nom'),array('class' => 'Registre_TextBox')) }}
@@ -15,12 +22,16 @@ Registre
         {{ Form::text('cognoms', Input::old('cognoms'),array('class' => 'Registre_TextBox')) }}
     </div>
     <div class="form-group">
-        {{ Form::label('Email', 'Email') }}
-        {{ Form::text('email', Input::old('email'),array('class' => 'Registre_TextBox')) }}
+        {{ Form::label('Correu', 'Correu') }}
+        {{ Form::text('correu', Input::old('correu'),array('class' => 'Registre_TextBox')) }}
     </div>
     <div class="form-group">
         {{ Form::label('Contrasenya', 'Contrasenya') }}
         {{ Form::password('contrasenya',array('class' => 'Registre_TextBox')) }}
+    </div>
+        <div class="form-group">
+        {{ Form::label('Repetir contrasenya', 'Repetir contrasenya') }}
+        {{ Form::password('contrasenya_confirm',array('class' => 'Registre_TextBox')) }}
     </div>
     <div class="form-group">
         {{ Form::label('Telèfon', 'Telèfon (opcional)') }}
@@ -28,9 +39,9 @@ Registre
     </div>
     <div class="checkbox" style="margin-left: 23px;">
         {{ Form::checkbox('chkRegistreCondicions', true) }}     
-        Accepto les <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">condicions d'ús</a>
+        Accepto les <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">condicions d'ús</a>
 
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <p class='Registre_TitolCondicionsDus'>Condicions d'Ús</p>
