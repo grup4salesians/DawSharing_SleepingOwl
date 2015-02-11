@@ -15,7 +15,7 @@ Troba companys per viatjar
         <p />
         <h3>Ultims Viatges</h3>
         <div class="room-grids">
-            <?php $viatges = Viatge::orderBy('created_at', 'DESC')->take(6)->get(); ?>
+            <?php $viatges = Viatge::orderBy('id', 'desc')->take(6)->get(); ?>
 
             @foreach($viatges as $key => $val)
                 <div class="col-md-6 room-sec">
