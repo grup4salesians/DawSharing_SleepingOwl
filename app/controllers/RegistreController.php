@@ -30,6 +30,15 @@ class RegistreController extends BaseController {
             if ($validator->fails()) {
                 return Redirect::back()->withInput()->withErrors($validator);
             }
+            
+            $usuari = new Usuari();
+            $usuari->nom = Input::get('nom');
+            $usuari->cognoms = Input::get('cognoms');
+            $usuari->correu = Input::get('nom');
+            $usuari->contrasenya = Input::get('contrasenya');
+            $usuari->fecha_inscripcion = date("d-m-Y H:i:s");;
+            $usuari->save();
+            
             return Redirect::to('/');
         } else {
             $validator = "No s'han acceptat les condicions d'Ús";
