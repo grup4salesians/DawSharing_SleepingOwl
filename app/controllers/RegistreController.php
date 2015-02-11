@@ -12,7 +12,7 @@ class RegistreController extends BaseController {
             'nom' => Input::get('nom'),
             'cognoms' => Input::get('cognoms'),
             'correu' => Input::get('correu'),
-            'contrasenya' => Input::get('contrasenya'),
+            'password' => Input::get('password'),
             'contrasenya_confirm' => Input::get('contrasenya_confirm'),
             'telefon' => Input::get('telefon')
         );
@@ -20,8 +20,8 @@ class RegistreController extends BaseController {
             'nom' => 'required|min:1',
             'cognoms' => 'required|min:1',
             'correu' => 'required|email|unique:usuaris',
-            'contrasenya' => 'required|min:6',
-            'contrasenya_confirm' => 'required|same:contrasenya',
+            'password' => 'required|min:6',
+            'contrasenya_confirm' => 'required|same:password',
             'telefon' => 'min:9|max:20'
         ];
 
@@ -34,11 +34,11 @@ class RegistreController extends BaseController {
             $usuari = new Usuari();
             $usuari->nom = Input::get('nom');
             $usuari->cognoms = Input::get('cognoms');
-            $usuari->correu = Input::get('nom');
-            $usuari->contrasenya = Input::get('contrasenya');
+            $usuari->correu = Input::get('correu');
+            $usuari->contrasenya = Input::get('password');
             $usuari->fecha_inscripcion = date("d-m-Y H:i:s");;
             $usuari->save();
-            
+               
             return Redirect::to('/');
         } else {
             $validator = "No s'han acceptat les condicions d'Ús";

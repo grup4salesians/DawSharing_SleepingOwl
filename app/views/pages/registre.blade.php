@@ -27,7 +27,7 @@ Registre
     </div>
     <div class="form-group">
         {{ Form::label('Contrasenya', 'Contrasenya') }}
-        {{ Form::password('contrasenya',array('class' => 'Registre_TextBox')) }}
+        {{ Form::password('password',array('class' => 'Registre_TextBox')) }}
     </div>
         <div class="form-group">
         {{ Form::label('Repetir contrasenya', 'Repetir contrasenya') }}
