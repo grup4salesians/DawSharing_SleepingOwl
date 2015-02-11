@@ -13,51 +13,23 @@ Troba companys per viatjar
 <div class="rooms text-center">
     <div class="container">
         <p />
-        <h3>Our Room Types</h3>
+        <h3>Ultims Viatges</h3>
         <div class="room-grids">
-            <div class="col-md-6 room-sec">
-                <?php
-                    $ruta1 = new blockRuta(1, "02/04/2015 - 12:23", "Barcelona", "Madrid", 24, 2, "b-f-j-d-h-k-d");
-                    echo $ruta1->mostrarMapa();
-                ?>
-            </div>
-            <div class="col-md-6 room-sec">
-                <?php
-                    $ruta1 = new blockRuta(1, "02/04/2015 - 12:23", "Barcelona", "Madrid", 24, 2, "b-f-j-d-h-k-d");
-                    echo $ruta1->mostrarMapa();
-                ?>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-md-6 room-sec">
-                <?php
-                    $ruta1 = new blockRuta(1, "02/04/2015 - 12:23", "Barcelona", "Madrid", 24, 2, "b-f-j-d-h-k-d");
-                    echo $ruta1->mostrarMapa();
-                ?>
+            <?php $viatges = Viatge::orderBy('created_at', 'DESC')->take(6)->get(); ?>
 
-            </div>
-            <div class="col-md-6 room-sec">
-                <?php
-                    $ruta1 = new blockRuta(1, "02/04/2015 - 12:23", "Barcelona", "Madrid", 24, 2, "b-f-j-d-h-k-d");
-                    echo $ruta1->mostrarMapa();
-                ?>
-
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-md-6 room-sec">
-                <?php
-                    $ruta1 = new blockRuta(1, "02/04/2015 - 12:23", "Barcelona", "Madrid", 24, 2, "b-f-j-d-h-k-d");
-                    echo $ruta1->mostrarMapa();
-                ?>
-
-            </div>
-            <div class="col-md-6 room-sec">
-                <?php
-                    $ruta1 = new blockRuta(1, "02/04/2015 - 12:23", "Barcelona", "Madrid", 24, 2, "b-f-j-d-h-k-d");
-                    echo $ruta1->mostrarMapa();
-                ?>
-
-            </div>
-            <div class="clearfix"></div>
+            @foreach($viatges as $key => $val)
+                <div class="col-md-6 room-sec">
+                    <?php
+                        $ruta = Ruta::where('id', '=', $val->ruta_id)->get();
+                        $ruta1 = new blockRuta($val->id, $val->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $val->preu, $val->numSeientRestant, $val->permissos);
+                    ?>
+                        {{ $ruta1->mostrarMapa() }}
+                </div>
+                
+                @if($key%2)
+                    <div class="clearfix"></div>
+                @endif
+            @endforeach
         </div>
     </div>
 </div>
