@@ -22,7 +22,7 @@ class RegistreController extends BaseController {
             'correu' => 'required|email|unique:usuaris',
             'password' => 'required|min:6',
             'contrasenya_confirm' => 'required|same:password',
-            'telefon' => 'min:9|max:20'
+            'telefon' => 'between:9,20'
         ];
 
         if (Input::get('chkRegistreCondicions') == 1) {
@@ -36,7 +36,8 @@ class RegistreController extends BaseController {
             $usuari->cognoms = Input::get('cognoms');
             $usuari->correu = Input::get('correu');
             $usuari->contrasenya = Hash::make(Input::get('password'));
-            $usuari->fecha_inscripcion = date("d-m-Y H:i:s");;
+            $usuari->fecha_inscripcion = date("d-m-Y H:i:s");
+            $usuari->telefon = Input::get('telefon');;
             $usuari->save();
                
             return Redirect::to('/');
