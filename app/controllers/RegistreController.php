@@ -39,8 +39,16 @@ class RegistreController extends BaseController {
             $usuari->fecha_inscripcion = date("d-m-Y H:i:s");
             $usuari->telefon = Input::get('telefon');
             $usuari->save();
-               
-            return Redirect::to('/');
+           // return Redirect::to('/');
+
+            $userdata = array(
+                'correu' => Input::get('correu'),
+                'password' => Input::get('password')
+            );
+
+            if (Auth::attempt($userdata, Input::get('remember-me', 0))) {
+                return Redirect::to('/');
+            }
         } else {
             $validator = "No s'han acceptat les condicions d'Ús";
             return Redirect::back()->withInput()->withErrors($validator);
