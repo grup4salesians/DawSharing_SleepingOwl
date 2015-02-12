@@ -51,7 +51,7 @@ Route::group(array('before' => 'auth'), function() {
         //return View::make('pages.buscar');
     });
     Route::get('detallViatge', function() {
-        return Redirect::to('/');
+        return View::make('pages.viatgeDetalls');
         //return View::make('pages.detallViatge');
     });
     Route::get('logout', 'AuthController@logOut'); // Esta ruta nos servirá para cerrar sesión.

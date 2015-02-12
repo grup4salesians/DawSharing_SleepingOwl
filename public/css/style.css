@@ -577,7 +577,7 @@ p.para{
     color: #FFF;
     padding: 15px;
     border: none;
-    font-size: 1em;
+   left font-size: 1em;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -2718,4 +2718,19 @@ select.arrival{
 
 .fa-eur, .fa-user-plus {
     float: right!important;
+}
+
+
+
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+.clear {
+    clear: both;
 }
