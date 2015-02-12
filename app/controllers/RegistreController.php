@@ -30,7 +30,7 @@ class RegistreController extends BaseController {
             if ($validator->fails()) {
                 return Redirect::back()->withInput()->withErrors($validator);
             }
-            
+
             $usuari = new Usuari();
             $usuari->nom = Input::get('nom');
             $usuari->cognoms = Input::get('cognoms');
@@ -39,8 +39,13 @@ class RegistreController extends BaseController {
             $usuari->fecha_inscripcion = date("d-m-Y H:i:s");
             $usuari->telefon = Input::get('telefon');
             $usuari->save();
-           // return Redirect::to('/');
+            // return Redirect::to('/');
 
+            Mail::send('emails.template', array('firstname'=>Input::get('nom')), function ($message) {
+                $message->subject('DawSharing04');
+                $message->to(Input::get('correu'));
+            });
+ 
             $userdata = array(
                 'correu' => Input::get('correu'),
                 'password' => Input::get('password')
