@@ -1,44 +1,34 @@
 <div class="container">
-    <div class="col-md-5 details">
-        <div class="hotel-info">
-            <h4>ABOUT THIS HOTEL</h4>
-            <p>Suspendisse erat mi, tincidunt sit amet massa quis, commodo fermentum diam. Sed nec dui nec nunc tempor interdum.</p>
-            <p>Ut vulputate augue urna, ut porta dolor imperdiet a. Vestibulum nec leo eu magna aliquam ornare.</p>
+         <div class="hotel-info">
+            <h4>Sobre DawSharing </h4>
+            <p>DawSharing és una plataforma per compartir vehicles amb les demes persones del món.Registra't, publica o busca el teu viatge i estalvia diners!</p>
+
         </div>
-        <div class="news">
-            <h4>LATEST NEWS</h4>
-            <h5>Grand Hotel Joins DeluxelHotels</h5>
-            <a href="#">15 AUG</a>
-            <h5>Happy Chirstmas To Everyone</h5>
-            <a href="#">15 AUG</a>
-            <h5>Best Places To Visit 2014</h5>
-            <a href="#">15 AUG</a>
-            <h5>Various Offers</h5>
-            <a href="#">15 AUG</a>		
+
+            <div class="join">
+                <h4>Apunta't a DawSharing!</h4>
+                <p>Apunta't en aquesta experiencia DawSharing, comparteix o sigues company d'un conductor en el viatge que tú vulguis! Estalvia diners en gasolina! Sel·lecciona les preferencies del viatge i gaudeix del trajecte!. </p>
+                <p>És totalment gratuit!</p>
+            </div>
+        <div class="member" style="margin-top:-130px; max-width: 200px;">
+            <h4>Inicia Sessió</h4>
+            
+             {{ Form::open(array('url' => '/login')) }}
+
+            {{ Form::label('correu', 'Correu') }}
+            {{ Form::text('correu', Input::old('correu')) }}
+
+
+            {{ Form::label('contraseña', 'Contraseña') }}
+            {{ Form::password('password'); }}
+
+        {{ Form::submit('Enviar')}}
+        {{ Form::close() }}
+        
+        
+            
         </div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="col-md-7 details">
-        <div class="join">
-            <h4>JOIN DELUXEHOTELS</h4>
-            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus vestibulum blandit egestas. 
-                Nam id lectus vel orci luctus consectetur eget id elit. In tortor odio, pellentesque eu arcu sit amet, lacinia euismod nisi. Aliquam sodales tristique mauris ac fermentum.
-                Donec vel varius ipsum. Pellentesque vitae mollis massa. </p>
-            <p>There is no costs or whatsoever so sign up today!</p>
-            <a href="#">READ MORE</a>
-        </div>
-        <div class="member">
-            <h4>MEMBERS AREA</h4>
-            <form>
-                <p>Username</p>
-                <input type="text" placeholder="" required/>
-                <p>Password</p>
-                <input type="password" placeholder="" required/>		
-                <input type="submit" value="LOGIN"/>
-            </form>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="clearfix"></div>
+
+
 </div>
-<h6>Template by <a href="http://w3layouts.com/">W3layouts</h6>	  
+<h6>Copyright DawSharing Grup 4 Salesians Sarrià S2Q - 2015</h6>	  
