@@ -37,7 +37,7 @@ class RegistreController extends BaseController {
             $usuari->correu = Input::get('correu');
             $usuari->contrasenya = Hash::make(Input::get('password'));
             $usuari->fecha_inscripcion = date("d-m-Y H:i:s");
-            $usuari->telefon = Input::get('telefon');;
+            $usuari->telefon = Input::get('telefon');
             $usuari->save();
                
             return Redirect::to('/');
