@@ -3,6 +3,9 @@
 class RegistreController extends BaseController {
 
     public function showFormulari() {
+         if (Auth::check()){
+            return Redirect::to('/');
+        }
         return View::make('pages.registre');
     }
 
