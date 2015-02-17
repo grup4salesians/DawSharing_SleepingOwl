@@ -21,7 +21,8 @@ Route::post('registre','RegistreController@postRegistre');  // Validamos los dat
 Route::get('login', 'AuthController@showLogin'); // Nos mostrará el formulario de login.
 Route::post('login', 'AuthController@postLogin'); // Validamos los datos de inicio de sesión.
 
-
+Route::get('contactar','ContactarController@showFormulari');
+Route::post('contactar','ContactarController@postFormulari');
 // Nos indica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function() {
     Route::group(array('prefix' => 'perfil'), function() {

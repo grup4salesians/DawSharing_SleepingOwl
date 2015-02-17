@@ -27,7 +27,7 @@
                                 <a role="menuitem" tabindex="-1" href="perfil">Perfil</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">Ajuda</a>
+                                <a role="menuitem" tabindex="-1" href="../public/contactar">Contactar</a>
                             </li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation">

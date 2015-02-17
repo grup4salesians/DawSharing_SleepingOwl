@@ -2734,3 +2734,17 @@ select.arrival{
 .clear {
     clear: both;
 }
+
+.paginacontactar{
+    background: whitesmoke;
+    border: 1px solid green;
+}
+.contactar{
+    border-top: 1px solid green;
+    padding-top:10px;
+    width: 50%;
+    min-width: 500px;
+    height: 100%;
+    margin:auto;
+      margin-top:50px;
+}
