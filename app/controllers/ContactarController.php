@@ -26,7 +26,8 @@ public function postFormulari() {
             
                   Mail::send('emails.template', array('firstname'=>Input::get('nom')), function ($message) {
                 $message->subject('DawSharing04');
-                $message->to(Input::get('correu'));
+                $message->to('dawsharing04@gmail.com');
+                
             });
 }
 

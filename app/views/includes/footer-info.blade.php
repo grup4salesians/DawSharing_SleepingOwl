@@ -4,6 +4,7 @@
             <p>DawSharing és una plataforma per compartir vehicles amb les demes persones del món.Registra't, publica o busca el teu viatge i estalvia diners!</p>
 
         </div>
+     
 
             <div class="join">
                 <h4>Apunta't a DawSharing!</h4>
@@ -27,6 +28,10 @@
         
         
             
+        </div>
+    <div class="hotel-info">
+        <a style="font-weight:bold;font-size:20px" href="../public/contactar">Contacta amb nosaltres!</a>
+
         </div>
 
 
