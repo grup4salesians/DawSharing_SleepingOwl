@@ -18,7 +18,6 @@ Contacta amb nosaltres!
 
 
         <div class='contactar'>
-
             @if ($errors->has())
             <div class="alert alert-danger">
                 @foreach ($errors->all() as $error)
