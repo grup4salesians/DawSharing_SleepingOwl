@@ -68,7 +68,7 @@ Detalls del Viatge
 	
 	//$descUser = "Bla bla blblablala blabalba bl, blalabla blab abla blalba blab alba bla blabalab albab albalalb ablalbalb abla balblalb ablaba ñ. alb alba lababla blab alb ablaalal abla a.";
 	?>
-	<h1>Viatja entre {{ $ruta_inici }} i {{ $ruta_fi }} amb {{$creador}} ({{ $duracio }} min)</h1>
+	<h1>Viatje entre {{ $ruta_inici }} i {{ $ruta_fi }} amb {{$creador}} ({{ $duracio }} min)</h1>
 		<div>
 			<div class="fleft" style="width: 66%;">
 				<div id="map_canvas" style="height: 250px; background-color:grey; margin-bottom:5px;"></div>
