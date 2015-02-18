@@ -32,12 +32,20 @@ Mails
             $(this).find(".BandejaMails_Dades").hide();
             $(this).find(".BandejaMails_DadesSenceres").show();
             $(this).height("auto");
-
-            if ($(this).hasClass("BandejaMails_DadesSenceres")){
+            var Item = $(this);
+            if ($(this).hasClass("BandejaMails_PonerTextoNegrita")){
                 $.ajax({
                     type: 'POST',
-                    url: 'others/UpdateEstadoMail.php',
-                    data: {StatusList: mydata, StarmontInventoryItemID: inputdata}
+                    url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/UpdateEstadoMail.php',
+                    data: {vist: "1", id: $(this).attr("data-ID")},
+                    success:function(data){
+                        Item.removeClass("BandejaMails_PonerTextoNegrita");
+                        
+                        //console.log("Success:" + data);       
+                    },
+                    error: function(data) {
+                        //console.log("Error: " + data);
+                    }
                 });
             }
         }
