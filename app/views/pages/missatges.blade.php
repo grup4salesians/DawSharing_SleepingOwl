@@ -31,15 +31,22 @@ Mails
         if ($(this).find(".BandejaMails_DadesSenceres").is(":hidden")) {
             $(this).find(".BandejaMails_Dades").hide();
             $(this).find(".BandejaMails_DadesSenceres").show();
-             $(this).height("auto");
-            
+            $(this).height("auto");
+
+            if ($(this).hasClass("BandejaMails_DadesSenceres")){
+                $.ajax({
+                    type: 'POST',
+                    url: 'others/UpdateEstadoMail.php',
+                    data: {StatusList: mydata, StarmontInventoryItemID: inputdata}
+                });
+            }
         }
         else {
-                        $(this).find(".BandejaMails_Dades").show();
+            $(this).find(".BandejaMails_Dades").show();
             $(this).find(".BandejaMails_DadesSenceres").hide();
             $(this).height("51px");
-            
-           
+
+
 
         }
     });
