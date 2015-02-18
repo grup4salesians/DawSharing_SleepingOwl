@@ -11,7 +11,7 @@ Mails
             <p />
     <div class="BandejaMails_Main">
         <div class="BadenjaMails_Header">        
-            <i class='fa fa-trash fa-3x'></i>
+            <i onclick="Borrar()" class='fa fa-trash fa-3x'></i>
         </div>
         
          <?php $missatges = Correu::where('usuari_id',Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
@@ -25,4 +25,12 @@ Mails
         
     </div>
 </div>
+
+<script>
+    function Borrar(){
+        alert("hola");
+        //borrar
+    }
+    
+</script>
 @stop
