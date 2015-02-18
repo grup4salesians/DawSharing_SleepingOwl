@@ -67,6 +67,42 @@ Detalls del Viatge
 	//$sollicitud = "Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. "; 
 	
 	//$descUser = "Bla bla blblablala blabalba bl, blalabla blab abla blalba blab alba bla blabalab albab albalalb ablalbalb abla balblalb ablaba ñ. alb alba lababla blab alb ablaalal abla a.";
+	
+		function permissos($p_permissos) {
+			$codi = "";
+			$arrayPermissos = explode(";", $p_permissos);
+
+			foreach ($arrayPermissos as $key => $value) {
+				//Equipatge gran;Fumar;Animals;Menjar i/o beure
+
+				switch ($value) {
+					case 'Equipatge gran':
+						# code...
+						$codi = $codi . '<i class="fa fa-suitcase fa-5x"></i>&nbsp;';
+						break;
+					case 'Fumar':
+						# code...
+						$codi = $codi . '<i class="fa fa-magic fa-5x"></i>&nbsp;';
+						break;
+					case 'Animals':
+						# code..
+						$codi = $codi . '<i class="fa fa-paw fa-5x"></i>&nbsp;';
+						break;
+					case 'Menjar i/o beure':
+						# code...
+						$codi = $codi . '<i class="fa fa-cutlery fa-5x"></i>&nbsp;';
+						break;
+
+					default:
+						# code...
+						
+						break;
+				}
+				
+			}
+			echo $codi;
+		}
+
 	?>
 	<h1>Viatje entre {{ $ruta_inici }} i {{ $ruta_fi }} amb {{$creador}} ({{ $duracio }} min)</h1>
 		<div>
@@ -76,7 +112,7 @@ Detalls del Viatge
 					<!--<div id="vehicle" class="fright" style="height:130px;">
 						<img width="200" src="img/cache/original/vehicles/{{-- $fotoVehicle --}}" />
 					</div>-->
-					<div id="vehicle" class="fright clear">{{ $permissos }}</div>
+					<div id="vehicle" class="fright clear"><?php permissos($permissos); ?></div>
 					
 					<h3>{{ $data }}</h3> <br />
 					{{ Form::label('Pagament en efectiu') }}<br />
