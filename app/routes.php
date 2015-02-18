@@ -15,24 +15,25 @@ Route::get('/', function() {   // Esta será nuestra ruta de bienvenida.
     return View::make('pages.home');
 });
 
-Route::get('registre','RegistreController@showFormulari');  // Nos mostrará el formulario de registro.
-Route::post('registre','RegistreController@postRegistre');  // Validamos los datos de inserción del usuario.
+Route::get('registre', 'RegistreController@showFormulari');  // Nos mostrará el formulario de registro.
+Route::post('registre', 'RegistreController@postRegistre');  // Validamos los datos de inserción del usuario.
 
 Route::get('login', 'AuthController@showLogin'); // Nos mostrará el formulario de login.
 Route::post('login', 'AuthController@postLogin'); // Validamos los datos de inicio de sesión.
 
-Route::get('contactar','ContactarController@showFormulari');
-Route::post('contactar','ContactarController@postFormulari');
+Route::get('contactar', 'ContactarController@showFormulari');
+Route::post('contactar', 'ContactarController@postFormulari');
 // Nos indica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function() {
+
     Route::group(array('prefix' => 'perfil'), function() {
         Route::get('/', function() {
             //return Redirect::to('/');
             return View::make('pages.perfil');
         });
         Route::get('missatges', function() {
-            return Redirect::to('/');
-            //return View::make('pages.missatges');
+//            return Redirect::to('/');
+            return View::make('pages.missatges');
         });
         Route::get('viatges', function() {
             return Redirect::to('/');
