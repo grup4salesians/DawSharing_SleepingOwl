@@ -24,15 +24,16 @@ class email {
         
         $ruta = Usuari::where('id', '=', $this->emissor)->get();
         $usuario= $ruta[0]->cognoms .','.$ruta[0]->nom;
-        $code = "<div class='BandejaMails_Mail'>
+        $code = "<a href='$this->id'>
+            <div class='BandejaMails_Mail'>
                         <div class='BandejaMails_Chk'>
                         <input type='checkbox' name='chkBandejaMailsBorrar' value=''><br>
                         </div>
                         <div class='BandejaMails_Emissor $negrita'>$usuario</div>
                         <div class='BandejaMails_Dades $negrita'>$this->assumpte $this->contingut $puntitos</div>
                         <div class='BandejaMails_Data'>$this->data</div>
-                </div>";
-
+                </div>
+                </a>";
 
         return $code;
     }
