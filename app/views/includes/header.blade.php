@@ -21,7 +21,7 @@
                                 <a role="menuitem" tabindex="-1" href="#">Els meus viatges</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="missatges">Missatges</a>
+                                <a role="menuitem" tabindex="-1" href="perfil/missatges">Missatges</a>
                             </li>
                             <li role="presentation">
                                 <a role="menuitem" tabindex="-1" href="perfil">Perfil</a>
