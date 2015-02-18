@@ -709,9 +709,9 @@ p.para{
     width:278px;
     height:277px;
     display:block;
-    position:absolute;
+    /*position:absolute;
     top:-84%;
-    left:71%;
+    left:71%;*/
 }
 .fotter-info{
     background:#333333;
