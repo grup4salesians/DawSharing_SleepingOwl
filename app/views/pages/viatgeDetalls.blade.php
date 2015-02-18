@@ -11,7 +11,7 @@ Detalls del Viatge
 		display: block;
 	}
 </style>
-<div style="min-height: 400px; margin: 0% 10%;">
+<div style="min-height: 400px; margin: 0 10%;">
 	<?php 
 	$idViatge = 0;
 	$ruta_id = 0;
@@ -68,9 +68,9 @@ Detalls del Viatge
 	
 	//$descUser = "Bla bla blblablala blabalba bl, blalabla blab abla blalba blab alba bla blabalab albab albalalb ablalbalb abla balblalb ablaba ñ. alb alba lababla blab alb ablaalal abla a.";
 	?>
-	<h1>Viatja entre {{ $ruta_inici }} i {{ $ruta_fi }} amb {{$creador}} ({{ $duracio }} min)</h1>
+	<h1>Viatje entre {{ $ruta_inici }} i {{ $ruta_fi }} amb {{$creador}} ({{ $duracio }} min)</h1>
 		<div>
-			<div class="fleft" style="width: 66%;">
+			<div class="fleft" style="width: 66.6%;">
 				<div id="map_canvas" style="height: 250px; background-color:grey; margin-bottom:5px;"></div>
 				<div>
 					<!--<div id="vehicle" class="fright" style="height:130px;">
@@ -95,7 +95,7 @@ Detalls del Viatge
 -->
 				</div>
 			</div>
-			<div class="fright">
+			<div class="fright" style="width: 33.3%;">
 			<div class="perfilInfo">
 				<h3 style="margin: 0;">{{ $preu }}€ / Plaça</h3>
 				<h4>{{ $seientsLliures }} lliures de {{ $seientsTotals }}</h4>

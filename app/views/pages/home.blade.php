@@ -13,7 +13,7 @@ Troba companys per viatjar
 <div class="rooms text-center">
     <div class="container">
         <p />
-        <h3>Ultims Viatges</h3>
+        <h3>Últims Viatges</h3>
         <div class="room-grids">
             <?php $viatges = Viatge::orderBy('id', 'desc')->take(6)->get(); ?>
 

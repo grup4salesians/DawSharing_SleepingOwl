@@ -1,45 +1,53 @@
 <div class="b_room">
-	  <div class="booking_room">
-		  <div class="reservation">
-			  <ul>				
-				 <li  class="span1_of_1 left">
-					<h5>Origen</h5>
-					<div class="book_date">
-						<form>
-						<!--	<input class="date" id="datepicker" type="text" value="2/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '2/08/2013';}">
-						-->
-						<input id="searchTextField" type="text">
-						</form>
-					</div>					
-				 </li>
-				 <li  class="span1_of_1 left">
-					<h5>Destinació</h5>
-					<div class="book_date">
-						<form>
-							<!--<input class="date" id="datepicker1" type="text" value="22/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '22/08/2013';}">
-							-->
-							<input  id="searchTextFieldFin" type="text">
-						</form>
-				    </div>		
-				 </li>
-				 <li class="span1_of_3">
-					<div class="date_btn">
-							<form>
-								<input type="submit"  value="Buscar" />
-							</form>
-						</div>
-				 </li>
-				 <li class="span1_of_3">
-					<div class="date_btn">
-							<form>
-								<input type="submit" value="Publicar" />
-							</form>
-						</div>
-				 </li>
-				 <div class="clearfix"></div>
-			 </ul>
-		 </div>
-	  </div>
-		<div class="clearfix"></div>
-  </div>
+    <div class="booking_room">
+        <div class="reservation">
+            <ul>				
+                <li  class="span1_of_1 left">
+                     @if ($errors->has())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                            {{ $error }}<br>        
+                            @endforeach
+                        </div>
+                        @endif
+                    <h5>Origen</h5>
+                    <div class="book_date">
+                       
+                        {{ Form::open(array('url' => '/buscarruta')) }}
+                        <!--	<input class="date" id="datepicker" type="text" value="2/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '2/08/2013';}">
+                        -->
+                        <input id="searchTextField" type="text" name="searchTextField">
+
+                    </div>					
+                </li>
+                <li  class="span1_of_1 left">
+                    <h5>Destinació</h5>
+                    <div class="book_date">
+
+        <!--<input class="date" id="datepicker1" type="text" value="22/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '22/08/2013';}">
+                        -->
+                        <input  id="searchTextFieldFin" type="text" name="searchTextFieldFin">
+
+                    </div>		
+                </li>
+                <li class="span1_of_3">
+                    <div class="date_btn">
+
+                        {{ Form::submit('Buscar',array('class'=> 'Registre_button'))}}
+
+                    </div>
+                </li>
+                <li class="span1_of_3">
+                    <div class="date_btn">
+
+                        {{ Form::submit('Publicar',array('class'=> 'Registre_button'))}}
+                        {{ Form::close() }}
+                    </div>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
 </div>
