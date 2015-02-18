@@ -2767,6 +2767,13 @@ select.arrival{
     background-color: white;
     color: black;
 }
+.BadenjaMails_Header{
+    width: 100%;
+    height: 65px;
+}
+.BadenjaMails_Header > i{
+    float: right;
+}
 .BandejaMails_Chk{float: left;}
 .BandejaMails_Emissor{
     float: left;
