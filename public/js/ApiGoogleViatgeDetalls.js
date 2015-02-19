@@ -11,7 +11,9 @@ $(function () {
         var myOptions = {
             zoom: 13,
             center: new google.maps.LatLng(41.387196, 2.170058),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,scrollwheel: false
+            
+                    
         }
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
