@@ -14,7 +14,7 @@ Mails
             <i onclick="Borrar()" class='fa fa-trash fa-3x'></i>
         </div>
 
-        <?php $missatges = Correu::where('usuari_id', Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
+        <?php $missatges = Correu::where('destinatari_id', Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
         @foreach($missatges as $key => $missat)
         <?php
         $missatge = new email($missat->id, '15/02/2015', $missat->usuari_id, $missat->assumpte, $missat->contingut, $missat->vist);
@@ -40,7 +40,6 @@ Mails
                     data: {vist: "1", id: $(this).attr("data-ID")},
                     success:function(data){
                         Item.removeClass("BandejaMails_PonerTextoNegrita");
-                        
                         //console.log("Success:" + data);       
                     },
                     error: function(data) {
@@ -53,9 +52,6 @@ Mails
             $(this).find(".BandejaMails_Dades").show();
             $(this).find(".BandejaMails_DadesSenceres").hide();
             $(this).height("51px");
-
-
-
         }
     });
 
