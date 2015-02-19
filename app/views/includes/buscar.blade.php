@@ -1,19 +1,19 @@
 <div class="b_room">
     <div class="booking_room">
-         @if ($errors->has())
-                        <div class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                            {{ $error }}<br>        
-                            @endforeach
-                        </div>
-                        @endif
+        @if ($errors->has())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+            {{ $error }}<br>        
+            @endforeach
+        </div>
+        @endif
         <div class="reservation">
             <ul>				
                 <li  class="span1_of_1 left">
-                    
+
                     <h5>Origen</h5>
                     <div class="book_date">
-                       
+
                         {{ Form::open(array('url' => '/buscarruta')) }}
                         <!--	<input class="date" id="datepicker" type="text" value="2/08/2013" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '2/08/2013';}">
                         -->
@@ -35,12 +35,12 @@
                     <div class="date_btn">
 
                         {{ Form::submit('Buscar',array('class'=> 'Registre_button'))}}
-
+                        {{ Form::close() }}
                     </div>
                 </li>
-                <li class="span1_of_3">
+                <li class="span1_of_3">{{ Form::open(array('url' => '/publicarViatge')) }}
                     <div class="date_btn">
-
+                        
                         {{ Form::submit('Publicar',array('class'=> 'Registre_button'))}}
                         {{ Form::close() }}
                     </div>
