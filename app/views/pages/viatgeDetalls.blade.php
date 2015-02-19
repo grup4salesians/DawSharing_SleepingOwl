@@ -10,6 +10,9 @@ Detalls del Viatge
 		text-align: center;
 		display: block;
 	}
+	#vehicle i {
+		margin-left: .47em;;
+	}
 </style>
 <div style="min-height: 400px; margin: 0 10%;">
 	<?php 
@@ -78,19 +81,19 @@ Detalls del Viatge
 				switch ($value) {
 					case 'Equipatge gran':
 						# code...
-						$codi = $codi . '<i class="fa fa-suitcase fa-5x"></i>&nbsp;';
+						$codi = $codi . '<i class="fa fa-suitcase fa-5x" title="'.$value.'"></i>';
 						break;
 					case 'Fumar':
 						# code...
-						$codi = $codi . '<i class="fa fa-magic fa-5x"></i>&nbsp;';
+						$codi = $codi . '<i class="fa fa-magic fa-5x" title="'.$value.'"></i>';
 						break;
 					case 'Animals':
 						# code..
-						$codi = $codi . '<i class="fa fa-paw fa-5x"></i>&nbsp;';
+						$codi = $codi . '<i class="fa fa-paw fa-5x" title="'.$value.'"></i>';
 						break;
 					case 'Menjar i/o beure':
 						# code...
-						$codi = $codi . '<i class="fa fa-cutlery fa-5x"></i>&nbsp;';
+						$codi = $codi . '<i class="fa fa-cutlery fa-5x" title="'.$value.'"></i>';
 						break;
 
 					default:

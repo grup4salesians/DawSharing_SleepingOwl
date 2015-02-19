@@ -33,7 +33,7 @@ class blockRuta {
                     </div>
                     <div class='rowDown'>
                         <div class='seientsRestants'><i class='fa fa-user-plus'></i> $this->seientsRestants</div>
-                        <div class='permisos'>$this->permisos</div>
+                        <div class='permisos' style='margin-top: -5px; margin-left: 10px;''>".$this->permissos($this->permisos)."</div>
                         <div class='preu'>$this->preu <i class='fa fa-eur'></i></div>
                     </div>
                 </div>
@@ -42,6 +42,41 @@ class blockRuta {
 
 
         return $code;
+    }
+
+    function permissos($p_permissos) {
+        $codi = "";
+        $arrayPermissos = explode(";", $p_permissos);
+
+        foreach ($arrayPermissos as $key => $value) {
+            //Equipatge gran;Fumar;Animals;Menjar i/o beure
+
+            switch ($value) {
+                case 'Equipatge gran':
+                    # code...
+                    $codi = $codi . '<i class="fa fa-suitcase" title="'.$value.'"></i>&nbsp;';
+                    break;
+                case 'Fumar':
+                    # code...
+                    $codi = $codi . '<i class="fa fa-magic" title="'.$value.'"></i>&nbsp;';
+                    break;
+                case 'Animals':
+                    # code..
+                    $codi = $codi . '<i class="fa fa-paw" title="'.$value.'"></i>&nbsp;';
+                    break;
+                case 'Menjar i/o beure':
+                    # code...
+                    $codi = $codi . '<i class="fa fa-cutlery" title="'.$value.'"></i>&nbsp;';
+                    break;
+
+                default:
+                    # code...
+                    
+                    break;
+            }
+            
+        }
+        return $codi;
     }
 
     public function __get($property) {
