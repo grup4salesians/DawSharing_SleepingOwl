@@ -28,40 +28,61 @@ Mails
 
 <script>
     $(".BandejaMails_Mail").click(function () {
-        if ($(this).find(".BandejaMails_DadesSenceres").is(":hidden")) {
-            $(this).find(".BandejaMails_Dades").hide();
-            $(this).find(".BandejaMails_DadesSenceres").show();
-            $(this).height("auto");
-            var Item = $(this);
-            if ($(this).hasClass("BandejaMails_PonerTextoNegrita")){
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/UpdateEstadoMail.php',
-                    data: {vist: "1", id: $(this).attr("data-ID")},
-                    success:function(data){
-                        Item.removeClass("BandejaMails_PonerTextoNegrita");
-                        //console.log("Success:" + data);       
-                    },
-                    error: function(data) {
-                        //console.log("Error: " + data);
-                    }
-                });
+        if (event.target.nodeName !== "INPUT") {
+            if ($(this).find(".BandejaMails_DadesSenceres").is(":hidden")) {
+                $(this).find(".BandejaMails_Dades").hide();
+                $(this).find(".BandejaMails_DadesSenceres").show();
+                $(this).height("auto");
+                var Item = $(this);
+                if ($(this).hasClass("BandejaMails_PonerTextoNegrita")) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/UpdateEstadoMail.php',
+                        data: {vist: "1", id: $(this).attr("data-ID")},
+                        success: function (data) {
+                            Item.removeClass("BandejaMails_PonerTextoNegrita");
+                            //console.log("Success:" + data);       
+                        },
+                        error: function (data) {
+                            //console.log("Error: " + data);
+                        }
+                    });
+                }
             }
-        }
-        else {
-            $(this).find(".BandejaMails_Dades").show();
-            $(this).find(".BandejaMails_DadesSenceres").hide();
-            $(this).height("51px");
+            else {
+                $(this).find(".BandejaMails_Dades").show();
+                $(this).find(".BandejaMails_DadesSenceres").hide();
+                $(this).height("51px");
+            }
         }
     });
 
     function Borrar() {
-        alert("hola");
-        //borrar
+        var listID = "";
 
-        $("li").each(function (index) {
-            console.log(index + ": " + $(this).text());
+        $('input[type=checkbox]').each(function () {//Bucle por cada checkbox
+            if (this.checked) { //Si el checkbox está chekeado
+                listID = listID + " id= " + $(this).parent().parent().attr("data-ID")+" or";
+                $(this).parent().parent().hide("slow");
+            }
         });
+        
+        listID = listID.substring(0, listID.length - 2);    //Contiene id = X or id = Y
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo Config::get('constants.BaseUrl')   ?>app/views/others/BorrarMail.php',
+            data: {where: listID},
+            success: function (data) {
+                //console.log("Success:" + data);       
+            },
+            error: function (data) {
+                //console.log("Error: " + data);
+                alert(data);
+            }
+        });
+
+
     }
 
 </script>
