@@ -14,6 +14,7 @@ Detalls del Viatge
         margin-left: .47em;;
     }
 </style>
+<script src="js/ApiGoogleViatgeDetalls.js"></script>
 <div style="min-height: 400px; margin: 0 10%;">
     <?php
     $idViatge = 0;
@@ -150,27 +151,5 @@ Detalls del Viatge
 </div>
 <div class="clear"></div>
 
-<script>
-    $(document).ready(function () {
-        CalcularRutaViatgeDetalls();
-    });
-    function CalcularRutaViatgeDetalls() {
-        var start = document.getElementById("start").value;
-        var end = document.getElementById("end").value;
-
-        alert(start);
-        var request = {
-            origin: start,
-            destination: end,
-            travelMode: google.maps.TravelMode.DRIVING
-        };
-        directionsService.route(request, function (result, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(result);
-            }
-        });
-
-    }
-</script>
 
 @stop
