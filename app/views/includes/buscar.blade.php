@@ -1,15 +1,16 @@
 <div class="b_room">
     <div class="booking_room">
-        <div class="reservation">
-            <ul>				
-                <li  class="span1_of_1 left">
-                     @if ($errors->has())
+         @if ($errors->has())
                         <div class="alert alert-danger">
                             @foreach ($errors->all() as $error)
                             {{ $error }}<br>        
                             @endforeach
                         </div>
                         @endif
+        <div class="reservation">
+            <ul>				
+                <li  class="span1_of_1 left">
+                    
                     <h5>Origen</h5>
                     <div class="book_date">
                        
