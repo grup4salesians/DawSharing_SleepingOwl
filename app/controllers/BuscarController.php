@@ -21,6 +21,8 @@ public function showrutas() {
                 return Redirect::to('/')->withInput()->withErrors($validator);
             }
    
+            echo Input::get('searchTextField');
+            echo Input::get('searchTextFieldFin');
     
 }
          

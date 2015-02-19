@@ -24,7 +24,7 @@ Route::post('login', 'AuthController@postLogin'); // Validamos los datos de inic
 Route::get('contactar', 'ContactarController@showFormulari'); //Nos mostrara el formulario de contactar
 Route::post('contactar', 'ContactarController@postFormulari'); //Validamos los datos de contactar
 
-Route::get('buscarruta','BuscarController@showrutas'); //Nos mostrará las rutas buscadas
+Route::post('buscarruta','BuscarController@showrutas'); //Nos mostrará las rutas buscadas
 
 
 // Nos indica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
