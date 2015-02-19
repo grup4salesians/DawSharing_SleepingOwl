@@ -24,7 +24,7 @@
 		@yield('content')
 		
 		<!---->
-		<div class="fotter">
+		<div class="fotter" style="display:none;">
 			@include('includes.footer')
 		</div>
 		<!---->
