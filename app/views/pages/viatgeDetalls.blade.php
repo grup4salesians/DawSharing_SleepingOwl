@@ -110,7 +110,7 @@ Detalls del Viatge
 	<h1>Viatje entre {{ $ruta_inici }} i {{ $ruta_fi }} amb {{$creador}} ({{ $duracio }} min)</h1>
 		<div>
 			<div class="fleft" style="width: 66.6%; margin-bottom:50px; z-index:1;">
-				<div id="map_canvas" style="height: 250px; background-color:grey; margin-bottom:5px;"></div>
+				<div id="map_canvas" style="height: 350px; background-color:grey; margin-bottom:5px;"></div>
 				<div>
 					<!--<div id="vehicle" class="fright" style="height:130px;">
 						<img width="200" src="img/cache/original/vehicles/{{-- $fotoVehicle --}}" />
@@ -133,7 +133,7 @@ Detalls del Viatge
 					</div>
 -->
 				</div>
-				{{ Form::button('Publicar', array('class' => 'Registre_button')) }}
+				{{ Form::button('Sol·licitar plaça', array('class' => 'Registre_button', 'style' => 'font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px;')) }}
 			</div>
 			<div class="fright" style="width: 33.3%;">
 			<div class="perfilInfo">
