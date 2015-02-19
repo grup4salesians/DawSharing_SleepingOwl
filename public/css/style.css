@@ -577,7 +577,7 @@ p.para{
     color: #FFF;
     padding: 15px;
     border: none;
-   left font-size: 1em;
+    left font-size: 1em;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -709,9 +709,9 @@ p.para{
     width:278px;
     height:277px;
     display:block;
-    position:absolute;
+    /*position:absolute;
     top:-84%;
-    left:71%;
+    left:71%;*/
 }
 .fotter-info{
     background:#333333;
@@ -2657,7 +2657,7 @@ select.arrival{
 
 /******************************** Block Ruta ********************************/
 .blockRuta {
-/*    position: absolute;*/
+    /*    position: absolute;*/
     width: 550px;
     height: 150px;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
@@ -2746,7 +2746,7 @@ select.arrival{
     min-width: 500px;
     height: 100%;
     margin:auto;
-      margin-top:50px;
+    margin-top:50px;
 }
 
 
@@ -2766,6 +2766,9 @@ select.arrival{
     padding-left: 5px;
     background-color: white;
     color: black;
+    margin-top: 10px;
+    float: left;
+    //  position: absolute;
 }
 .BadenjaMails_Header{
     width: 100%;
@@ -2783,12 +2786,17 @@ select.arrival{
 }
 .BandejaMails_Data{
     float: left;
+    margin-left: 15px;
 }
-.BandejaMails_Dades{
+.BandejaMails_Dades,.BandejaMails_DadesSenceres{
     width: 60%;
     float: left;
     margin-left: 20px;
     text-align: left;
+}
+
+.BandejaMails_DadesSenceres{
+    display:none;
 }
 .BandejaMails_PonerTextoNegrita{
     font-weight: bold;

@@ -17,23 +17,25 @@ class email {
         $code = "";
         $negrita="";
         $usuario="";
-        $puntitos="";
-        
-        if($this->vist==1){$negrita="BandejaMails_PonerTextoNegrita";}
-        if(strlen($this->contingut)==100){$puntitos=" ...";}
+        $text="";
+
+        if($this->vist==0){
+            $negrita="BandejaMails_PonerTextoNegrita";
+        }
+        $text = substr($this->contingut,0,100);
         
         $ruta = Usuari::where('id', '=', $this->emissor)->get();
         $usuario= $ruta[0]->cognoms .','.$ruta[0]->nom;
-        $code = "<a href='$this->id'>
-            <div class='BandejaMails_Mail'>
+        $code = "
+            <div data-ID='$this->id' class='BandejaMails_Mail $negrita'>
                         <div class='BandejaMails_Chk'>
                         <input type='checkbox' name='chkBandejaMailsBorrar' value=''><br>
                         </div>
-                        <div class='BandejaMails_Emissor $negrita'>$usuario</div>
-                        <div class='BandejaMails_Dades $negrita'>$this->assumpte $this->contingut $puntitos</div>
+                        <div class='BandejaMails_Emissor'>$usuario</div>
+                        <div class='BandejaMails_Dades'>$this->assumpte $text ...</div>
+                        <div class='BandejaMails_DadesSenceres'>$this->assumpte $this->contingut</div>
                         <div class='BandejaMails_Data'>$this->data</div>
-                </div>
-                </a>";
+                </div>";
 
         return $code;
     }

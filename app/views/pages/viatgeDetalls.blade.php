@@ -11,7 +11,7 @@ Detalls del Viatge
 		display: block;
 	}
 </style>
-<div style="min-height: 400px; margin: 0% 10%;">
+<div style="min-height: 400px; margin: 0 10%;">
 	<?php 
 	$idViatge = 0;
 	$ruta_id = 0;
@@ -67,16 +67,52 @@ Detalls del Viatge
 	//$sollicitud = "Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. "; 
 	
 	//$descUser = "Bla bla blblablala blabalba bl, blalabla blab abla blalba blab alba bla blabalab albab albalalb ablalbalb abla balblalb ablaba ñ. alb alba lababla blab alb ablaalal abla a.";
+	
+		function permissos($p_permissos) {
+			$codi = "";
+			$arrayPermissos = explode(";", $p_permissos);
+
+			foreach ($arrayPermissos as $key => $value) {
+				//Equipatge gran;Fumar;Animals;Menjar i/o beure
+
+				switch ($value) {
+					case 'Equipatge gran':
+						# code...
+						$codi = $codi . '<i class="fa fa-suitcase fa-5x"></i>&nbsp;';
+						break;
+					case 'Fumar':
+						# code...
+						$codi = $codi . '<i class="fa fa-magic fa-5x"></i>&nbsp;';
+						break;
+					case 'Animals':
+						# code..
+						$codi = $codi . '<i class="fa fa-paw fa-5x"></i>&nbsp;';
+						break;
+					case 'Menjar i/o beure':
+						# code...
+						$codi = $codi . '<i class="fa fa-cutlery fa-5x"></i>&nbsp;';
+						break;
+
+					default:
+						# code...
+						
+						break;
+				}
+				
+			}
+			echo $codi;
+		}
+
 	?>
-	<h1>Viatja entre {{ $ruta_inici }} i {{ $ruta_fi }} amb {{$creador}} ({{ $duracio }} min)</h1>
+	<h1>Viatje entre {{ $ruta_inici }} i {{ $ruta_fi }} amb {{$creador}} ({{ $duracio }} min)</h1>
 		<div>
-			<div class="fleft" style="width: 66%;">
+			<div class="fleft" style="width: 66.6%;">
 				<div id="map_canvas" style="height: 250px; background-color:grey; margin-bottom:5px;"></div>
 				<div>
 					<!--<div id="vehicle" class="fright" style="height:130px;">
 						<img width="200" src="img/cache/original/vehicles/{{-- $fotoVehicle --}}" />
 					</div>-->
-					<div id="vehicle" class="fright clear">{{ $permissos }}</div>
+					<div id="vehicle" class="fright clear"><?php permissos($permissos); ?></div>
 					
 					<h3>{{ $data }}</h3> <br />
 					{{ Form::label('Pagament en efectiu') }}<br />
@@ -95,7 +131,7 @@ Detalls del Viatge
 -->
 				</div>
 			</div>
-			<div class="fright">
+			<div class="fright" style="width: 33.3%;">
 			<div class="perfilInfo">
 				<h3 style="margin: 0;">{{ $preu }}€ / Plaça</h3>
 				<h4>{{ $seientsLliures }} lliures de {{ $seientsTotals }}</h4>

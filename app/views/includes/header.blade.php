@@ -1,7 +1,7 @@
 <div class="top-header">
     <div class="container">
         <div class="logo">
-            <a href="/DawSharing_SleepingOwl/public/"><span style="Font-family: 'Quicksand', sans-serif;font-weight:bold;font-size: 30px;color:#a94442; padding: 10px; border:1px solid black;border-top-left-radius:10px;background-color: #E7CB2C;">DAW</span><span style="Font-family: 'Quicksand', sans-serif;font-weight:bold;font-size: 30px;color:#E7CB2C; padding: 10px; border:1px solid black;border-bottom-right-radius:10px;background-color: #a94442">SHARING</span></a>
+            <a href="../public"><span style="Font-family: 'Quicksand', sans-serif;font-weight:bold;font-size: 30px;color:#a94442; padding: 10px; border:1px solid black;border-top-left-radius:10px;background-color: #E7CB2C;">DAW</span><span style="Font-family: 'Quicksand', sans-serif;font-weight:bold;font-size: 30px;color:#E7CB2C; padding: 10px; border:1px solid black;border-bottom-right-radius:10px;background-color: #a94442">SHARING</span></a>
         </div>
         <span class="menu"> </span>
         <div class="m-clear"></div>
@@ -21,13 +21,13 @@
                                 <a role="menuitem" tabindex="-1" href="#">Els meus viatges</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="/DawSharing_SleepingOwl/public/perfil/missatges">Missatges</a>
+                                <a role="menuitem" tabindex="-1" href="perfil/missatges">Missatges</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="/DawSharing_SleepingOwl/public/perfil">Perfil</a>
+                                <a role="menuitem" tabindex="-1" href="perfil">Perfil</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="/DawSharing_SleepingOwl/public/contactar">Contactar</a>
+                                <a role="menuitem" tabindex="-1" href="../public/contactar">Contactar</a>
                             </li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation">
