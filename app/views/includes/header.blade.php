@@ -1,7 +1,7 @@
 <div class="top-header">
     <div class="container">
         <div class="logo">
-            <a href="../public"><span style="Font-family: 'Quicksand', sans-serif;font-weight:bold;font-size: 30px;color:#a94442; padding: 10px; border:1px solid black;border-top-left-radius:10px;background-color: #E7CB2C;">DAW</span><span style="Font-family: 'Quicksand', sans-serif;font-weight:bold;font-size: 30px;color:#E7CB2C; padding: 10px; border:1px solid black;border-bottom-right-radius:10px;background-color: #a94442">SHARING</span></a>
+            <a href="<?php echo Config::get('constants.BaseUrl') ?>public"><span style="Font-family: 'Quicksand', sans-serif;font-weight:bold;font-size: 30px;color:#a94442; padding: 10px; border:1px solid black;border-top-left-radius:10px;background-color: #E7CB2C;">DAW</span><span style="Font-family: 'Quicksand', sans-serif;font-weight:bold;font-size: 30px;color:#E7CB2C; padding: 10px; border:1px solid black;border-bottom-right-radius:10px;background-color: #a94442">SHARING</span></a>
         </div>
         <span class="menu"> </span>
         <div class="m-clear"></div>
