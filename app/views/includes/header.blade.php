@@ -21,13 +21,13 @@
                                 <a role="menuitem" tabindex="-1" href="#">Els meus viatges</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="perfil/missatges">Missatges</a>
+                                <a role="menuitem" tabindex="-1" href="<?php echo Config::get('constants.BaseUrl') ?>public/perfil/missatges">Missatges</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="perfil">Perfil</a>
+                                <a role="menuitem" tabindex="-1" href="<?php echo Config::get('constants.BaseUrl') ?>public/perfil">Perfil</a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="../public/contactar">Contactar</a>
+                                <a role="menuitem" tabindex="-1" href="<?php echo Config::get('constants.BaseUrl') ?>public/contactar">Contactar</a>
                             </li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation">
