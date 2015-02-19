@@ -107,27 +107,11 @@ Detalls del Viatge
 		}
 
 	?>
-	{{-- 
-function calcRoute() {
-  var start = document.getElementById("start").value;
-  var end = document.getElementById("end").value;
-  var request = {
-    origin:start,
-    destination:end,
-    travelMode: google.maps.TravelMode.DRIVING
-  };
-  directionsService.route(request, function(result, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(result);
-    }
-  });
-}
 
-	--}}
 	<h1>Viatje entre <span id="start">{{ $ruta_inici }}</span> i <span id="end">{{ $ruta_fi }}</span> amb {{$creador}} ({{ $duracio }} min)</h1>
 		<div>
 			<div class="fleft" style="width: 66.6%; margin-bottom:50px; z-index:1;">
-				<div id="map_canvas" style="height: 350px; background-color:grey; margin-bottom:5px;"></div>
+				<div id="map_canvas" style="height: 350px; background-color:grey; margin-bottom:5px;" onload="CalcularRutaViatgeDetalls()"></div>
 				<div>
 					<!--<div id="vehicle" class="fright" style="height:130px;">
 						<img width="200" src="img/cache/original/vehicles/{{-- $fotoVehicle --}}" />
