@@ -131,7 +131,19 @@ Detalls del Viatge
                                                         </div>
                 -->
             </div>
-            {{ Form::button('Sol·licitar plaça', array('class' => 'Registre_button', 'style' => 'font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px;')) }}
+            {{ Form::button('Sol·licitar plaça', array('data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => 'Registre_button', 'style' => 'font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px;')) }}
+            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content" style="margin-top: 50%;position: absolute;height: 160px;padding:15px;width: 449px;">
+                        <h3>Vols demanar plaça per aquest viatge?</h3>
+                        <div style="">
+                        {{ Form::button('Sí', array('class' => 'btn btn-primary','style' => 'width:49%;height: 45px;')) }}
+
+                        {{ Form::button('No', array('class' => 'btn btn-default', 'data-dismiss' => 'modal','style' => 'width:49%;height: 45px;')) }}
+						</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="fright" style="width: 33.3%;">
             <div class="perfilInfo">
