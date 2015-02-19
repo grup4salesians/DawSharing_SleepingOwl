@@ -2770,6 +2770,12 @@ select.arrival{
     float: left;
     //  position: absolute;
 }
+
+.BandejaMails_Mail:hover{
+    cursor:pointer; 
+    cursor: hand;
+}
+
 .BadenjaMails_Header{
     width: 100%;
     height: 65px;
