@@ -2,10 +2,6 @@
 
 class BuscarController extends BaseController {
 public function showrutas() {
-
-     if (Auth::check()){
-            return Redirect::to('/');
-        }
     
     $userdata = array(
             'searchTextField' => Input::get('searchTextField'),
@@ -20,11 +16,13 @@ public function showrutas() {
         if ($validator->fails()) {
                 return Redirect::to('/')->withInput()->withErrors($validator);
             }
-   
-            echo Input::get('searchTextField');
-            echo Input::get('searchTextFieldFin');
-    
+
+            
+            return View::make('pages.buscarruta',$userdata);
+            
+            
 }
+
          
         
     
