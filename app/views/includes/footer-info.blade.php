@@ -15,8 +15,11 @@
                
             </div>
     
-  
-        <div class="member" style="width: 250px;">
+  <?php if (Auth::check()){ ?>
+        <div class="member" style="width: 250px;color:whitesmoke;display:none">
+            <?php }else{?>
+               <div class="member" style="width: 250px;color:whitesmoke;"> 
+           <?php } ?>
             <h4>Inicia Sessió</h4>
             
              {{ Form::open(array('url' => '/login')) }}
@@ -31,9 +34,8 @@
         {{ Form::submit('Enviar')}}
         {{ Form::close() }}
         
-        
-            
         </div>
+  
     </div>
 
 <h6>Copyright DawSharing Grup 4 Salesians Sarrià S2Q - 2015</h6>	  
