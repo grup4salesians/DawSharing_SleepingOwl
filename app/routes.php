@@ -48,10 +48,12 @@ Route::group(array('before' => 'auth'), function() {
         return Redirect::to('/');
         //return View::make('pages.buscar');
     });
-    Route::get('detallViatge', function() {
-        return View::make('pages.viatgeDetalls');
+    Route::get('detallViatge/{idViatge?}', function($idViatge=0) {
+        return View::make('pages.viatgeDetalls')->with('idViatge', $idViatge);
         //return View::make('pages.detallViatge');
     });
+    Route::controller('detallViatge', 'ViatgeDetallsController');
+
     Route::get('logout', 'AuthController@logOut'); // Esta ruta nos servirá para cerrar sesión.
 });
 

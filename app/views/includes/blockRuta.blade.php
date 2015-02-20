@@ -16,7 +16,7 @@ class blockRuta {
 
     public function mostrarMapa() {
         $code = "";
-        $code = "<a href='detallViatge?idViatge=$this->id' class='linkViatge'>
+        $code = "<a href='detallViatge/$this->id' class='linkViatge'>
             <div class='blockRuta'>
                 <div class='careto'>
                     <img src='' alt=''>

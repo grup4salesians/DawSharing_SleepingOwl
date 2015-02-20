@@ -3,6 +3,7 @@
 Detalls del Viatge
 @stop
 @section('content')
+<?php $baseUrl = Config::get('constants.BaseUrl')."public"; ?>
 <style>
     .perfilInfo {
         margin: 0 auto;
@@ -15,10 +16,10 @@ Detalls del Viatge
     }
 </style>
 <script src="http://maps.google.com/maps/api/js?libraries=places&region=sp&language=es&sensor=true"></script>
-<script src="js/ApiGoogleViatgeDetalls.js"></script>
+<script src="{{$baseUrl}}/js/ApiGoogleViatgeDetalls.js"></script>
 <div style="min-height: 400px; margin: 0 10%;">
     <?php
-    $idViatge = 0;
+    //$idViatge = 0;
     $ruta_id = 0;
     $usuari_id = 0;
     $vehicles_id = 0;
@@ -35,7 +36,7 @@ Detalls del Viatge
     $anys = 0;
     $membreDesde = "00/0/0000";
     try {
-        $idViatge = $_GET['idViatge'];
+        //$idViatge = $_GET['idViatge'];
         $infoViatge = Viatge::where('id', $idViatge)->get();
         $ruta_id = $infoViatge[0]->ruta_id;
         $usuari_id = $infoViatge[0]->usuari_id;
@@ -132,15 +133,62 @@ Detalls del Viatge
                                                         </div>
                 -->
             </div>
-            {{ Form::button('Sol·licitar plaça', array('data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => 'Registre_button', 'style' => 'font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px;')) }}
+            <?php 
+                try {
+                    $estat = Passatger::where('viatge_id', $idViatge)->where('usuari_id', Auth::user()->id)->get();
+                    $estat = $estat[0]->estat;
+                } catch (Exception $e) {
+                    $estat = "mmm";
+                }
+            ?>
+            @if($estat == "mmm")
+                {{ Form::button('Sol·licitar plaça', array('data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => 'Registre_button', 'style' => 'font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px;')) }}
+            @elseif($estat == NULL || $estat == "pendent")
+                {{ Form::button('Pendent de confirmació', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
+                background-color: #ec971f;
+                border-radius: 5px;
+                border: 1px solid #ec971f;
+                display: inline-block;
+                color: #ffffff;
+                font-family: Arial;
+                padding: 8px;
+                text-decoration: none;
+                width: 100%;')) }}
+            @elseif($estat == "acceptat" || $estat == "creador")
+                {{ Form::button('Ja ets passatger', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
+                background-color: #44c767;
+                border-radius: 5px;
+                border: 1px solid #44c767;
+                display: inline-block;
+                color: #ffffff;
+                font-family: Arial;
+                padding: 8px;
+                text-decoration: none;
+                width: 100%;')) }}
+            @else
+                {{ Form::button('Tancat', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
+                background-color: #d9534f;
+                border-radius: 5px;
+                border: 1px solid #d9534f;
+                display: inline-block;
+                color: #ffffff;
+                font-family: Arial;
+                padding: 8px;
+                text-decoration: none;
+                width: 100%;')) }}
+            @endif
             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content" style="margin-top: 50%;position: absolute;height: 160px;padding:15px;width: 449px;">
                         <h3>Vols demanar plaça per aquest viatge?</h3>
                         <div style="">
-                        {{ Form::button('Sí', array('class' => 'btn btn-primary','style' => 'width:49%;height: 45px;')) }}
+                        
 
-                        {{ Form::button('No', array('class' => 'btn btn-default', 'data-dismiss' => 'modal','style' => 'width:49%;height: 45px;')) }}
+                            {{"<a href='solicitud/$idViatge'>"}}
+                                {{ Form::button('Sí', array('class' => 'btn btn-primary','style' => 'width:49%;height: 45px;')) }}
+                            </a>
+                            {{ Form::button('No', array('class' => 'btn btn-default', 'data-dismiss' => 'modal','style' => 'width:49%;height: 45px;')) }}
+                        
 						</div>
                     </div>
                 </div>
@@ -150,7 +198,7 @@ Detalls del Viatge
             <div class="perfilInfo">
                 <h3 style="margin: 0;">{{ $preu }}€ / Plaça</h3>
                 <h4>{{ $seientsLliures }} lliures de {{ $seientsTotals }}</h4>
-                <div style="" class="fotoPerfil"><img width="200" src="img/cache/original/usuaris/{{ $fotoPerfil }}" /></div>
+                <div style="" class="fotoPerfil"><img width="200" src="{{$baseUrl}}/img/cache/original/usuaris/{{ $fotoPerfil }}" /></div>
                 <h3>{{$creador}}</h3>
                 <h4>{{ $anys }}</h4>
                 <!--{{-- Form::label('descUser', $descUser) --}}<p />-->
