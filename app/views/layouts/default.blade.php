@@ -3,7 +3,6 @@
 	<head>
 		<title>@yield('title', 'Default Content')</title>
 		@include('includes.head')
-                @include ('includes\headapigoogle')
 	</head>
 	<body>
 		<!--header starts-->
