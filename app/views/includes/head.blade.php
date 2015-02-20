@@ -16,9 +16,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="<?php echo Config::get('constants.BaseUrl') ?>public/js/JFCore.js" type="text/javascript"></script>
-<!--<script src="/DawSharing/public/js/JFForms.js" type="text/javascript"></script>-->
 <link type="text/css" rel="stylesheet" href="<?php echo Config::get('constants.BaseUrl') ?>public/css/JFFormStyle-1.css">
-<link type="text/css" rel="stylesheet" href="<?php echo Config::get('constants.BaseUrl') ?>public/css/JFGrid.css" />
+
+<!--<script src="/DawSharing/public/js/JFForms.js" type="text/javascript"></script>-->
+<!--<link type="text/css" rel="stylesheet" href="<?php// echo Config::get('constants.BaseUrl') ?>public/css/JFGrid.css" />-->
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
