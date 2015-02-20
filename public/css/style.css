@@ -2714,7 +2714,7 @@ select.arrival{
     color: #5d9fe1;
 }
 .blockRuta .seientsRestants i,  .preu i{
-    padding: 3px!important;
+    padding: 1px 1px 1px 4px!important;
 }
 
 .fa-eur, .fa-user-plus {

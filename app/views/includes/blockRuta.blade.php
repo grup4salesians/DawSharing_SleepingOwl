@@ -33,7 +33,7 @@ class blockRuta {
                     </div>
                     <div class='rowDown'>
                         <div class='seientsRestants'><i class='fa fa-user-plus'></i> $this->seientsRestants</div>
-                        <div class='permisos' style='margin-top: -5px; margin-left: 10px;''>".$this->permissos($this->permisos)."</div>
+                        <div class='permisos' style='margin-top: -7px; margin-left: 10px;''>".$this->permissos($this->permisos)."</div>
                         <div class='preu'>$this->preu <i class='fa fa-eur'></i></div>
                     </div>
                 </div>
