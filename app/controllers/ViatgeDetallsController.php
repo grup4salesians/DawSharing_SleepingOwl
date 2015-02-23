@@ -34,12 +34,17 @@ class ViatgeDetallsController extends BaseController {
     	$creador = Passatger::where('viatge_id', $idViatge)->where('estat', 'creador')->get();
     	$creador = $creador[0]->usuari_id;
     	if (Auth::user()->id == $creador) {
-    		# code...
-    		$destinatari = Passatger::where('viatge_id', $idViatge)->where('usuari_id', $idPassatger)->update(array('estat' => 'acceptat'));
-    		return Redirect::to('perfil/missatges');
+    		$estat = Passatger::where('viatge_id', $idViatge)->where('usuari_id', $idPassatger)->get();
+            $estat = $estat[0]->estat;
+            if ($estat != 'acceptat'){
+    		  Passatger::where('viatge_id', $idViatge)->where('usuari_id', $idPassatger)->update(array('estat' => 'acceptat'));
+            }
+            else{
+            }
+    		return Redirect::to('perfil');
     	}
     	else {
-    		return Redirect::to('missatges');
+    		return Redirect::to('/');
     	}
 
 
