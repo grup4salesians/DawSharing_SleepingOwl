@@ -17,9 +17,14 @@ $destino = Input::get('searchTextFieldFin');
     <div class="rooms text-center">
         <span style="text-align:center;font-size:25px;font-weight:bold;">Viatges des de {{Input::get('searchTextField')}}  fins a {{Input::get('searchTextFieldFin')}}</span>
 
+<?php $idrutas = Ruta::where('inici_ruta', 'LIKE', "%$origen%")->where('fi_ruta', 'LIKE', "%$destino%")->get(); 
 
-        <div style="margin:auto; width: 80%;">
-            <?php $idrutas = Ruta::where('inici_ruta', 'LIKE', "%$origen%")->where('fi_ruta', 'LIKE', "%$destino%")->get();
+if(count($idrutas) < 1){ 
+    echo '<h2> No hi ha rutes amb el origen i destí seleccionats</h2>';
+}
+else{ ?>
+    <div style="margin:auto; width: 80%;">
+            <?php
             $viatges = Viatge::orderBy('id', 'desc')->get();
             ?>
             @foreach($idrutas as $idruta)
@@ -42,9 +47,12 @@ $destino = Input::get('searchTextFieldFin');
             @endforeach
             <div class="clearfix"></div>
         </div>
+<?php }?>
+        
+        
     </div>
 
-
+</div>
 
 
     <script type='text/javascript'>

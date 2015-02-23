@@ -22,7 +22,7 @@ class email {
         if($this->vist==0){
             $negrita="BandejaMails_PonerTextoNegrita";
         }
-        $text = substr($this->contingut,0,100);
+        $text = substr($this->contingut,0,50);
         
         $ruta = Usuari::where('id', '=', $this->emissor)->get();
         $usuario= $ruta[0]->cognoms .','.$ruta[0]->nom;

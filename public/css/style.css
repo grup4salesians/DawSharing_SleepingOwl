@@ -2756,7 +2756,8 @@ select.arrival{
 .BandejaMails_Main{
     height: 580px;
     width: 90%;
-    margin-left: 70px;
+    max-width: 900px;
+    margin:auto;
 }
 .BandejaMails_Mail{
     width: 100%;
@@ -2793,12 +2794,13 @@ select.arrival{
 }
 .BandejaMails_Data{
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 .BandejaMails_Dades,.BandejaMails_DadesSenceres{
     width: 60%;
+    max-width: 400px;
     float: left;
-    margin-left: 20px;
+    margin-left: 10px;
     text-align: left;
 }
 
@@ -2808,4 +2810,16 @@ select.arrival{
 .BandejaMails_PonerTextoNegrita{
     font-weight: bold;
 }
+.BandejaMails_sub{
+    display: inline-block;
+    width: 60%;
+    max-width: 900px;
+    height: auto;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 20px;
+    margin:auto;
+    background-color: rgba(245,245,245,0.9);
+}
+
 /******************* END MAIL ******************/

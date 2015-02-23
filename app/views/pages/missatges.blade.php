@@ -9,23 +9,38 @@ Mails
 <!---->
 <div class="rooms text-center">
     <p />
+    <div class="BandejaMails_sub">
+        <h1><u><b>Missatges</b></u></h1>
+        
+       
+    
     <div class="BandejaMails_Main">
+        
+        <?php  $missatges = Correu::where('destinatari_id', Auth::user()->id)->orderBy('id', 'desc')->get(); 
+        if(count($missatges)==0){
+             echo '<h2>Tens 0 missatges</h2>'; }
+             else{ ?>
         <div class="BadenjaMails_Header">        
             <i onclick="Borrar()" class='fa fa-trash fa-3x'></i>
         </div>
 
-        <?php $missatges = Correu::where('destinatari_id', Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
+        
         @foreach($missatges as $key => $missat)
         <?php
         $missatge = new email($missat->id, '15/02/2015', $missat->usuari_id, $missat->assumpte, $missat->contingut, $missat->vist);
         ?>
+         
+       
         {{ $missatge->mostrarEmail() }}
+        
         @endforeach
-
-
+<?php }?>
+    
+        
+        
+     </div>
     </div>
 </div>
-
 <script>
     $(".BandejaMails_Mail").click(function () {
         if (event.target.nodeName !== "INPUT") {
