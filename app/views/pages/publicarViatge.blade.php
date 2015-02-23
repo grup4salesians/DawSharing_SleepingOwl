@@ -5,7 +5,7 @@ Publicar viatge
 @section('content')
 <div style="min-height: 400px; margin: 0% 10%;">
     <script src="http://maps.google.com/maps/api/js?libraries=places&region=sp&language=es&sensor=true"></script>
-    <script src="js/ApiGoogleViatgeDetalls.js"></script>
+
     <style>
         .visible {
             display: block !important;
@@ -115,13 +115,25 @@ Publicar viatge
     $origen = Input::get('PublicarViatgeOrigen');
     $desti = Input::get('PublicarViatgeDesti');
     ?>
-    
-     <?php  $vehicles = ViewVehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get(); 
-     
-     ?>
-        @foreach($vehicles as $key => $veh)
-           {{ $arrayVehicles[] =  $veh->vehicle; }}
-         @endforeach
+
+    <?php
+    if (($origen != "") && ($desti != "")) {
+        ?>
+        <script src = "js/ApiGoogleViatgeDetalls.js"></script> 
+        <?php
+    } else {
+        ?>
+        <script src="js/ApiGoogleMaps.js"></script> 
+        <?php
+    }
+    ?>
+
+
+
+    <?php $vehicles = ViewVehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
+    @foreach($vehicles as $key => $veh)
+    <?php $arrayVehicles[] =  $veh->vehicle; ?>
+    @endforeach
     <h1>El meu Perfil</h1>
     <div id="nav_perfil">
         <div class="active">
@@ -153,11 +165,32 @@ Publicar viatge
                 </div>
                 <div class="form-group">
                     {{ Form::label('Origen', 'Origen') }}
-                    {{ Form::text('start',$origen,array('class' => 'PublicarViatge_Elementos','id'=>'start')) }} 
+                    <?php
+                    if (($origen != "") && ($desti != "")) {
+                        ?>
+                        {{ Form::text('start',$origen,array('class' => 'PublicarViatge_Elementos','id'=>'start')) }} 
+                        <?php
+                    } else {
+                        ?>
+                        {{ Form::text('searchTextField',$origen,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextField')) }} 
+                        <?php
+                    }
+                    ?>
+
                 </div>   
                 <div class="form-group">
                     {{ Form::label('Destinacio', 'Destinació') }}
-                    {{ Form::text('end', $desti,array('class' => 'PublicarViatge_Elementos','id'=>'end')) }} 
+                    <?php
+                    if (($origen != "") && ($desti != "")) {
+                        ?>
+                        {{ Form::text('end', $desti,array('class' => 'PublicarViatge_Elementos','id'=>'end')) }} 
+                        <?php
+                    } else {
+                        ?>
+                        {{ Form::text('searchTextFieldFin',$desti,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextFieldFin')) }} 
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
