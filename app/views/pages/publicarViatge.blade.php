@@ -93,11 +93,6 @@ Publicar viatge
             background-color:grey; 
             margin-bottom:5px;
         }
-        .PublicarViatge_Origen_Destinacio{
-            width:100%;
-            display: inline-block;
-            margin: 15px;
-        }
         .PublicarViarge_Titols_OrigenDestinacio{
             font-size: large;
             font-weight: bold;
@@ -119,8 +114,6 @@ Publicar viatge
     <?php
     $origen = Input::get('PublicarViatgeOrigen');
     $desti = Input::get('PublicarViatgeDesti');
-
-    echo "<script type=\"text/javascript\">alert(" . $origen . ");</script>";
     ?>
 
 
@@ -140,10 +133,6 @@ Publicar viatge
     <div id="content_perfil" class="clear">
         <div id="cont-Pas-1" style="display: none" class="visible testtest">
             <div id="CampsPas1" class="PublicarViatge_CampsPas1 col-md-6">
-                <div class="PublicarViatge_Origen_Destinacio">
-                    <div id="Origen"  class ="PublicarViarge_Titols_OrigenDestinacio">Origen</div>
-                    <div id="start" style="float:left;margin-top: 2px;">{{$origen}}</div>
-                </div>
                 <div class="form-group">
                     {{ Form::label('Soc', 'Sóc') }}
                     <div style="float:right;">
@@ -159,18 +148,14 @@ Publicar viatge
                 </div>
                 <div class="form-group">
                     {{ Form::label('Origen', 'Origen') }}
-                    {{ Form::text('origen', Input::old('origen'),array('class' => 'PublicarViatge_Elementos')) }} 
+                    {{ Form::text('start',$origen,array('class' => 'PublicarViatge_Elementos','id'=>'start')) }} 
                 </div>   
                 <div class="form-group">
                     {{ Form::label('Destinacio', 'Destinació') }}
-                    {{ Form::text('destinacio', Input::old('destinacio'),array('class' => 'PublicarViatge_Elementos')) }} 
+                    {{ Form::text('end', $desti,array('class' => 'PublicarViatge_Elementos','id'=>'end')) }} 
                 </div>
             </div>
             <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
-                <div class="PublicarViatge_Origen_Destinacio">
-                    <div id="Destinacio" class ="PublicarViarge_Titols_OrigenDestinacio">Destinacio</div>
-                    <div id="end" style="float:left;margin-top: 2px;">{{$desti}}</div>
-                </div>
                 <div id="map_canvas" class="PublicarViatge_MapCanvas"></div>
                 <div id="MapaDistancia">
                     <span class="PublicarViarge_Distancia">  Distància: </span> <div id="distance"> </div> <!--El div distance es para poner la distancia, lo calcula ApiGoogleViatgeDetalls.js-->

@@ -40,6 +40,10 @@ $(function () {
         var start = document.getElementById('start').innerHTML;
         var end = document.getElementById('end').innerHTML;
 
+        if ((!start) && (!end)) {
+            var start = document.getElementById('start').value;
+            var end = document.getElementById('end').value;
+        }
 
         var request = {
             origin: start,
@@ -58,7 +62,7 @@ $(function () {
             }
         });
     }
-    
+
     function PasarSegundosAFormato($total_seconds) {
         var d = new Date($total_seconds * 1000);
         var hora = (d.getHours() == 0) ? 23 : d.getHours() - 1;
