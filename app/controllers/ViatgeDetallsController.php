@@ -38,6 +38,7 @@ class ViatgeDetallsController extends BaseController {
             $estat = $estat[0]->estat;
             if ($estat != 'acceptat'){
     		  Passatger::where('viatge_id', $idViatge)->where('usuari_id', $idPassatger)->update(array('estat' => 'acceptat'));
+              Viatge::where('id', $idViatge)->decrement('numSeientRestant');
             }
             else{
             }

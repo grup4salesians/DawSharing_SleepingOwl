@@ -107,7 +107,7 @@ Detalls del Viatge
     }
     ?>
 
-    <h1>Viatje entre <span id="start">{{ $ruta_inici }}</span> i <span id="end">{{ $ruta_fi }}</span> amb {{$creador}} ({{ $duracio }} min)</h1>
+    <h1>Viatge entre <span id="start">{{ $ruta_inici }}</span> i <span id="end">{{ $ruta_fi }}</span> amb {{$creador}} ({{ $duracio }} min)</h1>
     <div>
         <div class="fleft" style="width: 66.6%; margin-bottom:50px; z-index:1;">
             <div id="map_canvas" style="height: 350px; background-color:grey; margin-bottom:5px;"></div>
@@ -140,9 +140,25 @@ Detalls del Viatge
                 } catch (Exception $e) {
                     $estat = "mmm";
                 }
+                try {
+                    $seientsRestants = Viatge::where('id', $idViatge)->get();
+                    $seientsRestants = $seientsRestants[0]->numSeientRestant;
+                } catch (Exception $e) {
+                    $seientsRestants = 0;
+                }
             ?>
-            @if($estat == "mmm")
-                {{ Form::button('Sol·licitar plaça', array('data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => 'Registre_button', 'style' => 'font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px;')) }}
+            
+            @if($estat == "acceptat" || $estat == "creador")
+                {{ Form::button('Ja ets passatger', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
+                background-color: #44c767;
+                border-radius: 5px;
+                border: 1px solid #44c767;
+                display: inline-block;
+                color: #ffffff;
+                font-family: Arial;
+                padding: 8px;
+                text-decoration: none;
+                width: 100%;')) }}
             @elseif($estat == NULL || $estat == "pendent")
                 {{ Form::button('Pendent de confirmació', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
                 background-color: #ec971f;
@@ -154,17 +170,19 @@ Detalls del Viatge
                 padding: 8px;
                 text-decoration: none;
                 width: 100%;')) }}
-            @elseif($estat == "acceptat" || $estat == "creador")
-                {{ Form::button('Ja ets passatger', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
-                background-color: #44c767;
+            @elseif(!$seientsRestants)
+                {{ Form::button('Tancat', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
+                background-color: #d9534f;
                 border-radius: 5px;
-                border: 1px solid #44c767;
+                border: 1px solid #d9534f;
                 display: inline-block;
                 color: #ffffff;
                 font-family: Arial;
                 padding: 8px;
                 text-decoration: none;
                 width: 100%;')) }}
+            @elseif($estat == "mmm")
+                {{ Form::button('Sol·licitar plaça', array('data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => 'Registre_button', 'style' => 'font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px;')) }}
             @else
                 {{ Form::button('Tancat', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
                 background-color: #d9534f;
