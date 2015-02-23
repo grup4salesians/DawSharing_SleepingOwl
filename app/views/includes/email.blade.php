@@ -32,7 +32,7 @@ class email {
                         <input type='checkbox' name='chkBandejaMailsBorrar' value=''><br>
                         </div>
                         <div class='BandejaMails_Emissor'>$usuario</div>
-                        <div class='BandejaMails_Dades'>$this->assumpte $text ...</div>
+                        <div class='BandejaMails_Dades'>$this->assumpte </div>
                         <div class='BandejaMails_DadesSenceres'>$this->assumpte $this->contingut</div>
                         <div class='BandejaMails_Data'>$this->data</div>
                 </div>";
