@@ -33,15 +33,17 @@
                 </li>
                 <li class="span1_of_3">
                     <div class="date_btn">
-
-                        {{ Form::submit('Buscar',array('class'=> 'Registre_button'))}}
+                        {{ Form::submit('Buscar',array('class'=> 'Registre_button','name'=>'Buscar'))}}
                         {{ Form::close() }}
                     </div>
                 </li>
-                <li class="span1_of_3">{{ Form::open(array('url' => '/publicarViatge')) }}
+                <li class="span1_of_3">
+                    {{ Form::open(array('url' => '/publicarViatge')) }}
                     <div class="date_btn">
-                        
-                        {{ Form::submit('Publicar',array('class'=> 'Registre_button'))}}
+                        <input type="text" style="display:none;" id="PublicarViatgeOrigen" name="PublicarViatgeOrigen">
+                        <input type="text" style="display:none;" id="PublicarViatgeDesti" name="PublicarViatgeDesti">
+
+                        {{ Form::submit('Publicar',array('class'=> 'Registre_button','name'=>'Publicar','onclick'=>'CopiarValoresInput()'))}}
                         {{ Form::close() }}
                     </div>
                 </li>
@@ -51,4 +53,10 @@
     </div>
     <div class="clearfix"></div>
 </div>
-</div>
+
+<script>
+    function CopiarValoresInput() {
+        document.getElementById("PublicarViatgeOrigen").value = document.getElementById("searchTextField").value;
+        document.getElementById("PublicarViatgeDesti").value = document.getElementById("searchTextFieldFin").value;
+    }
+</script>
