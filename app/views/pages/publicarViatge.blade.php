@@ -115,8 +115,13 @@ Publicar viatge
     $origen = Input::get('PublicarViatgeOrigen');
     $desti = Input::get('PublicarViatgeDesti');
     ?>
-
-
+    
+     <?php  $vehicles = ViewVehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get(); 
+     
+     ?>
+        @foreach($vehicles as $key => $veh)
+           {{ $arrayVehicles[] =  $veh->vehicle; }}
+         @endforeach
     <h1>El meu Perfil</h1>
     <div id="nav_perfil">
         <div class="active">
@@ -136,15 +141,15 @@ Publicar viatge
                 <div class="form-group">
                     {{ Form::label('Soc', 'Sóc') }}
                     <div style="float:right;">
-                        {{ Form::checkbox('chkPublicarViatgePas1_Conductor', true) }}   
+                        {{ Form::radio('rbtnPublicarViatge', true) }}   
                         {{ Form::label('Conductor', 'Conductor',array('style'=>'margin-right: 115px;')) }}
-                        {{ Form::checkbox('chkPublicarViatgePas1_Passatger', true) }}     
+                        {{ Form::radio('rbtnPublicarViatge', true) }}   
                         {{ Form::label('Passatger', 'Passatger') }}
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('MeuVehicle', 'El meu vehicle') }}
-                    {{ Form::select('meuVehicle', array('L' => 'Large', 'S' => 'Small'),null,array('class' => 'PublicarViatge_Elementos')) }}   
+                    {{ Form::select('meuVehicle', $arrayVehicles,null,array('class' => 'PublicarViatge_Elementos')) }}   
                 </div>
                 <div class="form-group">
                     {{ Form::label('Origen', 'Origen') }}
