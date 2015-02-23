@@ -33,7 +33,7 @@ class email {
                         </div>
                         <div class='BandejaMails_Emissor'>$usuario</div>
                         <div class='BandejaMails_Dades'>$this->assumpte </div>
-                        <div class='BandejaMails_DadesSenceres'>$this->assumpte $this->contingut</div>
+                        <div class='BandejaMails_DadesSenceres'>$this->assumpte <p>$this->contingut</p></div>
                         <div class='BandejaMails_Data'>$this->data</div>
                 </div>";
 
