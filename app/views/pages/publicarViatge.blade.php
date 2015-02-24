@@ -5,6 +5,7 @@ Publicar viatge
 @section('content')
 <div style="min-height: 400px; margin: 0% 10%;">
     <script src="http://maps.google.com/maps/api/js?libraries=places&region=sp&language=es&sensor=true"></script>
+    <script src="js/ApiGoogleMaps_Prueba.js"></script>
 
     <style>
         .visible {
@@ -116,7 +117,7 @@ Publicar viatge
     $desti = Input::get('PublicarViatgeDesti');
     ?>
 
-    <script src="js/ApiGoogleMaps_Prueba.js"></script>
+
 
 
     <?php $vehicles = ViewVehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
