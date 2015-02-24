@@ -16,7 +16,8 @@ Detalls del Viatge
     }
 </style>
 <script src="http://maps.google.com/maps/api/js?libraries=places&region=sp&language=es&sensor=true"></script>
-<script src="{{$baseUrl}}/js/ApiGoogleViatgeDetalls.js"></script>
+<script src="{{$baseUrl}}/js/ApiGoogleMaps_Prueba.js"></script>
+
 <div style="min-height: 400px; margin: 0 10%;">
     <?php
     //$idViatge = 0;
@@ -107,7 +108,7 @@ Detalls del Viatge
     }
     ?>
 
-    <h1>Viatge entre <span id="start">{{ $ruta_inici }}</span> i <span id="end">{{ $ruta_fi }}</span> amb {{$creador}} ({{ $duracio }} min)</h1>
+    <h1>Viatge entre <span id="searchTextField">{{ $ruta_inici }}</span> i <span id="searchTextFieldFin">{{ $ruta_fi }}</span> amb {{$creador}} ({{ $duracio }} min)</h1>
     <div>
         <div class="fleft" style="width: 66.6%; margin-bottom:50px; z-index:1;">
             <div id="map_canvas" style="height: 350px; background-color:grey; margin-bottom:5px;"></div>

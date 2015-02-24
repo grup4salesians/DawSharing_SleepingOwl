@@ -9,23 +9,39 @@ $(function () {
     }
     var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-    var DireccionInicial = document.getElementById('searchTextField');
-    var DireccionFinal = document.getElementById('searchTextFieldFin');
+    var NomNode = "";
+
+    NomNode = document.getElementById('searchTextField').nodeName;
+
+    if (NomNode === "SPAN") {
+        var DireccionInicial = document.getElementById('searchTextField').innerHTML;
+        var DireccionFinal = document.getElementById('searchTextFieldFin').innerHTML;
+    }
+    else if (NomNode === "INPUT") {
+        var DireccionInicial = document.getElementById('searchTextField');
+        var DireccionFinal = document.getElementById('searchTextFieldFin');
+
+    }
 
     var AutoCompleteDireccionInicial = new google.maps.places.Autocomplete(DireccionInicial, {types: ["geocode"]});
     var AutoCompleteDireccionFinal = new google.maps.places.Autocomplete(DireccionFinal, {types: ["geocode"]});
 
     AutoCompleteDireccionInicial.bindTo('bounds', map);
     AutoCompleteDireccionFinal.bindTo('bounds', map);
- 
-    if (($(DireccionInicial).val() != "") && ($(DireccionFinal).val() != "")) {
-       
-        EjectutarRutas();
-    }
 
+    if (NomNode === "SPAN") {
+        if ((DireccionInicial != "") && (DireccionFinal != "")) {
+            EjectutarRutas(DireccionInicial,DireccionFinal);
+        }
+    }
+    else if (NomNode === "INPUT") {
+        if (($(DireccionInicial).val() != "") && ($(DireccionFinal).val() != "")) {
+            EjectutarRutas($(DireccionInicial).val(),$(DireccionFinal).val());
+        }
+    }
     google.maps.event.addListener(AutoCompleteDireccionInicial, 'place_changed', function () {
         try {
-            EjectutarRutas();
+            EjectutarRutas($(DireccionInicial).val(),$(DireccionFinal).val());
         }
         catch (err) {
         }
@@ -33,14 +49,14 @@ $(function () {
     });
     google.maps.event.addListener(AutoCompleteDireccionFinal, 'place_changed', function () {
         try {
-            EjectutarRutas();
+            EjectutarRutas($(DireccionInicial).val(),$(DireccionFinal).val());
         }
         catch (err) {
         }
 
     });
 
-    function EjectutarRutas() {
+    function EjectutarRutas(start,end) {
         var infowindow = new google.maps.InfoWindow();
 
         infowindow.close();
@@ -48,8 +64,8 @@ $(function () {
         directionsDisplay.setMap(map);
         /*directionsDisplay.setPanel(document.getElementById("directionsPanel"));*/	/**** Hace que aparezca por donde va la ruta, la distancia y cuanto tarda *****/
 
-        var start = $(DireccionInicial).val();
-        var end = $(DireccionFinal).val();
+       // var start = $(DireccionInicial).val();
+       // var end = $(DireccionFinal).val();
 
         Route(start, end);
     }
