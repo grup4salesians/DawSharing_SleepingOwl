@@ -116,18 +116,7 @@ Publicar viatge
     $desti = Input::get('PublicarViatgeDesti');
     ?>
 
-    <?php
-    if (($origen != "") && ($desti != "")) {
-        ?>
-        <script src = "js/ApiGoogleViatgeDetalls.js"></script> 
-        <?php
-    } else {
-        ?>
-        <script src="js/ApiGoogleMaps.js"></script> 
-        <?php
-    }
-    ?>
-
+    <script src="js/ApiGoogleMaps_Prueba.js"></script>
 
 
     <?php $vehicles = ViewVehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
@@ -165,32 +154,12 @@ Publicar viatge
                 </div>
                 <div class="form-group">
                     {{ Form::label('Origen', 'Origen') }}
-                    <?php
-                    if (($origen != "") && ($desti != "")) {
-                        ?>
-                        {{ Form::text('start',$origen,array('class' => 'PublicarViatge_Elementos','id'=>'start')) }} 
-                        <?php
-                    } else {
-                        ?>
-                        {{ Form::text('searchTextField',$origen,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextField')) }} 
-                        <?php
-                    }
-                    ?>
+                    {{ Form::text('searchTextField',$origen,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextField')) }} 
 
                 </div>   
                 <div class="form-group">
                     {{ Form::label('Destinacio', 'Destinació') }}
-                    <?php
-                    if (($origen != "") && ($desti != "")) {
-                        ?>
-                        {{ Form::text('end', $desti,array('class' => 'PublicarViatge_Elementos','id'=>'end')) }} 
-                        <?php
-                    } else {
-                        ?>
-                        {{ Form::text('searchTextFieldFin',$desti,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextFieldFin')) }} 
-                        <?php
-                    }
-                    ?>
+                    {{ Form::text('searchTextFieldFin',$desti,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextFieldFin')) }} 
                 </div>
             </div>
             <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
@@ -251,11 +220,11 @@ $(document).ready(function () {
             $("#Anterior").css("display", "block");
         }
     });
-    
+
     $("input[name=rbtnPublicarViatge]:radio").change(function () {
         alert($(this).val());
     });
-    
+
 });
     </script>    
 </div>
