@@ -132,7 +132,7 @@ Publicar viatge
 
     <?php $vehicles = ViewVehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
     @foreach($vehicles as $key => $veh)
-    <?php $arrayVehicles[] =  $veh->vehicle; ?>
+    <?php $arrayVehicles[] = $veh->vehicle; ?>
     @endforeach
     <h1>El meu Perfil</h1>
     <div id="nav_perfil">
@@ -153,9 +153,9 @@ Publicar viatge
                 <div class="form-group">
                     {{ Form::label('Soc', 'Sóc') }}
                     <div style="float:right;">
-                        {{ Form::radio('rbtnPublicarViatge', true) }}   
+                        {{ Form::radio('rbtnPublicarViatge', 'conductor',true) }}   
                         {{ Form::label('Conductor', 'Conductor',array('style'=>'margin-right: 115px;')) }}
-                        {{ Form::radio('rbtnPublicarViatge', true) }}   
+                        {{ Form::radio('rbtnPublicarViatge', 'passatger') }}   
                         {{ Form::label('Passatger', 'Passatger') }}
                     </div>
                 </div>
@@ -226,7 +226,6 @@ $(document).ready(function () {
     function eventoXunguArnau(id) {
         $("#nav_perfil > div").removeClass("active");
         $("#" + id).parent().addClass("active");
-
         $("#content_perfil > div").removeClass("visible");
         $("#cont-" + id).addClass("visible");
     }
@@ -234,32 +233,29 @@ $(document).ready(function () {
     $("#Anterior").click(function () {
         var current_div = $(".visible").attr("id");
         var num = current_div.split("-")[2];
-
         eventoXunguArnau("Pas-" + (parseInt(num) - 1));
-
         if (num <= 2) {
             $("#Anterior").css("display", "none");
-
         } else {
             $("#Seguent").css("display", "block");
         }
     });
     $("#Seguent").click(function () {
         var num_pestanyes = $("#content_perfil > .testtest").length;
-
         var current_div = $(".visible").attr("id");
         var num = current_div.split("-")[2];
-
         eventoXunguArnau("Pas-" + (parseInt(num) + 1));
-
         if (num >= num_pestanyes - 1) {
             $("#Seguent").css("display", "none");
         } else {
             $("#Anterior").css("display", "block");
         }
     });
-
-
+    
+    $("input[name=rbtnPublicarViatge]:radio").change(function () {
+        alert($(this).val());
+    });
+    
 });
     </script>    
 </div>
