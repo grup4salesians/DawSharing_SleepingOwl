@@ -61,10 +61,12 @@ Perfil
         }
         .txt1 {
             margin-bottom: 15px;
+            margin-top: 3px;
             float: left;
             font-weight: bold;
             color: #000;
             text-transform: capitalize;
+            width: 30%;
         }
         .txt2 {
             margin-bottom: 15px;
@@ -91,18 +93,40 @@ Perfil
         #cont-dadesPersonals > .fila{
             margin-bottom: 20px;
         }
-        select {
+        #cont-dadesPersonals select {
             border-radius: 0px;
             -webkit-border-radius: 0px;
             border-color: rgb(170, 170, 170);
+            float: right;
+            height: 26px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+        #cont-dadesPersonals input, #cont-dadesPersonals select {
+            width: 70%;
+            padding-left: 10px;
+        }
+        #canviarEmail input, #canviarPass input, #canviarTlf input {
+            display: none;
+            float: left;
+            width: 100%;
+            margin-bottom: 8px
+        }
+        
+        #canviarEmail > .alerta {
+            color: red;
+            display: none;
+        }
+        .pointer:hover {
+            cursor: pointer;
         }
         @media all and (min-width: 992px) {
             .col-comentari {
-                 margin-top: -90px;
+                margin-top: -90px;
             }
         }
     </style>
-    
+
     <h1>El meu Perfil</h1>
     <div id="nav_perfil">
         <div class="active">
@@ -116,14 +140,15 @@ Perfil
         </div>
         <div class="clear"></div>
     </div>
-    
-    <?php 
-        $test = Usuari::where('id', Auth::user()->id)->orderBy('id', 'desc')->get(); 
-        $userdata = $test[0];
-        
-        echo "<script>console.log(JSON.stringify(" . $userdata . "))</script>";
+
+    <?php
+    $test = Usuari::where('id', Auth::user()->id)->orderBy('id', 'desc')->get();
+    $userdata = $test[0];
+
+
+    //echo "<script>console.log(JSON.stringify(" . $userdata . "))</script>";
     ?>
-     
+
     <div id="content_perfil">
         <div id="cont-dadesPersonals" style="display: none;" class="visible"> <!-- Dades Perfil -->
             <div class="fila">
@@ -131,7 +156,7 @@ Perfil
                     <img id="portrait" src="">
                     <button id="portrait_edit" class="btn_b">Modificar foto</button>
                     <form>
-                        
+
                     </form>
                 </div>
                 <div class="col-sm-12 col-md-9"> <!-- Dades Usuari -->
@@ -161,7 +186,7 @@ Perfil
                                 <div class="fila">
                                     <p class="txt1">Sexe</p>
                                     <p class="txt2"><?php echo $userdata->sexe ?></p>
-                                    <select style='display: none; float: right;'>
+                                    <select style='display: none;'>
                                         <option>Home</option>
                                         <option>Dona</option>
                                     </select>
@@ -191,27 +216,34 @@ Perfil
                         </div>
                         <div class="fila">
                             <div class="col-sm-12" style="margin-top: 15px; text-align: center;">
-                            <button type="button" id="modificar_dades" class="btn_b">Modificar dades personals</button>
+                                <button type="button" id="modificar_dades" class="btn_b">Modificar dades personals</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="fila">
-                <div class="col-sm-4">
+                <div id="canviarEmail" class="col-sm-4">
                     <h3>Email</h3>
                     <p><?php echo $userdata->correu ?></p>
-                    <a href="#">Canviar</a>
+                    <input id="inputEmail" type="email" value="" placeholder="Nou email">
+                    <input id="inputEmail2" type="email" value="" placeholder="Confirmar nou email">
+                    <p class="alerta">Els correus no coincideixen</p>
+                    <a class="pointer">Canviar</a>
                 </div>
-                <div class="col-sm-4">
+                <div id="canviarPass" class="col-sm-4">
                     <h3>Contrasenya</h3>
                     <p>********</p>
-                    <a href="#">Canviar</a>
+                    <input type="password" value="" placeholder="Contrasenya antiga">
+                    <input type="password" style='display: none; float: left; width: 100%;' value="" placeholder="Contrasenya nova">
+                    <input type="password" style='display: none; float: left; width: 100%;' value="" placeholder="Confirmar la nova contrasenya">
+                    <a class="pointer">Canviar</a>
                 </div>
-                <div class="col-sm-4">
+                <div id="canviarTlf" class="col-sm-4">
                     <h3>Telèfon</h3>
                     <p><?php echo $userdata->telefon ?></p>
-                    <a href="#">Canviar</a>
+                    <input type="tel" style='display: none; float: left; width: 100%;' value="" placeholder="Nou telèfon">
+                    <a class="pointer">Canviar</a>
                 </div>
             </div>
             <div class="fila">
@@ -222,7 +254,39 @@ Perfil
             </div>
         </div>
         <div id="cont-vehicles" style="display: none;">
-            Test2
+            <?php
+            $uservehicles = VehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+
+            for ($a = 0; $a < count($uservehicles); $a++) {
+                $idvehicle = $uservehicles[$a]["id"];
+
+                $vehicle = Vehicle::where('id', $idvehicle)->orderBy('id', 'desc')->get();
+                ?>
+                <div class="fila">
+                    <div class="col-sm-8">
+                        <div>
+                            <?php
+                            if ($vehicle[0]["custom_marca"] != "") {
+                                echo ($vehicle[0]["custom_marca"] . " " . $vehicle[0]["custom_model"]);
+                            } else {
+                                echo "Sense Especificar";
+                            }
+                            ?>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+                <?php
+                echo "<script>console.log(JSON.stringify(" . $vehicle . "))</script>";
+            }
+            ?>
+
+            <?php for ($a = 0; $a < count($userdata); $a++): ?>
+
+            <?php endfor; ?>
             <div style="clear: both;"></div>
         </div>
         <div id="cont-perfilPublic" style="display: none;">
@@ -233,20 +297,90 @@ Perfil
     </div>
     <script>
         $(document).ready(function () {
+
+            // Menu
             $("#nav_perfil > div").children().click(function () {
                 $("#nav_perfil > div").removeClass("active");
-                
+
                 var abc = $(this).attr("id");
                 $(this).parent().addClass("active");
-                
+
                 $("#content_perfil").children().removeClass("visible");
                 $("#cont-" + abc).addClass("visible");
             });
-            
+
+            // Dades Usuari
             $("#modificar_dades").click(function () {
-                $("#form_dadesUsuari input, #form_dadesUsuari select").css("display", "block");
-                $("#form_dadesUsuari .txt2").css("display", "none");
-            })
+                if ($("#form_dadesUsuari").hasClass("mod")) {
+
+                    $("#form_dadesUsuari input, #form_dadesUsuari select").css("display", "none");
+                    $("#form_dadesUsuari .txt2").css("display", "block");
+
+                    $("#form_dadesUsuari").removeClass("mod");
+
+                    //insert
+                } else {
+                    $("#form_dadesUsuari input, #form_dadesUsuari select").css("display", "block");
+                    $("#form_dadesUsuari .txt2").css("display", "none");
+
+                    $("#form_dadesUsuari").addClass("mod");
+                }
+
+            });
+
+            $("#canviarEmail a").on("click", canviarExtres("canviarEmail"));
+            $("#canviarPass a").on("click", canviarExtres("canviarPass"));
+            $("#canviarTlf a").on("click", canviarExtres("canviarTlf"));
+
+            function canviarExtres(id) {
+                $("#" + id + " a").on("click", function () {
+                    if ($("#" + id).hasClass("mod")) {
+
+                        $("#" + id + " p").css("display", "block");
+                        $("#" + id + " input").css("display", "none");
+
+                        $("#" + id).removeClass("mod");
+
+                        if (id === "canviarEmail") {
+                            // if email = "" or email != email2
+                            if (($("#inputEmail").val() === "") || ($("#inputEmail").val() !== $("#inputEmail2").val())) {
+                                $("#" + id + " p").css("display", "none");
+                                $("#" + id + " input").css("display", "block");
+
+                                $("#" + id).addClass("mod");
+                                
+                                $("#" + id + " .alerta").css("display", "block");
+                            } else {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/perfilQueries.php',
+                                    data: {id: '<?php $userdata->id ?>', email: $("#inputEmail").val()},
+                                    success: function (data) {
+                                        console.log("Success:" + data);
+                                    },
+                                    error: function (data) {
+                                        console.log("Error: " + data);
+
+                                    }
+                                });
+                            }
+
+                        } else if (id === "canviarPass") {
+                            //insert
+                        } else if (id === "canviarTlf") {
+                            //insert
+                        }
+
+                    } else {
+                        $("#" + id + " p").css("display", "none");
+                        $("#" + id + " input").css("display", "block");
+
+                        $("#" + id).addClass("mod");
+                    }
+                });
+            }
+            // Ajuntar 3 funcions en una
+
         });
     </script>    
 </div>
