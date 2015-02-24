@@ -158,7 +158,7 @@ Publicar viatge
     {{ Form::close() }}
     <script>
 $(document).ready(function () {
-    $("#Publicar").css("display", "none");
+    $("#Publicar").css("display", "none");  //Oculta el botón de publicar viage
     function eventoXunguArnau(id) {
         $("#nav_perfil > div").removeClass("active");
         $("#" + id).parent().addClass("active");
@@ -166,18 +166,27 @@ $(document).ready(function () {
         $("#cont-" + id).addClass("visible");
     }
     $("#Seguent").click(function () {
-        var num_pestanyes = $("#content_perfil > .testtest").length;
-        var current_div = $(".visible").attr("id");
-        var num = current_div.split("-")[2];
-        eventoXunguArnau("Pas-" + (parseInt(num) + 1));
-        if (num >= num_pestanyes - 1) {
-            $("#Seguent").css("display", "none");
-            $("#Publicar").css("display", "block");
+        if (ComprobarItemsForm1()) {
+            var num_pestanyes = $("#content_perfil > .testtest").length;
+            var current_div = $(".visible").attr("id");
+            var num = current_div.split("-")[2];
+            eventoXunguArnau("Pas-" + (parseInt(num) + 1));
+            if (num >= num_pestanyes - 1) {
+                $("#Seguent").css("display", "none");
+                $("#Publicar").css("display", "block");
+            }
         }
         else{
-            $("#Publicar").css("display", "none");
+            alert("No has llenado todos los campos");
         }
     });
+
+    function ComprobarItemsForm1() {
+        if (($("#searchTextField").val()) && ($("#searchTextFieldFin").val())) {
+            return true;
+        }
+    }
+
 });
     </script>    
 </div>
