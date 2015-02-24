@@ -78,12 +78,13 @@ Publicar viatge
 
         /********** BOTONS****************/
         #BotonesAdelanteAtras {
-            width: 100%;
+            width: 450px;
             margin-top: 20px;
+            margin-bottom: 60px;
         }
         #BotonesAdelanteAtras div {
-            float: left;
-            margin-right: 20px;
+            float: right;
+            margin-top: -25px;
         }
 
         /************ FI BOTONS**************/
@@ -135,8 +136,10 @@ Publicar viatge
     </div>
     {{ Form::open(array('url' => '/registre')) }}
     <div id="content_perfil" class="clear">
-        
-    @include('includes.publicarViatge.pas1_conductor')
+
+        @include('includes.publicarViatge.pas1')
+
+
         <div id="cont-Pas-2" style="display: none" class="testtest">
             Test2
             <div style="clear: both;"></div>
@@ -146,9 +149,8 @@ Publicar viatge
             <div style="clear: both;"></div>
         </div>
         <div id="BotonesAdelanteAtras">
-            <div id="Anterior" class="btn_a btn_c" style="display: none;">Anterior</div>
             <div id="Seguent" class="btn_a btn_c">Següent</div>
-            {{ Form::submit('Publicar Viatge',array('class'=> 'Registre_button'))}}
+            {{ Form::submit('Publicar Viatge',array('class'=> 'Registre_button','id'=>'Publicar'))}}
         </div>
 
 
@@ -156,24 +158,13 @@ Publicar viatge
     {{ Form::close() }}
     <script>
 $(document).ready(function () {
-
+    $("#Publicar").css("display", "none");
     function eventoXunguArnau(id) {
         $("#nav_perfil > div").removeClass("active");
         $("#" + id).parent().addClass("active");
         $("#content_perfil > div").removeClass("visible");
         $("#cont-" + id).addClass("visible");
     }
-
-    $("#Anterior").click(function () {
-        var current_div = $(".visible").attr("id");
-        var num = current_div.split("-")[2];
-        eventoXunguArnau("Pas-" + (parseInt(num) - 1));
-        if (num <= 2) {
-            $("#Anterior").css("display", "none");
-        } else {
-            $("#Seguent").css("display", "block");
-        }
-    });
     $("#Seguent").click(function () {
         var num_pestanyes = $("#content_perfil > .testtest").length;
         var current_div = $(".visible").attr("id");
@@ -181,15 +172,12 @@ $(document).ready(function () {
         eventoXunguArnau("Pas-" + (parseInt(num) + 1));
         if (num >= num_pestanyes - 1) {
             $("#Seguent").css("display", "none");
-        } else {
-            $("#Anterior").css("display", "block");
+            $("#Publicar").css("display", "block");
+        }
+        else{
+            $("#Publicar").css("display", "none");
         }
     });
-
-    $("input[name=rbtnPublicarViatge]:radio").change(function () {
-        alert($(this).val());
-    });
-
 });
     </script>    
 </div>
