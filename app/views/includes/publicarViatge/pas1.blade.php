@@ -1,14 +1,5 @@
-<div id="cont-Pas-1" style="display: none" class="visible testtest">
+<div id="cont-Pas-1-conductor" style="display: none" class="visible testtest">
     <div id="CampsPas1" class="PublicarViatge_CampsPas1 col-md-6">
-        <div class="form-group">
-            {{ Form::label('Soc', 'Sóc') }}
-            <div style="float:right;">
-                {{ Form::radio('rbtnPublicarViatge', 'conductor',true) }}   
-                {{ Form::label('Conductor', 'Conductor',array('style'=>'margin-right: 115px;')) }}
-                {{ Form::radio('rbtnPublicarViatge', 'passatger') }}   
-                {{ Form::label('Passatger', 'Passatger') }}
-            </div>
-        </div>
         <div class="form-group">
             {{ Form::label('MeuVehicle', 'El meu vehicle') }}
             {{ Form::select('meuVehicle', $arrayVehicles,null,array('class' => 'PublicarViatge_Elementos')) }}   
