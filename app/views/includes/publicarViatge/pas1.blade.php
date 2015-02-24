@@ -1,4 +1,4 @@
-<div id="cont-Pas-1-conductor" style="display: none" class="visible testtest">
+<div id="cont-Pas-1" style="display: none" class="visible testtest">
     <div id="CampsPas1" class="PublicarViatge_CampsPas1 col-md-6">
         <div class="form-group">
             {{ Form::label('MeuVehicle', 'El meu vehicle') }}

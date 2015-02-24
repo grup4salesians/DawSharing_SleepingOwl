@@ -140,14 +140,9 @@ Publicar viatge
         @include('includes.publicarViatge.pas1')
 
 
-        <div id="cont-Pas-2" style="display: none" class="testtest">
-            Test2
-            <div style="clear: both;"></div>
-        </div>
-        <div id="cont-Pas-3" style="display: none" class="testtest">
-            Test3
-            <div style="clear: both;"></div>
-        </div>
+        @include('includes.publicarViatge.pas2')
+        
+        @include('includes.publicarViatge.pas3')
         <div id="BotonesAdelanteAtras">
             <div id="Seguent" class="btn_a btn_c">Següent</div>
             {{ Form::submit('Publicar Viatge',array('class'=> 'Registre_button','id'=>'Publicar'))}}
@@ -176,7 +171,7 @@ $(document).ready(function () {
                 $("#Publicar").css("display", "block");
             }
         }
-        else{
+        else {
             alert("No has llenado todos los campos");
         }
     });
