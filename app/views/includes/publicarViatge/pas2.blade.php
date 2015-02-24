@@ -1,5 +1,5 @@
-<div id="cont-Pas-1-conductor" style="display: none" class="visible testtest">
-    <div id="CampsPas1" class="PublicarViatge_CampsPas1 col-md-6">
+<div id="cont-Pas-2" style="display: none" class="visible testtest">
+    <div id="CampsPas2" class="PublicarViatge_CampsPas2 col-md-6">
         <div class="form-group">
             {{ Form::label('frequencia', 'Freqüencia') }}
             {{ Form::radio('frequencia', 'data_concreta') }}  
@@ -16,7 +16,7 @@
         </div>   
         <div class="form-group">
             {{ Form::label('anda', 'Anada') }}
-            {{ Form::data('searchTextFieldFin',$desti,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextFieldFin')) }} 
+            {{ Form::text('searchTextFieldFin',$desti,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextFieldFin')) }} 
         </div>
     </div>
     <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
