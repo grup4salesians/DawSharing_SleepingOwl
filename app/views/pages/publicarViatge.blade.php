@@ -81,6 +81,7 @@ Publicar viatge
             width: 450px;
             margin-top: 20px;
             margin-bottom: 60px;
+            margin-left: 10px;
         }
         #BotonesAdelanteAtras div {
             float: right;
@@ -118,10 +119,16 @@ Publicar viatge
     $desti = Input::get('PublicarViatgeDesti');
     ?>
 
-    <?php $vehicles = ViewVehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get(); ?>
+    <?php
+    $vehicles = ViewVehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+    if (sizeof($vehicles) == 0) {
+        $arrayVehicles[] = "Afegir Vehicle";
+    }
+    ?>
     @foreach($vehicles as $key => $veh)
     <?php $arrayVehicles[] = $veh->vehicle; ?>
     @endforeach
+
     <h1>El meu Perfil</h1>
     <div id="nav_perfil">
         <div class="active">
@@ -139,10 +146,10 @@ Publicar viatge
 
         @include('includes.publicarViatge.pas1')
 
-
         @include('includes.publicarViatge.pas2')
-        
+
         @include('includes.publicarViatge.pas3')
+        
         <div id="BotonesAdelanteAtras">
             <div id="Seguent" class="btn_a btn_c">Següent</div>
             {{ Form::submit('Publicar Viatge',array('class'=> 'Registre_button','id'=>'Publicar'))}}
@@ -154,6 +161,14 @@ Publicar viatge
     <script>
 $(document).ready(function () {
     $("#Publicar").css("display", "none");  //Oculta el botón de publicar viage
+
+    if ($("#meuVehicle option:selected").text() === "Afegir Vehicle") {
+        $("#meuVehicle").css("display", "none");
+    }
+    else {
+        $("#btnAfegirVehicle").css("display", "none");
+    }
+
     function eventoXunguArnau(id) {
         $("#nav_perfil > div").removeClass("active");
         $("#" + id).parent().addClass("active");
@@ -177,7 +192,7 @@ $(document).ready(function () {
     });
 
     function ComprobarItemsForm1() {
-        if (($("#searchTextField").val()) && ($("#searchTextFieldFin").val())) {
+        if (($("#searchTextField").val()) && ($("#searchTextFieldFin").val()) && ($("#meuVehicle option:selected").text() !== "Afegir Vehicle")) {
             return true;
         }
     }

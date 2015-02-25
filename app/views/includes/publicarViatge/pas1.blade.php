@@ -2,8 +2,10 @@
     <div id="CampsPas1" class="PublicarViatge_CampsPas1 col-md-6">
         <div class="form-group">
             {{ Form::label('MeuVehicle', 'El meu vehicle') }}
-            {{ Form::select('meuVehicle', $arrayVehicles,null,array('class' => 'PublicarViatge_Elementos')) }}   
+            {{ Form::select('meuVehicle', $arrayVehicles,null,array('class' => 'PublicarViatge_Elementos','id'=>'meuVehicle')) }}
+            <a href="#">{{ Form::button('Afegir Vehicle',array('class'=>'btn btn-default','style'=>'float: right;','id'=>'btnAfegirVehicle')) }}</a>    
         </div>
+        
         <div class="form-group">
             {{ Form::label('Origen', 'Origen') }}
             {{ Form::text('searchTextField',$origen,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextField')) }} 
