@@ -10,34 +10,33 @@
         });
     });
  </script>
-<div id="cont-Pas-2" style="display: none" class="visible testtest">
-    <div id="CampsPas2" class="PublicarViatge_CampsPas2 col-md-6">
-        <div class="form-group">
-            {{ Form::label('frequencia', 'Freqüencia') }}
-            {{ Form::radio('frequencia', 'data_concreta') }}  
-            {{ Form::label('frequencia','Data Concreta', array('style'=>'normal')) }} 
-            {{ Form::radio('frequencia', 'viatge_periodic') }}  
-            {{ Form::label('frequencia','Viatge Periòdic') }} 
+<div id="cont-Pas-2" style="display: none" class="testtest PublicarViatge_CampsPas2 col-md-6">
+    <div class="form-group">
+        {{ Form::label('Freqüencia') }}</br>
+
+        {{ Form::radio('frequencia', 'data_concreta') }}  
+        {{ Form::label('data_concreta','Data Concreta', array('style'=>'font-weight:normal;')) }} </br>
+
+        {{ Form::radio('frequencia', 'viatge_periodic') }}  
+        {{ Form::label('viatge_periodic','Viatge Periòdic', array('style'=>'font-weight:normal;')) }} 
+        
+    </div>
+    <div class="form-group">
+        {{ Form::label('Tipus') }}</br>
+        <div>
+        {{ Form::radio('frequencia', 'anada', array('id'=>'anada')) }}  
+        {{ Form::label('anada','Anada', array('style'=>'font-weight:normal;')) }} </br>
         </div>
-        <div class="form-group">
-            {{ Form::label('tipus', 'Tipus') }}
-            {{ Form::radio('tipus', 'data_concreta') }}  
-            {{ Form::label('tipus','Data Concreta') }} 
-            {{ Form::radio('tipus', 'viatge_periodic') }}  
-            {{ Form::label('tipus','Viatge Periòdic') }} 
-        </div>   
-        <div class="form-group">
-            {{ Form::label('anda', 'Anada') }}
+        {{ Form::radio('frequencia', 'anada_i_tornada', array('id'=>'anada_i_tornada')) }}  
+        {{ Form::label('anada_i_tornada','Anada i tornada', array('style'=>'font-weight:normal;')) }} 
+        
+    </div>   
+    <div class="form-group">
+        {{ Form::label('andaData', 'Anada') }}
+        <div id="sandbox-container" style="width:230px;">
             <div class="input-group date">
                 <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
             </div>
         </div>
     </div>
-    <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
-        <div id="map_canvas" class="PublicarViatge_MapCanvas"></div>
-        <div id="MapaDistancia">
-            <span class="PublicarViarge_Distancia">  Distància: </span> <div id="distance"> </div> <!--El div distance es para poner la distancia, lo calcula ApiGoogleViatgeDetalls.js-->
-        </div>
-    </div>
-    <div style="clear: both;"></div>
 </div>

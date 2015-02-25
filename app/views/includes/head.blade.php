@@ -35,3 +35,7 @@
         });
     })();
 </script>
+
+<link rel="stylesheet" href="css/datepicker3.css">
+
+<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
