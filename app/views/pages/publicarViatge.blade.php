@@ -12,7 +12,6 @@ Publicar viatge
             display: block !important;
             position: relative;
             height: auto;
-            width: 100%;
         }
         .btn_a {
             background-color: white;
@@ -142,21 +141,29 @@ Publicar viatge
         </div>
     </div>
     {{ Form::open(array('url' => '/registre')) }}
+
     <div id="content_perfil" class="clear">
+       
+            @include('includes.publicarViatge.pas1')
 
-        @include('includes.publicarViatge.pas1')
+            @include('includes.publicarViatge.pas2')
 
-        @include('includes.publicarViatge.pas2')
+            @include('includes.publicarViatge.pas3')
+            <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
+                <div id="map_canvas" class="PublicarViatge_MapCanvas"></div>
+                <div id="MapaDistancia">
+                    <span class="PublicarViarge_Distancia">  Distància: </span> <div id="distance"> </div> <!--El div distance es para poner la distancia, lo calcula ApiGoogleViatgeDetalls.js-->
+                </div>
+            </div>
 
-        @include('includes.publicarViatge.pas3')
-        
-        <div id="BotonesAdelanteAtras">
-            <div id="Seguent" class="btn_a btn_c">Següent</div>
-            {{ Form::submit('Publicar Viatge',array('class'=> 'Registre_button','id'=>'Publicar'))}}
-        </div>
+            <div id="BotonesAdelanteAtras">
+                <div id="Seguent" class="btn_a btn_c">Següent</div>
+                {{ Form::submit('Publicar Viatge',array('class'=> 'Registre_button','id'=>'Publicar'))}}
+            </div>
 
-
+       
     </div>
+    <div style="clear:both;"></div>
     {{ Form::close() }}
     <script>
 $(document).ready(function () {

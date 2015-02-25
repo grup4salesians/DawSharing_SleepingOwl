@@ -22,8 +22,7 @@
         height: 110px;
     }
 </style>
-<div id="cont-Pas-3" style="display: none" class="testtest">
-    <div id="CampsPas3" class="PublicarViatge_CampsPas3 col-md-6">
+    <div id="cont-Pas-3" style="display: none" class="PublicarViatge_CampsPas3 col-md-6 testtest">
         <?php
         $permissos = Caracteristiques::orderBy('id', 'desc')->get();
         $permis = explode(";", $permissos[0]->permisosViatges);
@@ -52,5 +51,3 @@
         {{ Form::label('Comentaris', 'Comentaris:',array('style'=>'width: 100%;')) }}
         {{ Form::textarea('comentaris',null,array('class'=>'PublicarViatge_TexArea')) }}
     </div>
-    <div style="clear: both;"></div>
-</div>
