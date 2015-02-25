@@ -1,9 +1,21 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#sandbox-container .input-group.date').datepicker({
+            format: "dd/mm/yyyy",
+            startDate: "today",
+            language: "es",
+            multidate: false,
+            todayHighlight: true
+        });
+    });
+ </script>
 <div id="cont-Pas-2" style="display: none" class="visible testtest">
     <div id="CampsPas2" class="PublicarViatge_CampsPas2 col-md-6">
         <div class="form-group">
             {{ Form::label('frequencia', 'Freqüencia') }}
             {{ Form::radio('frequencia', 'data_concreta') }}  
-            {{ Form::label('frequencia','Data Concreta') }} 
+            {{ Form::label('frequencia','Data Concreta', array('style'=>'normal')) }} 
             {{ Form::radio('frequencia', 'viatge_periodic') }}  
             {{ Form::label('frequencia','Viatge Periòdic') }} 
         </div>
@@ -16,7 +28,9 @@
         </div>   
         <div class="form-group">
             {{ Form::label('anda', 'Anada') }}
-            {{ Form::text('searchTextFieldFin',$desti,array('class' => 'PublicarViatge_Elementos','id'=>'searchTextFieldFin')) }} 
+            <div class="input-group date">
+                <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+            </div>
         </div>
     </div>
     <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
