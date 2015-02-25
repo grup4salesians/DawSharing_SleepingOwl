@@ -14,21 +14,21 @@
     <div class="form-group">
         {{ Form::label('Freqüencia') }}</br>
 
-        {{ Form::radio('frequencia', 'data_concreta', true) }}  
+        {{ Form::radio('frequencia', 'data_concreta', true, array('id' => 'data_concreta')) }}  
         {{ Form::label('data_concreta','Data Concreta', array('style'=>'font-weight:normal;')) }} </br>
 
-        {{ Form::radio('frequencia', 'viatge_periodic') }}  
+        {{ Form::radio('frequencia', 'viatge_periodic', false, array('id' => 'viatge_periodic')) }}  
         {{ Form::label('viatge_periodic','Viatge Periòdic', array('style'=>'font-weight:normal;')) }} 
         
     </div>
     <div class="form-group">
         {{ Form::label('Tipus') }}</br>
-        <div>
-        {{ Form::radio('frequencia', 'anada', true) }}  
+        
+        {{ Form::radio('tipus', 'anada', true, array('id' => 'anada')) }}
         {{ Form::label('anada','Anada', array('style'=>'font-weight:normal;')) }} </br>
-        </div>
-        {{ Form::radio('frequencia', 'anada_i_tornada') }}  
-        {{ Form::label('anada_i_tornada','Anada i tornada', array('style'=>'font-weight:normal;')) }} 
+        
+        {{ Form::radio('tipus', 'anada_i_tornada', false, array('id' => 'anadaitornada')) }}  
+        {{ Form::label('anadaitornada','Anada i tornada', array('style'=>'font-weight:normal;')) }} 
         
     </div>   
     <div class="form-group">
