@@ -14,7 +14,7 @@
     <div class="form-group">
         {{ Form::label('Freqüencia') }}</br>
 
-        {{ Form::radio('frequencia', 'data_concreta') }}  
+        {{ Form::radio('frequencia', 'data_concreta', true) }}  
         {{ Form::label('data_concreta','Data Concreta', array('style'=>'font-weight:normal;')) }} </br>
 
         {{ Form::radio('frequencia', 'viatge_periodic') }}  
@@ -24,10 +24,10 @@
     <div class="form-group">
         {{ Form::label('Tipus') }}</br>
         <div>
-        {{ Form::radio('frequencia', 'anada', array('id'=>'anada')) }}  
+        {{ Form::radio('frequencia', 'anada', true) }}  
         {{ Form::label('anada','Anada', array('style'=>'font-weight:normal;')) }} </br>
         </div>
-        {{ Form::radio('frequencia', 'anada_i_tornada', array('id'=>'anada_i_tornada')) }}  
+        {{ Form::radio('frequencia', 'anada_i_tornada') }}  
         {{ Form::label('anada_i_tornada','Anada i tornada', array('style'=>'font-weight:normal;')) }} 
         
     </div>   
