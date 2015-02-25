@@ -140,7 +140,7 @@ Publicar viatge
             <div id="Pas-3" class="btn_a">Pas 3</div>
         </div>
     </div>
-    {{ Form::open(array('url' => '/registre')) }}
+    {{ Form::open(array('url' => '/publicarViatge')) }}
 
     <div id="content_perfil" class="clear">
        
@@ -160,8 +160,6 @@ Publicar viatge
                 <div id="Seguent" class="btn_a btn_c">Següent</div>
                 {{ Form::submit('Publicar Viatge',array('class'=> 'Registre_button','id'=>'Publicar'))}}
             </div>
-
-       
     </div>
     <div style="clear:both;"></div>
     {{ Form::close() }}
@@ -197,7 +195,6 @@ $(document).ready(function () {
             alert("No has llenado todos los campos");
         }
     });
-
     function ComprobarItemsForm1() {
         if (($("#searchTextField").val()) && ($("#searchTextFieldFin").val()) && ($("#meuVehicle option:selected").text() !== "Afegir Vehicle")) {
             return true;

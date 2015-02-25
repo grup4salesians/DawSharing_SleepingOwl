@@ -15,6 +15,13 @@ class PublicarViatgeController extends BaseController {
         return View::make('pages.publicarViatge', $userdata);
     }
 
+    public function InsertarDatos() {
+       // return View::make('pages.home');
+        
+        $validator ="ERROR";
+        return Redirect::back()->withInput()->withErrors($validator);
+    }
+
 }
 
 ?>
