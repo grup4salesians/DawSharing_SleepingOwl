@@ -128,7 +128,7 @@ Publicar viatge
     <?php $arrayVehicles[] = $veh->vehicle; ?>
     @endforeach
 
-    <h1>El meu Perfil</h1>
+    <h1>Publicar Viatge</h1>
     <div id="nav_perfil">
         <div class="active">
             <div id="Pas-1" class="btn_a">Pas 1 <p>On vols anar?</p></div>
