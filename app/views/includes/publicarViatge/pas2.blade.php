@@ -10,8 +10,8 @@
         });
     });
  </script>
-<div id="cont-Pas-2" style="display: none" class="testtest PublicarViatge_CampsPas2 col-md-6">
-    <div class="form-group">
+<div id="cont-Pas-2" style="display: none" class="visible testtest PublicarViatge_CampsPas2 col-md-6">
+    <div class="form-group" style="display:inline-block;margin-right:200px;">
         {{ Form::label('Freqüencia') }}</br>
 
         {{ Form::radio('frequencia', 'data_concreta', true, array('id' => 'data_concreta')) }}  
@@ -21,7 +21,7 @@
         {{ Form::label('viatge_periodic','Viatge Periòdic', array('style'=>'font-weight:normal;')) }} 
         
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:inline-block;">
         {{ Form::label('Tipus') }}</br>
         
         {{ Form::radio('tipus', 'anada', true, array('id' => 'anada')) }}
@@ -31,12 +31,43 @@
         {{ Form::label('anadaitornada','Anada i tornada', array('style'=>'font-weight:normal;')) }} 
         
     </div>   
-    <div class="form-group">
+    </p>
+    <div class="form-group" id="anadaConcreta" style="display:inline-block;margin-right: 88px;">
         {{ Form::label('andaData', 'Anada') }}
         <div id="sandbox-container" style="width:230px;">
             <div class="input-group date">
-                <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                <input disabled type="text" class="form-control" style="cursor: inherit;" value="{{date('d-m-Y')}}"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
             </div>
         </div>
+    </p>
+        {{ Form::label('anadaHora', 'Hora') }}
+        <div class="input-group bootstrap-timepicker" style="width: 206px;">
+            <input id="anadaHora" type="text" class="form-control">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
+ 
+        <script type="text/javascript">
+            $('#anadaHora').timepicker();
+        </script>
     </div>
+    <div class="form-group" id="tornadaConcreta" style="display:inline-block;">
+        {{ Form::label('tornadaData', 'Tornada') }}
+        <div id="sandbox-container" style="width:230px;">
+            <div class="input-group date">
+                <input disabled type="text" class="form-control" style="cursor: inherit;" value="{{date('d-m-Y')}}"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+            </div>
+        </div>
+    </p>
+        {{ Form::label('tornadaHora', 'Hora') }}
+        <div class="input-group bootstrap-timepicker" style="width: 206px;">
+            <input id="tornadaHora" type="text" class="form-control">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
+ 
+        <script type="text/javascript">
+            $('#tornadaHora').timepicker();
+        </script>
+    </div>
+
+    <!-- Checkbox per periodic-->
 </div>

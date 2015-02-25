@@ -39,3 +39,7 @@
 <link rel="stylesheet" href="css/datepicker3.css">
 
 <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap-timepicker.min.css">
+
+<script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
