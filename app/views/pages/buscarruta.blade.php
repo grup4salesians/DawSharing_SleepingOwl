@@ -13,14 +13,14 @@ $origen = Input::get('searchTextField');
 $destino = Input::get('searchTextFieldFin');
 ?>
 
-<div class="paginacontactar">
+<div class="paginabuscar">
     <div class="rooms text-center">
-        <span style="text-align:center;font-size:25px;font-weight:bold;">Viatges des de {{Input::get('searchTextField')}}  fins a {{Input::get('searchTextFieldFin')}}</span>
+        <span style="text-align:center;font-size:25px;font-weight:bold;margin-top:20px;"><h1>Viatges des de ({{Input::get('searchTextField')}}  fins a {{Input::get('searchTextFieldFin')}})</h1></span>
 
 <?php $idrutas = Ruta::where('inici_ruta', 'LIKE', "%$origen%")->where('fi_ruta', 'LIKE', "%$destino%")->get(); 
 
 if(count($idrutas) < 1){ 
-    echo '<h2> No hi ha rutes amb el origen i destí seleccionats</h2>';
+    echo '<h2 style="margin-top:20px";> No hi ha rutes amb el origen i destí seleccionats</h2>';
 }
 else{ ?>
     <div style="margin:auto; width: 80%;">
