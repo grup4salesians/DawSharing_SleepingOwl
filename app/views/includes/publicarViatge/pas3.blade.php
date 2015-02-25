@@ -31,7 +31,7 @@
             ?>
             <div class="form-group">
                 <div class="Pas3Labels">{{ Form::label($valor, $valor) }} </div>
-                {{ Form::radio('Datos_'+$i, $valor+'_si') }}
+                {{ Form::radio('Datos_'+$i, $valor+'_si',true) }}
                 {{ Form::label('Si', 'Si',array('class'=>'PublicarViatge_DivSI')) }}
                 {{ Form::radio('Datos_'+$i, $valor+'_no') }}
                 {{ Form::label('No', 'No') }}
