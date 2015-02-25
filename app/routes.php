@@ -27,7 +27,7 @@ Route::post('contactar', 'ContactarController@postFormulari'); //Validamos los d
 Route::post('buscarruta','BuscarController@showrutas'); //Nos mostrará las rutas buscadas
 
 Route::get('publicarViatge','PublicarViatgeController@showpublicar');
- Route::post('publicarViatge','PublicarViatgeController@showpublicar');
+ Route::post('publicarViatge','PublicarViatgeController@InsertarDatos');
  
 // Nos indica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function() {

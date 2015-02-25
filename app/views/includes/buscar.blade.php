@@ -38,13 +38,15 @@
                     </div>
                 </li>
                 <li class="span1_of_3">
-                    {{ Form::open(array('url' => '/publicarViatge')) }}
+                    <!--{{ Form::open(array('url' => '/publicarViatge')) }}-->
                     <div class="date_btn">
                         <input type="text" style="display:none;" id="PublicarViatgeOrigen" name="PublicarViatgeOrigen">
                         <input type="text" style="display:none;" id="PublicarViatgeDesti" name="PublicarViatgeDesti">
 
-                        {{ Form::submit('Publicar',array('class'=> 'Registre_button','name'=>'Publicar','onclick'=>'CopiarValoresInput()'))}}
-                        {{ Form::close() }}
+                        <a href="<?php echo Config::get('constants.BaseUrl') ?>public/publicarViatge">
+                            {{ Form::submit('Publicar',array('class'=> 'Registre_button','name'=>'Publicar','onclick'=>'CopiarValoresInput()'))}}
+                        </a>
+                        <!--{{ Form::close() }}-->
                     </div>
                 </li>
                 <div class="clearfix"></div>
