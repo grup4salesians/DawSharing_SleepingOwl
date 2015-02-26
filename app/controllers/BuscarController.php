@@ -8,6 +8,7 @@ public function showrutas() {
             'searchTextFieldFin' => Input::get('searchTextFieldFin'),
         'fecha' => Input::get('fecha'),
         'fecha1' => Input::get('fecha1'),
+        'preumax' => Input::get('preumax'),
         );
         $rules = [
             'searchTextField' => 'required',

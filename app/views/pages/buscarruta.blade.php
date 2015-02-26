@@ -31,7 +31,8 @@ $idrutas = Ruta::where('inici_ruta', 'LIKE', "%$origen%")->where('fi_ruta', 'LIK
 if(!(empty(Input::get('fecha')))){
   $fecha = Input::get('fecha');  
   $fecha1 = Input::get('fecha1');
-  $viatges = Viatge::whereBetween('data',array("$fecha","$fecha1"))->orderBy('data','asc')->get();
+   $preumax = Input::get('preumax');
+  $viatges = Viatge::whereBetween('data',array("$fecha","$fecha1"))->where('preu','<=',"$preumax")->orderBy('data','asc')->get();
 }else{
     $viatges = Viatge::where('data','>=',"$fechaactual")->orderBy('data','asc')->get();
 }
@@ -45,10 +46,10 @@ else{ ?>
              {{ Form::open(array('url' => '/buscarruta')) }}
            Des de <input type="date" value="<?php echo $fechaactual ?>" id="fecha" name="fecha">
            Fins a <input type="date" value="<?php echo $fechaactual1 ?>" id="fecha1" name="fecha1">
-            
+          Preu máxim <input type="number" placeholder="preu max" id="preumax" name="preumax" value="20" style="width:80px;">
             <input id="searchTextField" type="hidden" name="searchTextField" value="<?php echo $origen ?>">
             <input id="searchTextFieldFin" type="hidden" name="searchTextFieldFin" value="<?php echo $destino ?>">
-            <input type="submit"> 
+            <input type="submit" value="Filtrar"> 
           {{ Form::close() }}        
         </div>
 
