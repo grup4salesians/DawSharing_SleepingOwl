@@ -6,6 +6,8 @@ public function showrutas() {
     $userdata = array(
             'searchTextField' => Input::get('searchTextField'),
             'searchTextFieldFin' => Input::get('searchTextFieldFin'),
+        'fecha' => Input::get('fecha'),
+        'fecha1' => Input::get('fecha1'),
         );
         $rules = [
             'searchTextField' => 'required',

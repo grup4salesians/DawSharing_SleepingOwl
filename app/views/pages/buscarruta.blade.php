@@ -11,26 +11,50 @@ Contacta amb nosaltres!
 <?php
 $origen = Input::get('searchTextField');
 $destino = Input::get('searchTextFieldFin');
+
+
+
 ?>
 
 <div class="paginabuscar">
     <div class="rooms text-center">
         <span style="text-align:center;font-size:25px;font-weight:bold;margin-top:20px;"><h1>Viatges des de ({{Input::get('searchTextField')}}  fins a {{Input::get('searchTextFieldFin')}})</h1></span>
-
 <?php 
 $año = date("Y");
        $mes = date("m");
        $dia = date("j");
+       $dia1 = date("j")+1;
        $fechaactual = $año.'-'.$mes.'-'.$dia;
+       $fechaactual1 = $año.'-'.$mes.'-'.$dia1;
+       
 $idrutas = Ruta::where('inici_ruta', 'LIKE', "%$origen%")->where('fi_ruta', 'LIKE', "%$destino%")->get(); 
+if(!(empty(Input::get('fecha')))){
+  $fecha = Input::get('fecha');  
+  $fecha1 = Input::get('fecha1');
+  $viatges = Viatge::whereBetween('data',array("$fecha","$fecha1"))->orderBy('data','asc')->get();
+}else{
+    $viatges = Viatge::where('data','>=',"$fechaactual")->orderBy('data','asc')->get();
+}
 
-if(count($idrutas) < 1){ 
+
+if(count($viatges) < 1){ 
     echo '<h2 style="margin-top:20px";> No hi ha rutes amb el origen i destí seleccionats</h2>';
 }
 else{ ?>
+         <div class="filtrar">
+             {{ Form::open(array('url' => '/buscarruta')) }}
+           Des de <input type="date" value="<?php echo $fechaactual ?>" id="fecha" name="fecha">
+           Fins a <input type="date" value="<?php echo $fechaactual1 ?>" id="fecha1" name="fecha1">
+            
+            <input id="searchTextField" type="hidden" name="searchTextField" value="<?php echo $origen ?>">
+            <input id="searchTextFieldFin" type="hidden" name="searchTextFieldFin" value="<?php echo $destino ?>">
+            <input type="submit"> 
+          {{ Form::close() }}        
+        </div>
+
     <div style="margin:auto; width: 80%;">
             <?php
-            $viatges = Viatge::where('data','>',"$fechaactual")->orderBy('id', 'desc')->get();
+            
             ?>
             @foreach($idrutas as $idruta)
             @foreach($viatges as $key => $val)
@@ -39,6 +63,7 @@ else{ ?>
                 <?php
                 $ruta = Ruta::where('id', '=', $idruta->id)->get();
                 $ruta1 = new blockRuta($val->id, $val->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $val->preu, $val->numSeientRestant, $val->permissos);
+
                 ?>
                 {{ $ruta1->mostrarMapa() }}
                 <div style="width: 10px;"></div>
