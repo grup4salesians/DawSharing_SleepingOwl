@@ -44,8 +44,8 @@
     <div id="linea"></div>
     <div class="form-group">
         {{ Form::label('NumPlaces', 'Número de places:') }}
-        {{ Form::text('NumPlaces', Input::old('NumPlaces'),array('class' => 'PublicarViatge_TextBox','id'=>'numplaces','onKeyPress'=>'return numbersonly(this, event)')) }}
-        {{ Form::text('EuroPlaça', Input::old('EuroPlaça'),array('class' => 'PublicarViatge_TextBox','id'=>'valorplaça','onKeyPress'=>'return numbersonly(this, event)')) }}
+        {{ Form::text('NumPlaces', Input::old('NumPlaces'),array('class' => 'PublicarViatge_TextBox','id'=>'numplaces',"MAXLENGTH"=>1,'onKeyPress'=>'return numbersonly(this, event)')) }}
+        {{ Form::text('EuroPlaça', Input::old('EuroPlaça'),array('class' => 'PublicarViatge_TextBox','id'=>'valorplaça',"MAXLENGTH"=>2,'onKeyPress'=>'return numbersonly(this, event)')) }}
         {{ Form::label('EuroPlaça', '€/Plaça') }}
     </div>
     {{ Form::label('Comentaris', 'Comentaris:',array('style'=>'width: 100%;')) }}
