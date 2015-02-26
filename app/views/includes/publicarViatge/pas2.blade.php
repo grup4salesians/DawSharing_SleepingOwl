@@ -24,10 +24,6 @@
         
         $('#tornadaData').toggle();
         $('#tornadaPeriodic').toggle();
-        
-
-        $(idsMostrar).show();
-
     }
  </script>
 <div id="cont-Pas-2" style="display: none" class="testtest PublicarViatge_CampsPas2 col-md-6">
