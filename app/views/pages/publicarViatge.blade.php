@@ -111,6 +111,11 @@ Publicar viatge
             width: 300px;
             float: right;
         }
+        .PublicarViatge_Alert{
+            height: 65px;
+            width: 540px;
+            margin-top: 120px;
+        }
     </style>
 
     <?php
@@ -137,54 +142,57 @@ Publicar viatge
             <div id="Pas-2" class="btn_a">Pas 2 <p>Quan hi vols anar?</p></div>
         </div>
         <div>
-            <div id="Pas-3" class="btn_a">Pas 3</div>
+            <div id="Pas-3" class="btn_a">Pas 3 <p>Comentaris</p></div>
         </div>
     </div>
-    {{ Form::open(array('url' => '/publicarViatge')) }}
+
+    <div id="Error" class="PublicarViatge_Alert alert alert-danger">
+        No has introduit les dades. <br/>
+        Revisa que les hagis introduit correctament.
+    </div>
+
+    {{ Form::open(array('url' => '/publicarViatge','id'=>'PublicarViatge_Form')) }}
 
     <div id="content_perfil" class="clear">
-       
-            @include('includes.publicarViatge.pas1')
 
-            @include('includes.publicarViatge.pas2')
+        @include('includes.publicarViatge.pas1')
 
-            @include('includes.publicarViatge.pas3')
-            <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
-                <div id="map_canvas" class="PublicarViatge_MapCanvas"></div>
-                <div id="MapaDistancia">
-                    <span class="PublicarViarge_Distancia">  Distància: </span> <div id="distance"> </div> <!--El div distance es para poner la distancia, lo calcula ApiGoogleViatgeDetalls.js-->
-                </div>
+        @include('includes.publicarViatge.pas2')
+
+        @include('includes.publicarViatge.pas3')
+        <div id="Mapa" class="PublicarViatge_Mapa col-md-6">
+            <div id="map_canvas" class="PublicarViatge_MapCanvas"></div>
+            <div id="MapaDistancia">
+                <span class="PublicarViarge_Distancia">  Distància: </span> <div id="distance"> </div> <!--El div distance es para poner la distancia, lo calcula ApiGoogleViatgeDetalls.js-->
             </div>
+        </div>
 
-            <div id="BotonesAdelanteAtras">
-                <div id="Seguent" class="btn_a btn_c">Següent</div>
-                {{ Form::submit('Publicar Viatge',array('class'=> 'Registre_button','id'=>'Publicar'))}}
-            </div>
+        <div id="BotonesAdelanteAtras">
+            <div id="Seguent" class="btn_a btn_c">Següent</div>
+            {{ Form::button('Publicar Viatge',array('class'=> 'Registre_button','id'=>'Publicar'))}}
+        </div>
     </div>
     <div style="clear:both;"></div>
     {{ Form::close() }}
     <script>
 $(document).ready(function () {
-    $("#Publicar").css("display", "none");  //Oculta el botón de publicar viage
+    $("#Error").hide(); //Oculta el div error
+    $("#Publicar").css("display", "none"); //Oculta el botón de publicar viage
 
-    if ($("#meuVehicle option:selected").text() === "Afegir Vehicle") {
+    if ($("#meuVehicle option:selected").text() === "Afegir Vehicle") { //En caso de que no haya vehículos, muestra botón para añadirlos
         $("#meuVehicle").css("display", "none");
     }
     else {
         $("#btnAfegirVehicle").css("display", "none");
     }
 
-    function eventoXunguArnau(id) {
-        $("#nav_perfil > div").removeClass("active");
-        $("#" + id).parent().addClass("active");
-        $("#content_perfil > div").removeClass("visible");
-        $("#cont-" + id).addClass("visible");
-    }
     $("#Seguent").click(function () {
-        if (ComprobarItemsForm1()) {
-            var num_pestanyes = $("#content_perfil > .testtest").length;
-            var current_div = $(".visible").attr("id");
-            var num = current_div.split("-")[2];
+        var num_pestanyes = $("#content_perfil > .testtest").length;
+        var current_div = $(".visible").attr("id");
+        var num = current_div.split("-")[2];
+
+        if (comprobacionForms(num)) {
+            $("#Error").hide();
             eventoXunguArnau("Pas-" + (parseInt(num) + 1));
             if (num >= num_pestanyes - 1) {
                 $("#Seguent").css("display", "none");
@@ -192,15 +200,51 @@ $(document).ready(function () {
             }
         }
         else {
-            alert("No has llenado todos los campos");
+            $("#Error").show();
+        }
+
+    });
+
+    $("#Publicar").click(function () { //Cuando se le da al botón de publicar, comprueba que los datos estén llenos, y en caso afirmativo hace el submit del form
+        if (comprobacionForms(3)) {
+            $("#PublicarViatge_Form").submit();
+        } else {
+            $("#Error").show();
         }
     });
-    function ComprobarItemsForm1() {
+
+    function eventoXunguArnau(id) {
+        $("#nav_perfil > div").removeClass("active");
+        $("#" + id).parent().addClass("active");
+        $("#content_perfil > div").removeClass("visible");
+        $("#cont-" + id).addClass("visible");
+    }
+
+    function comprobacionForms(num) {   //switch case para que valide según el número de paso que estamos.
+        var dadesOk = false;
+        switch (parseInt(num)) {
+            case 1:
+                dadesOk = ComprobarItemsForm1();
+                break;
+            case 2:
+                dadesOk = true;
+                break;
+            case 3:
+                dadesOk = ComprobarItemsForm3();
+                break;
+        }
+        return dadesOk;
+    }
+    function ComprobarItemsForm1() {  //Comprueba que estén llenos los valores del paso 1
         if (($("#searchTextField").val()) && ($("#searchTextFieldFin").val()) && ($("#meuVehicle option:selected").text() !== "Afegir Vehicle")) {
             return true;
         }
     }
-
+    function ComprobarItemsForm3() { //Comprueba que estén llenos los valores del paso 3
+        if (($("#numplaces").val()) && ($("#valorplaça").val())) {
+            return true;
+        }
+    }
 });
     </script>    
 </div>

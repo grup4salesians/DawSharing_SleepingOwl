@@ -1,11 +1,4 @@
 <div id="cont-Pas-1" style="display: none" class="visible PublicarViatge_CampsPas1 col-md-6 testtest">
-    @if ($errors->has())
-    <div class="alert alert-danger">
-        @foreach ($errors->all() as $error)
-        {{ $error }}<br>        
-        @endforeach
-    </div>
-    @endif
     <div class="form-group">
         {{ Form::label('MeuVehicle', 'El meu vehicle') }}
         {{ Form::select('meuVehicle', $arrayVehicles,null,array('class' => 'PublicarViatge_Elementos','id'=>'meuVehicle')) }}

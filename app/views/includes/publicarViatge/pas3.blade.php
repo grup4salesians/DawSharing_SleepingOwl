@@ -44,10 +44,36 @@
     <div id="linea"></div>
     <div class="form-group">
         {{ Form::label('NumPlaces', 'Número de places:') }}
-        {{ Form::text('NumPlaces', Input::old('NumPlaces'),array('class' => 'PublicarViatge_TextBox')) }}
-        {{ Form::text('EuroPlaça', Input::old('EuroPlaça'),array('class' => 'PublicarViatge_TextBox')) }}
+        {{ Form::text('NumPlaces', Input::old('NumPlaces'),array('class' => 'PublicarViatge_TextBox','id'=>'numplaces','onKeyPress'=>'return numbersonly(this, event)')) }}
+        {{ Form::text('EuroPlaça', Input::old('EuroPlaça'),array('class' => 'PublicarViatge_TextBox','id'=>'valorplaça','onKeyPress'=>'return numbersonly(this, event)')) }}
         {{ Form::label('EuroPlaça', '€/Plaça') }}
     </div>
     {{ Form::label('Comentaris', 'Comentaris:',array('style'=>'width: 100%;')) }}
     {{ Form::textarea('comentaris',null,array('class'=>'PublicarViatge_TexArea')) }}
 </div>
+
+<SCRIPT TYPE="text/javascript">
+
+    function numbersonly(myfield, e, dec)    {
+        var key;
+        var keychar;
+
+        if (window.event)
+            key = window.event.keyCode;
+        else if (e)
+            key = e.which;
+        else
+            return true;
+        keychar = String.fromCharCode(key);
+        if ((key == null) || (key == 0) || (key == 8) || (key == 9) || (key == 13) || (key == 27))
+            return true;
+        else if ((("0123456789").indexOf(keychar) > -1))
+            return true;
+        else if (dec && (keychar == ".")){
+            myfield.form.elements[dec].focus();
+            return false;
+        }
+        else
+            return false;
+    }
+</SCRIPT>
