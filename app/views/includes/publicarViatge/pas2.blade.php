@@ -47,7 +47,7 @@
         {{ Form::label('anadaitornada','Anada i tornada', array('style'=>'font-weight:normal;')) }} 
         
     </div>   
-    </p>
+    <p/>
     <div class="form-group" style="display:inline-block;margin-right: 17px;">
         {{ Form::label('andaData', 'Anada') }}
         <div id="anadaData">
@@ -66,7 +66,7 @@
             {{Form::checkbox('aDs','Ds', false, array('id' => 'aDs'))}} {{Form::label('aDs','Ds')}}&nbsp;
             {{Form::checkbox('aDg','Dg', false, array('id' => 'aDg'))}} {{Form::label('aDg','Dg')}}&nbsp;
         </div>
-    </p>
+    <p/>
             {{ Form::label('anadaHora', 'Hora') }}
         <div id="anadaHora">
             <div class="input-group bootstrap-timepicker" style="width: 206px;">
@@ -98,7 +98,7 @@
                 {{Form::checkbox('tDs','Ds', false, array('id' => 'tDs'))}} {{Form::label('tDs','Ds')}}&nbsp;
                 {{Form::checkbox('tDg','Dg', false, array('id' => 'tDg'))}} {{Form::label('tDg','Dg')}}&nbsp;
             </div>
-            </p>
+            <p/>
 
                 {{ Form::label('tornadaHora', 'Hora') }}
             <div id="tornadaHora">
