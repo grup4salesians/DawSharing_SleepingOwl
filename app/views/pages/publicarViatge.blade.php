@@ -227,7 +227,7 @@ $(document).ready(function () {
                 dadesOk = ComprobarItemsForm1();
                 break;
             case 2:
-                dadesOk = true;
+                dadesOk = ComprobarItemsForm2();
                 break;
             case 3:
                 dadesOk = ComprobarItemsForm3();
@@ -239,6 +239,33 @@ $(document).ready(function () {
         if (($("#searchTextField").val()) && ($("#searchTextFieldFin").val()) && ($("#meuVehicle option:selected").text() !== "Afegir Vehicle")) {
             return true;
         }
+    }
+    function ComprobarItemsForm2() { //Comprueba que estén llenos los valores del paso 2
+        var anadaPeriodic = 0;
+        var tornadaPeriodic = 0;
+        if ($("#viatge_periodic").is(':checked')) {
+            if ($("#anadaitornada").is(':checked')) {
+                $('#tornadaPeriodic input:checked').each(function () {
+                    var sThisVal = (this.checked ? "1" : "0");
+                    tornadaPeriodic += parseInt(sThisVal);
+                });
+            }
+            $('#anadaPeriodic input:checked').each(function () {
+                var sThisVal = (this.checked ? "1" : "0");
+                anadaPeriodic += parseInt(sThisVal);
+            });
+            if ((($("#anadaitornada").is(':checked') && tornadaPeriodic > 0)) && (($("#viatge_periodic").is(':checked') && anadaPeriodic > 0))) {
+                return true;
+            }
+            else if (($("#viatge_periodic").is(':checked') && anadaPeriodic > 0) && (!$("#anadaitornada").is(':checked'))) {
+                return true;
+            }
+            else {
+                return false;
+            }
+
+        }
+        else{return true;}
     }
     function ComprobarItemsForm3() { //Comprueba que estén llenos los valores del paso 3
         if (($("#numplaces").val()) && ($("#valorplaça").val())) {

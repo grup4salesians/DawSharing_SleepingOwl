@@ -54,7 +54,7 @@
 
 <SCRIPT TYPE="text/javascript">
 
-    function numbersonly(myfield, e, dec)    {
+    function numbersonly(myfield, e, dec)    {  //no deja introducir texto, solo numeros
         var key;
         var keychar;
 
