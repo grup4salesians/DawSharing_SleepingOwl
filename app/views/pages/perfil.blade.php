@@ -112,9 +112,11 @@ Perfil
             width: 100%;
             margin-bottom: 8px
         }
-        
         #canviarEmail > .alerta {
             color: red;
+            display: none;
+        }
+        .cancelar {
             display: none;
         }
         .pointer:hover {
@@ -225,25 +227,28 @@ Perfil
             <div class="fila">
                 <div id="canviarEmail" class="col-sm-4">
                     <h3>Email</h3>
-                    <p><?php echo $userdata->correu ?></p>
+                    <p id="correu"><?php echo $userdata->correu ?></p>
                     <input id="inputEmail" type="email" value="" placeholder="Nou email">
                     <input id="inputEmail2" type="email" value="" placeholder="Confirmar nou email">
                     <p class="alerta">Els correus no coincideixen</p>
-                    <a class="pointer">Canviar</a>
+                    <a class="pointer canviar">Canviar</a>
+                    <a class="pointer cancelar">Cancel·lar</a>
                 </div>
                 <div id="canviarPass" class="col-sm-4">
                     <h3>Contrasenya</h3>
-                    <p>********</p>
-                    <input type="password" value="" placeholder="Contrasenya antiga">
-                    <input type="password" style='display: none; float: left; width: 100%;' value="" placeholder="Contrasenya nova">
-                    <input type="password" style='display: none; float: left; width: 100%;' value="" placeholder="Confirmar la nova contrasenya">
-                    <a class="pointer">Canviar</a>
+                    <p id="contrasenya">********</p>
+                    <input id="inputPassOld" type="password" value="" placeholder="Contrasenya antiga">
+                    <input id="inputPassNew" type="password" style='display: none; float: left; width: 100%;' value="" placeholder="Contrasenya nova">
+                    <input id="inputPassNew2" type="password" style='display: none; float: left; width: 100%;' value="" placeholder="Confirmar la nova contrasenya">
+                    <a class="pointer canviar">Canviar</a>
+                    <a class="pointer cancelar">Cancel·lar</a>
                 </div>
                 <div id="canviarTlf" class="col-sm-4">
                     <h3>Telèfon</h3>
-                    <p><?php echo $userdata->telefon ?></p>
-                    <input type="tel" style='display: none; float: left; width: 100%;' value="" placeholder="Nou telèfon">
-                    <a class="pointer">Canviar</a>
+                    <p id="telefon"><?php echo $userdata->telefon ?></p>
+                    <input id="inputTlf" type="tel" style='display: none; float: left; width: 100%;' value="" placeholder="Nou telèfon">
+                    <a class="pointer canviar">Canviar</a>
+                    <a class="pointer cancelar">Cancel·lar</a>
                 </div>
             </div>
             <div class="fila">
@@ -280,7 +285,7 @@ Perfil
                     <div class="col-sm-4"></div>
                 </div>
                 <?php
-                echo "<script>console.log(JSON.stringify(" . $vehicle . "))</script>";
+//                echo "<script>console.log(JSON.stringify(" . $vehicle . "))</script>";
             }
             ?>
 
@@ -328,56 +333,171 @@ Perfil
 
             });
 
-            $("#canviarEmail a").on("click", canviarExtres("canviarEmail"));
-            $("#canviarPass a").on("click", canviarExtres("canviarPass"));
-            $("#canviarTlf a").on("click", canviarExtres("canviarTlf"));
+            $("#canviarEmail .canviar").on("click", function () {
+                canviarExtres("canviarEmail")
+            });
+            $("#canviarPass .canviar").on("click", function () {
+                canviarExtres("canviarPass")
+            });
+            $("#canviarTlf .canviar").on("click", function () {
+                canviarExtres("canviarTlf")
+            });
+
+            $("#canviarEmail .cancelar").on("click", function () {
+                tancar("canviarEmail")
+            });
+            $("#canviarPass .cancelar").on("click", function () {
+                tancar("canviarPass")
+            });
+            $("#canviarTlf .cancelar").on("click", function () {
+                tancar("canviarTlf")
+            });
+
+            function tancar(id) {
+                id = "#" + id;
+                
+                if(id === "#canviarEmail") {
+                    $(id + " #correu").css("display", "block");
+                } else if (id === "#canviarPass") {
+                    $(id + " #contrasenya").css("display", "block");
+                } else if (id === "#canviarTlf") {
+                    $(id + " #telefon").css("display", "block");
+                }
+                
+                $(id + " .alerta").css("display", "none");
+                $(id + " input").css("display", "none").val("");
+                $(id + " .cancelar").css("display", "none");
+                
+                $(id).removeClass("mod");
+            }
 
             function canviarExtres(id) {
-                $("#" + id + " a").on("click", function () {
-                    if ($("#" + id).hasClass("mod")) {
+                id = "#" + id;
 
-                        $("#" + id + " p").css("display", "block");
-                        $("#" + id + " input").css("display", "none");
+                if ($(id).hasClass("mod")) {
 
-                        $("#" + id).removeClass("mod");
+                    $(id + " p").css("display", "block");
+                    $(id + " input").css("display", "none");
 
-                        if (id === "canviarEmail") {
-                            // if email = "" or email != email2
-                            if (($("#inputEmail").val() === "") || ($("#inputEmail").val() !== $("#inputEmail2").val())) {
-                                $("#" + id + " p").css("display", "none");
-                                $("#" + id + " input").css("display", "block");
+                    $(id).removeClass("mod");
 
-                                $("#" + id).addClass("mod");
-                                
-                                $("#" + id + " .alerta").css("display", "block");
-                            } else {
-                                $.ajax({
-                                    type: 'POST',
-                                    url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/perfilQueries.php',
-                                    data: {id: '<?php $userdata->id ?>', email: $("#inputEmail").val()},
-                                    success: function (data) {
-                                        console.log("Success:" + data);
-                                    },
-                                    error: function (data) {
-                                        console.log("Error: " + data);
+                    if (id === "#canviarEmail") {
+                        // if email = "" or email != email2
+                        if (($("#inputEmail").val() === "") || ($("#inputEmail").val() !== $("#inputEmail2").val())) {
+                            $(id + " p").css("display", "none");
+                            $(id + " input").css("display", "block");
 
-                                    }
-                                });
-                            }
+                            $(id).addClass("mod");
 
-                        } else if (id === "canviarPass") {
-                            //insert
-                        } else if (id === "canviarTlf") {
-                            //insert
+                            $(id + " .alerta").css("display", "block");
+                        } else {
+                            $(id + " .alerta").css("display", "none");
+
+                            var correu = $("#inputEmail").val();
+                            
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/perfilQueries.php',
+                                data: {id: '<?php echo $userdata->id ?>', email: correu},
+                                success: function (data) {
+                                    $("#correu").html(correu);
+                                },
+                                error: function (data) {
+                                    console.log("Error: " + data);
+
+                                }
+                            });
+                            
+                            $(id + " input").val("");
                         }
 
-                    } else {
-                        $("#" + id + " p").css("display", "none");
-                        $("#" + id + " input").css("display", "block");
+                    } else if (id === "#canviarPass") {
+                        $.ajax({
+                            type: 'POST',
+                            url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/perfilQueries.php',
+                            data: {comparar_pass: $("#inputPassOld").val(), id: '<?php echo $userdata->id ?>', pass: $("#inputPassNew").val()},
+                            success: function (data) {
+                                if(data === "pass_updated") {
+                                    
+                                    
+                                    $(id + " p").css("display", "block");
+                                    $(id + " input").css("display", "none");
+                                    $(id + " .alerta").css("display", "none");
+                                }
+                                else {
+                                    console.log(data);
+                                }
+                            },
+                            error: function (data) {
+                                console.log("Ajax error: " + data);
+                            }
+                        });
+                        // que els dos nous son iguals
+                        if (true) {
+                            $(id + " p").css("display", "none");
+                            $(id + " input").css("display", "block");
 
-                        $("#" + id).addClass("mod");
+                            $(id).addClass("mod");
+
+                            $(id + " .alerta").css("display", "block");
+                        } else {
+                            $(id + " .alerta").css("display", "none");
+
+                            var password = $("").val();
+                            
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/perfilQueries.php',
+                                data: {id: '<?php echo $userdata->id ?>', pass: password},
+                                success: function (data) {
+                                    $("#correu").html(correu);
+                                },
+                                error: function (data) {
+                                    console.log("Error: " + data);
+
+                                }
+                            });
+                            
+                            $(id + " input").val("");
+                        }
+                    } else if (id === "#canviarTlf") {
+                        // if email = "" or email != email2
+                        if (($("#inputEmail").val() === "") || ($("#inputEmail").val() !== $("#inputEmail2").val())) {
+                            $(id + " p").css("display", "none");
+                            $(id + " input").css("display", "block");
+
+                            $(id).addClass("mod");
+
+                            $(id + " .alerta").css("display", "block");
+                        } else {
+                            $(id + " .alerta").css("display", "none");
+
+                            var correu = $("#inputEmail").val();
+                            
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php echo Config::get('constants.BaseUrl') ?>app/views/others/perfilQueries.php',
+                                data: {id: '<?php echo $userdata->id ?>', email: correu},
+                                success: function (data) {
+                                    $("#correu").html(correu);
+                                },
+                                error: function (data) {
+                                    console.log("Error: " + data);
+
+                                }
+                            });
+                            
+                            $(id + " input").val("");
+                        }
                     }
-                });
+
+                } else {
+                    $(id + " p").css("display", "none");
+                    $(id + " input").css("display", "block");
+                    $(id + " .cancelar").css("display", "block");
+                    
+                    $(id).addClass("mod");
+                }
             }
             // Ajuntar 3 funcions en una
 
