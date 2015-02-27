@@ -1,12 +1,12 @@
 <?php
 
-$con = mysql_connect("localhost", "root", "");
-mysql_select_db("dawsharing", $con);
-mysql_set_charset("utf8");
-
-//$con = mysql_connect("jona-PC", "jona", "1234");
+//$con = mysql_connect("localhost", "root", "");
 //mysql_select_db("dawsharing", $con);
 //mysql_set_charset("utf8");
+
+$con = mysql_connect("jona-PC", "jona", "1234");
+mysql_select_db("dawsharing", $con);
+mysql_set_charset("utf8");
 
 if (isset($_POST['id'])) {
     if (isset($_POST['email'])) {
