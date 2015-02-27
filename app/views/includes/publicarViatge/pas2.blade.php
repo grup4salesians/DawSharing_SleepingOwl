@@ -58,13 +58,13 @@
             </div>
         </div>
         <div id="anadaPeriodic" style="display:none">
-            {{Form::checkbox('aDl','Dl', false, array('id' => 'aDl'))}} {{Form::label('aDl','Dl')}}&nbsp;
-            {{Form::checkbox('aDm','Dm', false, array('id' => 'aDm'))}} {{Form::label('aDm','Dm')}}&nbsp;
-            {{Form::checkbox('aDx','Dx', false, array('id' => 'aDx'))}} {{Form::label('aDx','Dx')}}&nbsp;
-            {{Form::checkbox('aDj','Dj', false, array('id' => 'aDj'))}} {{Form::label('aDj','Dj')}}&nbsp;
-            {{Form::checkbox('aDv','Dv', false, array('id' => 'aDv'))}} {{Form::label('aDv','Dv')}}&nbsp;
-            {{Form::checkbox('aDs','Ds', false, array('id' => 'aDs'))}} {{Form::label('aDs','Ds')}}&nbsp;
-            {{Form::checkbox('aDg','Dg', false, array('id' => 'aDg'))}} {{Form::label('aDg','Dg')}}&nbsp;
+            {{Form::checkbox('anadaPeriodicDies[]','Dl', false, array('id' => 'aDl'))}} {{Form::label('aDl','Dl')}}&nbsp;
+            {{Form::checkbox('anadaPeriodicDies[]','Dm', false, array('id' => 'aDm'))}} {{Form::label('aDm','Dm')}}&nbsp;
+            {{Form::checkbox('anadaPeriodicDies[]','Dx', false, array('id' => 'aDx'))}} {{Form::label('aDx','Dx')}}&nbsp;
+            {{Form::checkbox('anadaPeriodicDies[]','Dj', false, array('id' => 'aDj'))}} {{Form::label('aDj','Dj')}}&nbsp;
+            {{Form::checkbox('anadaPeriodicDies[]','Dv', false, array('id' => 'aDv'))}} {{Form::label('aDv','Dv')}}&nbsp;
+            {{Form::checkbox('anadaPeriodicDies[]','Ds', false, array('id' => 'aDs'))}} {{Form::label('aDs','Ds')}}&nbsp;
+            {{Form::checkbox('anadaPeriodicDies[]','Dg', false, array('id' => 'aDg'))}} {{Form::label('aDg','Dg')}}&nbsp;
         </div>
     <p/>
             {{ Form::label('anadaHora', 'Hora') }}
@@ -90,13 +90,13 @@
                 </div>
             </div>
             <div id="tornadaPeriodic" style="display:none">
-                {{Form::checkbox('tDl','Dl', false, array('id' => 'tDl'))}} {{Form::label('tDl','Dl')}}&nbsp;
-                {{Form::checkbox('tDm','Dm', false, array('id' => 'tDm'))}} {{Form::label('tDm','Dm')}}&nbsp;
-                {{Form::checkbox('tDx','Dx', false, array('id' => 'tDx'))}} {{Form::label('tDx','Dx')}}&nbsp;
-                {{Form::checkbox('tDj','Dj', false, array('id' => 'tDj'))}} {{Form::label('tDj','Dj')}}&nbsp;
-                {{Form::checkbox('tDv','Dv', false, array('id' => 'tDv'))}} {{Form::label('tDv','Dv')}}&nbsp;
-                {{Form::checkbox('tDs','Ds', false, array('id' => 'tDs'))}} {{Form::label('tDs','Ds')}}&nbsp;
-                {{Form::checkbox('tDg','Dg', false, array('id' => 'tDg'))}} {{Form::label('tDg','Dg')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dl', false, array('id' => 'tDl'))}} {{Form::label('tDl','Dl')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dm', false, array('id' => 'tDm'))}} {{Form::label('tDm','Dm')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dx', false, array('id' => 'tDx'))}} {{Form::label('tDx','Dx')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dj', false, array('id' => 'tDj'))}} {{Form::label('tDj','Dj')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dv', false, array('id' => 'tDv'))}} {{Form::label('tDv','Dv')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Ds', false, array('id' => 'tDs'))}} {{Form::label('tDs','Ds')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dg', false, array('id' => 'tDg'))}} {{Form::label('tDg','Dg')}}&nbsp;
             </div>
             <p/>
 

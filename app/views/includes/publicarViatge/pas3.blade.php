@@ -31,9 +31,9 @@
         ?>
         <div class="form-group">
             <div class="Pas3Labels">{{ Form::label($valor, $valor) }} </div>
-            {{ Form::radio('Datos_'+$i, $valor+'_si',true) }}
+            {{ Form::radio('Permisos_'.$i, $valor.'_si',true) }}
             {{ Form::label('Si', 'Si',array('class'=>'PublicarViatge_DivSI')) }}
-            {{ Form::radio('Datos_'+$i, $valor+'_no') }}
+            {{ Form::radio('Permisos_'.$i, $valor.'_no') }}
             {{ Form::label('No', 'No') }}
 
         </div>
@@ -44,8 +44,8 @@
     <div id="linea"></div>
     <div class="form-group">
         {{ Form::label('NumPlaces', 'Número de places:') }}
-        {{ Form::text('NumPlaces', Input::old('NumPlaces'),array('class' => 'PublicarViatge_TextBox','id'=>'numplaces',"MAXLENGTH"=>1,'onKeyPress'=>'return numbersonly(this, event)')) }}
-        {{ Form::text('EuroPlaça', Input::old('EuroPlaça'),array('class' => 'PublicarViatge_TextBox','id'=>'valorplaça',"MAXLENGTH"=>2,'onKeyPress'=>'return numbersonly(this, event)')) }}
+        {{ Form::text('NumPlaces', Input::old('NumPlaces'),array('class' => 'PublicarViatge_TextBox','id'=>'numplaces','name'=>'numplaces',"MAXLENGTH"=>1,'onKeyPress'=>'return numbersonly(this, event)')) }}
+        {{ Form::text('EuroPlaça', Input::old('EuroPlaça'),array('class' => 'PublicarViatge_TextBox','id'=>'valorplaça','name'=>'valorplaça', "MAXLENGTH"=>2,'onKeyPress'=>'return numbersonly(this, event)')) }}
         {{ Form::label('EuroPlaça', '€/Plaça') }}
     </div>
     {{ Form::label('Comentaris', 'Comentaris:',array('style'=>'width: 100%;')) }}

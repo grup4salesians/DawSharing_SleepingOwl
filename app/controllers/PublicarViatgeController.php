@@ -36,6 +36,7 @@ class PublicarViatgeController extends BaseController {
         //*********************  fi validacio pas 1  **********************\\
         //
         //*********************  validacio pas 2  **************************\\
+
         $dataHoraAnada = "";
         $dataHoraTornada = "";
 
@@ -51,20 +52,16 @@ class PublicarViatgeController extends BaseController {
                 $dataHoraTornada = $dataTornada . " " . $horaTornada;
             }
         }
-        
+        $DiesPeriodicsAnada = "";
+        $DiesPeriodicsTornada = "";
         if (Input::get('frequencia') == "viatge_periodic") {
-            //Input::get("DataAnada")
-            
-
+            $DiesPeriodicsAnada = SaberCheckBoxChekeados("anadaPeriodicDies");
             if (Input::get("tipus") == "anada_i_tornada") {
-                
+                $DiesPeriodicsTornada = SaberCheckBoxChekeados("tornadaPeriodicDies");
             }
         }
-        
-
 
         //*********************  fi validacio pas 2  ***********************\\
-        //
         //*********************  validacio pas 3  **************************\\
 
         $pas3 = array(
@@ -80,9 +77,46 @@ class PublicarViatgeController extends BaseController {
         if ($validatorPas3->fails()) {
             return Redirect::back()->withInput()->withErrors($validatorPas3);
         }
+
         //*********************  fi validacio pas 3  ***********************\\
+        $permisos = "";
+        $i = 0;
+          
+        $id_ruta = Ruta::where('inici_ruta', Input::get('searchTextField'))->where('fi_ruta', Input::get('searchTextFieldFin'))->get();
+        $id_usuari = Auth::user()->id;
+        $id_vehicle = ViewVehiclesUsuari::where('vehicle', Input::get("meuVehicle"))->where('usuaris_id', $id_usuari)->get();
+        $preu = Input::get('valorplaça');
+        $numseientdisponible = Input::get('numplaces');
+        $permissos = Caracteristiques::orderBy('id', 'desc')->get();
+        $permis = explode(";", $permissos[0]->permisosViatges);
+      
+        foreach ($permis as &$valor) {
+            $arrayPermisos = explode("_", Input::get('Permisos_' . $i));
+            if ($arrayPermisos[1] == "si") {
+                $permisos = $permisos . ";" . $arrayPermisos[0];
+            }
+            $i = $i + 1;
+        }
+        
+        $permisos = substr($permisos,1);
+        $data = date('d-m-Y H:i');
+        
+        if (Input::get('frequencia') == "viatge_periodic") {
+            //Insertamos cosas a tabla periodicitat
+        }
+        return Redirect::back()->withInput()->withErrors($data);
     }
 
 }
+?>
+<?php
 
+function SaberCheckBoxChekeados($array) {
+    $i = 0;
+    $DiesSeleccionats = "";
+    for ($i = 0; $i < sizeof(Input::get($array)); $i++) {
+        $DiesSeleccionats = $DiesSeleccionats . ";" . Input::get($array)[$i];
+    }
+    return $DiesSeleccionats;
+}
 ?>
