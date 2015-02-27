@@ -146,9 +146,16 @@ Publicar viatge
         </div>
     </div>
 
+    @if ($errors->has())
+    <div class="PublicarViatge_Alert alert alert-danger">
+        @foreach ($errors->all() as $error)
+        {{ $error }}<br>        
+        @endforeach
+    </div>
+    @endif
+
     <div id="Error" class="PublicarViatge_Alert alert alert-danger">
-        No has introduit les dades. <br/>
-        Revisa que les hagis introduit correctament.
+
     </div>
 
     {{ Form::open(array('url' => '/publicarViatge','id'=>'PublicarViatge_Form')) }}
@@ -201,6 +208,7 @@ $(document).ready(function () {
         }
         else {
             $("#Error").show();
+            $("#Error").html("No has introduit les dades. <br/> Revisa que les hagis introduit correctament.");
         }
 
     });
@@ -265,7 +273,9 @@ $(document).ready(function () {
             }
 
         }
-        else{return true;}
+        else {
+            return true;
+        }
     }
     function ComprobarItemsForm3() { //Comprueba que estén llenos los valores del paso 3
         if (($("#numplaces").val()) && ($("#valorplaça").val())) {

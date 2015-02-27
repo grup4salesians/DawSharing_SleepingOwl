@@ -53,7 +53,7 @@
         <div id="anadaData">
             <div id="sandbox-container" style="width:298px;">
                 <div class="input-group date">
-                    <input readonly type="text" class="form-control" style="cursor: inherit;" value="{{date('d-m-Y')}}"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                    <input readonly name="DataAnada" type="text" class="form-control" style="cursor: inherit;" value="{{date('d-m-Y')}}"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
             {{ Form::label('anadaHora', 'Hora') }}
         <div id="anadaHora">
             <div class="input-group bootstrap-timepicker" style="width: 206px;">
-                <input id="inAnadaHora" type="text" class="form-control">
+                <input id="inAnadaHora" name="inAnadaHora" type="text" class="form-control">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
             </div>
      
@@ -85,7 +85,7 @@
             <div id="tornadaData">
                 <div id="sandbox-container" style="width:298px;">
                     <div class="input-group date">
-                        <input readonly type="text" class="form-control" style="cursor: inherit;" value="{{date('d-m-Y')}}"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        <input readonly name="DataTornada" type="text" class="form-control" style="cursor: inherit;" value="{{date('d-m-Y')}}"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 {{ Form::label('tornadaHora', 'Hora') }}
             <div id="tornadaHora">
                 <div class="input-group bootstrap-timepicker" style="width: 206px;">
-                    <input id="inTornadaHora" type="text" class="form-control">
+                    <input id="inTornadaHora" name="inTornadaHora" type="text" class="form-control">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
          
