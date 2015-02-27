@@ -24,7 +24,7 @@ Mails
             <i onclick="Borrar()" class='fa fa-trash fa-3x'></i>
         </div>
 
-        
+       
         @foreach($missatges as $key => $missat)
         <?php
         $missatge = new email($missat->id, $missat->created_at, $missat->usuari_id, $missat->assumpte, $missat->contingut, $missat->vist);

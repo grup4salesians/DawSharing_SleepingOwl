@@ -8,7 +8,7 @@ class Correu extends SleepingOwlModel{
 	protected $hidden = ['created_at','updated_at'];
 
 	public function scopeDefaultSort($query){
-		return $query->orderBy('contingut', 'asc');
+		return $query->orderBy('created_at', 'desc');
 	}
         
         public function usuari(){
