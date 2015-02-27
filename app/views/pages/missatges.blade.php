@@ -16,7 +16,7 @@ Mails
     
     <div class="BandejaMails_Main">
         
-        <?php  $missatges = Correu::where('destinatari_id', Auth::user()->id)->orderBy('id', 'desc')->get(); 
+        <?php  $missatges = Correu::where('destinatari_id', Auth::user()->id)->orderBy('created_at', 'desc')->get(); 
         if(count($missatges)==0){
              echo '<h2>Tens 0 missatges</h2>'; }
              else{ ?>
