@@ -27,7 +27,7 @@ Mails
         
         @foreach($missatges as $key => $missat)
         <?php
-        $missatge = new email($missat->id, '15/02/2015', $missat->usuari_id, $missat->assumpte, $missat->contingut, $missat->vist);
+        $missatge = new email($missat->id, $missat->created_at, $missat->usuari_id, $missat->assumpte, $missat->contingut, $missat->vist);
         ?>
          
        
