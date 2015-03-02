@@ -22,8 +22,8 @@ $destino = Input::get('searchTextFieldFin');
 <?php 
 $año = date("Y");
        $mes = date("m");
-       $dia = date("j");
-       $dia1 = date("j")+1;
+       $dia = date("d");
+       $dia1 = date("d");
        $fechaactual = $año.'-'.$mes.'-'.$dia;
        $fechaactual1 = $año.'-'.$mes.'-'.$dia1;
        
@@ -44,9 +44,9 @@ if(count($viatges) < 1){
 else{ ?>
          <div class="filtrar">
              {{ Form::open(array('url' => '/buscarruta')) }}
-           Des de <input type="date" value="<?php echo $fechaactual ?>" id="fecha" name="fecha">
-           Fins a <input type="date" value="<?php echo $fechaactual1 ?>" id="fecha1" name="fecha1">
-          Preu máxim <input type="number" placeholder="preu max" id="preumax" name="preumax" value="20" style="width:80px;">
+           Des de <input type="date" value="<?php if(!(empty(Input::get('fecha')))){ echo Input::get('fecha');} else { echo $fechaactual; } ?>" id="fecha" name="fecha">
+           Fins a <input type="date" value="<?php if(!(empty(Input::get('fecha')))){ echo Input::get('fecha1');} else { echo $fechaactual1; } ?>" id="fecha1" name="fecha1">
+          Preu máxim <input type="number" placeholder="preu max" id="preumax" name="preumax" value="50" style="width:80px;">
             <input id="searchTextField" type="hidden" name="searchTextField" value="<?php echo $origen ?>">
             <input id="searchTextFieldFin" type="hidden" name="searchTextFieldFin" value="<?php echo $destino ?>">
             <input type="submit" value="Filtrar"> 
