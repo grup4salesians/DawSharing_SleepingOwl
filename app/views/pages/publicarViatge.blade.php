@@ -130,7 +130,7 @@ Publicar viatge
     }
     ?>
     @foreach($vehicles as $key => $veh)
-    <?php $arrayVehicles[] = $veh->vehicle; ?>
+    <?php $arrayVehicles[$veh->vehicle] = $veh->vehicle; ?>
     @endforeach
 
     <h1>Publicar Viatge</h1>
@@ -171,6 +171,9 @@ Publicar viatge
             <div id="map_canvas" class="PublicarViatge_MapCanvas"></div>
             <div id="MapaDistancia">
                 <span class="PublicarViarge_Distancia">  Distància: </span> <div id="distance"> </div> <!--El div distance es para poner la distancia, lo calcula ApiGoogleViatgeDetalls.js-->
+                <span class="PublicarViarge_Distancia">  Duració: </span> <div id="duration"> </div> 
+                <input type="hidden" id="hidden_distance" name="hidden_distance">
+                <input type="hidden" id="hidden_duration" name="hidden_duration">
             </div>
         </div>
 
@@ -215,7 +218,10 @@ $(document).ready(function () {
 
     $("#Publicar").click(function () { //Cuando se le da al botón de publicar, comprueba que los datos estén llenos, y en caso afirmativo hace el submit del form
         if (comprobacionForms(3)) {
+            //$("#PublicarViatge_Form").submit();
+
             $("#PublicarViatge_Form").submit();
+
         } else {
             $("#Error").show();
         }
@@ -245,6 +251,13 @@ $(document).ready(function () {
     }
     function ComprobarItemsForm1() {  //Comprueba que estén llenos los valores del paso 1
         if (($("#searchTextField").val()) && ($("#searchTextFieldFin").val()) && ($("#meuVehicle option:selected").text() !== "Afegir Vehicle")) {
+           
+            var distancia = document.getElementById("distance").innerHTML;
+            var duracio = document.getElementById("duration").innerHTML;
+
+            $("#hidden_distance").val(distancia);
+            $("#hidden_duration").val(duracio);
+            
             return true;
         }
     }
