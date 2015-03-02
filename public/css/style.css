@@ -2657,18 +2657,20 @@ select.arrival{
 
 
 /******************************** Block Ruta ********************************/
+.linkViatge {
+    text-decoration: none;
+    color: black;
+    height: 150px;
+    display: block;
+}
 .blockRuta {
-    /*    position: absolute;*/
+    position: absolute;
     width: 550px;
     height: 150px;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
     background-color: white;
-}
-.linkViatge {
-    text-decoration: none;
-    color: black;
 }
 .blockRuta h4 {
     margin: 0;

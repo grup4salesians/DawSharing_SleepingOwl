@@ -10,6 +10,5 @@ foreach ($passatgers as $key => $val) {
     echo $ruta1->mostrarMapa();
     echo $estatPassatger;
     echo '</div>';
-    echo '<button>Passatgers</button>';
 }
 ?>

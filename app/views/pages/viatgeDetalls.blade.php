@@ -184,6 +184,17 @@ Detalls del Viatge
                 width: 100%;')) }}
             @elseif($estat == "mmm")
                 {{ Form::button('Sol·licitar plaça', array('data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => 'Registre_button', 'style' => 'font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px;')) }}
+            @elseif($estat == "denegat")
+                {{ Form::button('Denegat', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
+                background-color: #d9534f;
+                border-radius: 5px;
+                border: 1px solid #d9534f;
+                display: inline-block;
+                color: #ffffff;
+                font-family: Arial;
+                padding: 8px;
+                text-decoration: none;
+                width: 100%;')) }}
             @else
                 {{ Form::button('Tancat', array('disabled','data-toggle' => 'modal','data-target' => '.bs-example-modal-sm', 'class' => '', 'style' => 'opacity: 0.5;font-size: 1.6em;font-weight: bold;margin-top: .5em;text-transform:uppercase;height: 62px; 
                 background-color: #d9534f;
