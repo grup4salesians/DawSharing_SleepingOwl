@@ -36,6 +36,7 @@ Detalls del Viatge
     $fotoPerfil = "";
     $anys = 0;
     $membreDesde = "00/0/0000";
+    $passatgers = "";
     try {
         //$idViatge = $_GET['idViatge'];
         $infoViatge = Viatge::where('id', $idViatge)->get();
@@ -63,6 +64,8 @@ Detalls del Viatge
         $seientsLliures = $infoViatge[0]->numSeientRestant;
         $seientsTotals = $infoViatge[0]->numSeientDisponible;
         $duracio = $infoViatge[0]->duracio;
+
+        $passatgers = Passatger::where('viatge_id', $idViatge)->where('estat', '!=', 'creador')->get();
     } catch (Exception $e) {
         echo '<div class="alert alert-danger">';
         echo 'Error en el viatge!';
@@ -234,8 +237,24 @@ Detalls del Viatge
                 <!--{{-- Form::label('descUser', $descUser) --}}<p />-->
                 <span>Membre des de {{ Form::label('membre', $membreDesde) }}</span>
             </div>
+            <div class="passatgers" style="padding: 0 100px;">
+                
+                {{Form::label('Passatges', 'Passatges', array('style' => 'margin:5px 0 0 0;display:block;'))}}
+                
+                <?php foreach ($passatgers as $key => $value) {
+                    # code...
+                    $infoPassatger = Usuari::where('id', $value->usuari_id)->get();
+                    $idPassatger = $infoPassatger[0]->id;
+                    $fotoPassatger = $infoPassatger[0]->foto;
+                    $nomPassatger = $infoPassatger[0]->nom . ' ' . $infoPassatger[0]->cognoms;
+                    echo "<a href='#$idPassatger' style='display:inline-block; margin: 5px;'>
+                            <img alt='$nomPassatger' title='$nomPassatger' width='50' height='50' src='$baseUrl/img/cache/original/usuaris/$fotoPassatger' />
+                          </a>";
+
+                } ?>
+            </div>
         </div>
-        <div class="clear">
+        <div class="perfilInfo clear">
 
         </div>
     </div>

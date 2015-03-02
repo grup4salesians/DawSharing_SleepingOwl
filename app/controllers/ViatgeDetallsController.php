@@ -22,7 +22,7 @@ class ViatgeDetallsController extends BaseController {
         $correu->usuari_id = Auth::user()->id;
         $correu->destinatari_id = $destinatari;
         $correu->assumpte = "Peticio de viatge";
-        $correu->contingut = "Aquest usuari ha sol·licitat ser passatger d'un dels teus viatges (<a href='".Config::get('constants.BaseUrl')."public/detallViatge/".$idViatge."'>veure viatge</a>). Vols acceptar-lo? </br>
+        $correu->contingut = "Aquest usuari ha sol·licitat ser passatger d'un dels teus viatges (<a target='_blank' href='".Config::get('constants.BaseUrl')."public/detallViatge/".$idViatge."'>veure viatge</a>). Vols acceptar-lo? </br>
                                 <a href='".Config::get('constants.BaseUrl')."public/detallViatge/acceptar/".$idViatge."/".Auth::user()->id."'>Acceptar</a> </br>
                                 <a href='".Config::get('constants.BaseUrl')."public/detallViatge/denegar/".$idViatge."/".Auth::user()->id."'>Denegar</a>";
         $correu->vist = 0;
@@ -45,7 +45,7 @@ class ViatgeDetallsController extends BaseController {
               //Correu avis
                 $correu = new Correu();
                 $correu->usuari_id = Auth::user()->id;
-                $correu->destinatari_id = $creador;
+                $correu->destinatari_id = $idPassatger;
                 $correu->assumpte = "Avis de viatge";
                 $correu->contingut = "Has sigut acceptat en el següent viatge (<a href='".Config::get('constants.BaseUrl')."public/detallViatge/".$idViatge."'>veure viatge</a>).";
                 $correu->vist = 0;
@@ -75,7 +75,7 @@ class ViatgeDetallsController extends BaseController {
               //Correu avis
                 $correu = new Correu();
                 $correu->usuari_id = Auth::user()->id;
-                $correu->destinatari_id = $creador;
+                $correu->destinatari_id = $idPassatger;
                 $correu->assumpte = "Avis de viatge";
                 $correu->contingut = "Has sigut denegat en el següent viatge (<a href='".Config::get('constants.BaseUrl')."public/detallViatge/".$idViatge."'>veure viatge</a>).";
                 $correu->vist = 0;

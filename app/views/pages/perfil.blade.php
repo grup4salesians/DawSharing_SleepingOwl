@@ -264,7 +264,7 @@ Perfil
             $uservehicles = VehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get();
 
             for ($a = 0; $a < count($uservehicles); $a++) {
-                $idvehicle = $uservehicles[$a]["vehicle_id"];
+                $idvehicle = $uservehicles[$a]["vehicles_id"];
 
                 $vehicle = Vehicle::where('id', $idvehicle)->orderBy('id', 'desc')->get();
                 ?>
