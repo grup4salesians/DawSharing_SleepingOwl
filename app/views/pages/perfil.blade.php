@@ -263,8 +263,7 @@ Perfil
             $uservehicles = VehiclesUsuari::where('usuaris_id', Auth::user()->id)->orderBy('id', 'desc')->get();
 
             for ($a = 0; $a < count($uservehicles); $a++) {
-                $idvehicle = $uservehicles[$a]["id"];
-
+                $idvehicle = $uservehicles[$a]["vehicles_id"];
                 $vehicle = Vehicle::where('id', $idvehicle)->orderBy('id', 'desc')->get();
                 ?>
                 <div class="fila">
@@ -295,7 +294,7 @@ Perfil
             <div style="clear: both;"></div>
         </div>
         <div id="cont-perfilPublic" style="display: none;">
-            Test3
+            @include('includes.perfilViatges')
             <div style="clear: both;"></div>
         </div>
         <div class="clear"></div>
