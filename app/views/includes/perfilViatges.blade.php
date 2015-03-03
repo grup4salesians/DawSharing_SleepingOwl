@@ -1,7 +1,7 @@
 @include('includes.blockRuta')
 <?php
 $passatgers = Passatger::where('usuari_id', Auth::user()->id)->get();
-$viatgesJoin = DB::table('viatges')->where('viatges.usuari_id', Auth::user()->id)->join('passatgers', 'viatges.usuari_id', '=', 'passatgers.usuari_id')->orderBy('data')->get();
+$viatgesJoin = DB::table('viatges')->where('viatges.usuari_id', Auth::user()->id)->join('passatgers', 'viatges.usuari_id', '=', 'passatgers.usuari_id')->orderBy('data')->paginate(20);
 
 echo "<div style='overflow:auto;height: 740px;position: relative;width: 583px;'>";
 foreach ($viatgesJoin as $key => $viatges) {
@@ -37,4 +37,5 @@ foreach ($viatgesJoin as $key => $viatges) {
     echo '</div>';
 }
 echo "</div>";
+echo $viatgesJoin->links();
 ?>
