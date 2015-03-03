@@ -16,6 +16,35 @@
         $('#anadaitornada').change(function(){
             $('#tornada').show();
         });
+
+        $('#aDl').change(function(){
+            var checkBoxVar = $('#tDl');
+            checkBoxVar.attr("checked", !checkBoxVar.attr("checked"));
+        });
+        $('#aDm').change(function(){
+            var checkBoxVar = $('#tDm');
+            checkBoxVar.attr("checked", !checkBoxVar.attr("checked"));
+        });
+        $('#aDx').change(function(){
+            var checkBoxVar = $('#tDx');
+            checkBoxVar.attr("checked", !checkBoxVar.attr("checked"));
+        });
+        $('#aDj').change(function(){
+            var checkBoxVar = $('#tDj');
+            checkBoxVar.attr("checked", !checkBoxVar.attr("checked"));
+        });
+        $('#aDv').change(function(){
+            var checkBoxVar = $('#tDv');
+            checkBoxVar.attr("checked", !checkBoxVar.attr("checked"));
+        });
+        $('#aDs').change(function(){
+            var checkBoxVar = $('#tDs');
+            checkBoxVar.attr("checked", !checkBoxVar.attr("checked"));
+        });
+        $('#aDg').change(function(){
+            var checkBoxVar = $('#tDg');
+            checkBoxVar.attr("checked", !checkBoxVar.attr("checked"));
+        });
     });
 
     function mostrarFrequencia(){
@@ -26,7 +55,7 @@
         $('#tornadaPeriodic').toggle();
     }
  </script>
-<div id="cont-Pas-2" style="display: none" class="testtest PublicarViatge_CampsPas2 col-md-6">
+<div id="cont-Pas-2" style="display: none" class="visible testtest PublicarViatge_CampsPas2 col-md-6">
     <div class="form-group" style="display:inline-block;margin-right:200px;">
         {{ Form::label('Freqüencia') }}</br>
 
@@ -90,13 +119,13 @@
                 </div>
             </div>
             <div id="tornadaPeriodic" style="display:none">
-                {{Form::checkbox('tornadaPeriodicDies[]','Dl', false, array('id' => 'tDl'))}} {{Form::label('tDl','Dl')}}&nbsp;
-                {{Form::checkbox('tornadaPeriodicDies[]','Dm', false, array('id' => 'tDm'))}} {{Form::label('tDm','Dm')}}&nbsp;
-                {{Form::checkbox('tornadaPeriodicDies[]','Dx', false, array('id' => 'tDx'))}} {{Form::label('tDx','Dx')}}&nbsp;
-                {{Form::checkbox('tornadaPeriodicDies[]','Dj', false, array('id' => 'tDj'))}} {{Form::label('tDj','Dj')}}&nbsp;
-                {{Form::checkbox('tornadaPeriodicDies[]','Dv', false, array('id' => 'tDv'))}} {{Form::label('tDv','Dv')}}&nbsp;
-                {{Form::checkbox('tornadaPeriodicDies[]','Ds', false, array('id' => 'tDs'))}} {{Form::label('tDs','Ds')}}&nbsp;
-                {{Form::checkbox('tornadaPeriodicDies[]','Dg', false, array('id' => 'tDg'))}} {{Form::label('tDg','Dg')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dl', false, array('id' => 'tDl', 'disabled'=> ''))}} {{Form::label('tDl','Dl')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dm', false, array('id' => 'tDm', 'disabled'=> ''))}} {{Form::label('tDm','Dm')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dx', false, array('id' => 'tDx', 'disabled'=> ''))}} {{Form::label('tDx','Dx')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dj', false, array('id' => 'tDj', 'disabled'=> ''))}} {{Form::label('tDj','Dj')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dv', false, array('id' => 'tDv', 'disabled'=> ''))}} {{Form::label('tDv','Dv')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Ds', false, array('id' => 'tDs', 'disabled'=> ''))}} {{Form::label('tDs','Ds')}}&nbsp;
+                {{Form::checkbox('tornadaPeriodicDies[]','Dg', false, array('id' => 'tDg', 'disabled'=> ''))}} {{Form::label('tDg','Dg')}}&nbsp;
             </div>
             <p/>
 
