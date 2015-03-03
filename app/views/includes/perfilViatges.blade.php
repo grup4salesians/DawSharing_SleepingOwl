@@ -1,10 +1,11 @@
 @include('includes.blockRuta')
 <?php
 $passatgers = Passatger::where('usuari_id', Auth::user()->id)->get();
-$viatgesJoin = Viatge::join('passatgers', 'ViewViatges.usuari_id', '=', 'passatgers.usuari_id')->where('ViewViatges.usuari_id', Auth::user()->id);
+$viatgesJoin = DB::table('viatges')->where('viatges.usuari_id', Auth::user()->id)->join('passatgers', 'viatges.usuari_id', '=', 'passatgers.usuari_id')->orderBy('data')->get();
+
 echo "<div style='overflow:auto;height: 740px;position: relative;width: 583px;'>";
-foreach ($passatgers as $key => $val) {
-	$estatPassatger = $val->estat;
+foreach ($viatgesJoin as $key => $viatges) {
+	$estatPassatger = $viatges->estat;
 	switch ($estatPassatger) {
 		case 'acceptat':
 			# code...
@@ -27,9 +28,9 @@ foreach ($passatgers as $key => $val) {
 			$colorEstat = "#FFF0AD";
 			break;
 	}
-    $viatges = Viatge::where('id', $val->viatge_id)->where('data', '>=', date('d-m-Y'))->orderBy('id', 'desc')->get(); 
-    $ruta = Ruta::where('id', $viatges[0]->ruta_id)->get();
-    $ruta1 = new blockRuta($viatges[0]->id, $viatges[0]->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $viatges[0]->preu, $viatges[0]->numSeientRestant, $viatges[0]->permissos);
+    //$viatges = Viatge::where('id', $val->viatge_id)->where('data', '>=', date('d-m-Y'))->orderBy('id', 'desc')->get(); 
+    $ruta = Ruta::where('id', $viatges->ruta_id)->get();
+    $ruta1 = new blockRuta($viatges->id, $viatges->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $viatges->preu, $viatges->numSeientRestant, $viatges->permissos);
     echo "<div style='width: 550px;background-color: $colorEstat; margin-bottom:10px;'>";
     echo $ruta1->mostrarMapa();
     echo "<span style='text-transform: capitalize;margin: 1px auto;text-align: center;display: block;'>".$estatPassatger."</spam>";
