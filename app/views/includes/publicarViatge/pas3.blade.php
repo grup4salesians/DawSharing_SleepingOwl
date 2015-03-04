@@ -48,8 +48,9 @@
         {{ Form::text('EuroPlaça', Input::old('EuroPlaça'),array('class' => 'PublicarViatge_TextBox','id'=>'valorplaça','name'=>'valorplaça', "MAXLENGTH"=>2,'onKeyPress'=>'return numbersonly(this, event)')) }}
         {{ Form::label('EuroPlaça', '€/Plaça') }}
     </div>
-    {{ Form::label('Comentaris', 'Comentaris:',array('style'=>'width: 100%;')) }}
+ <!--   {{ Form::label('Comentaris', 'Comentaris:',array('style'=>'width: 100%;')) }}
     {{ Form::textarea('comentaris',null,array('class'=>'PublicarViatge_TexArea')) }}
+ -->
 </div>
 
 <SCRIPT TYPE="text/javascript">

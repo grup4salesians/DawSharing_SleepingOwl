@@ -46,8 +46,6 @@ class PublicarViatgeController extends BaseController {
 
         if (Input::get('frequencia') == "data_concreta") {
             $dataAnada = Input::get("DataAnada");
-            $horaAnada = date("H:i", strtotime(Input::get("inAnadaHora")));
-            $dataHoraAnada = $dataAnada . " " . $horaAnada;
 
             if (Input::get("tipus") == "anada_i_tornada") {
                 $dataTornada = Input::get("DataTornada");
@@ -59,11 +57,17 @@ class PublicarViatgeController extends BaseController {
                 }
             }
         }
+        $horaAnada = date("H:i", strtotime(Input::get("inAnadaHora")));
+        $dataHoraAnada = $dataAnada . " " . $horaAnada;
+
         $DiesPeriodicsAnada = "";
         $DiesPeriodicsTornada = "";
         if (Input::get('frequencia') == "viatge_periodic") {
             $DiesPeriodicsAnada = SaberCheckBoxChekeados("anadaPeriodicDies");
             if (Input::get("tipus") == "anada_i_tornada") {
+                $dataTornada = Input::get("DataTornada");
+                $horaTornada = date("H:i", strtotime(Input::get("inTornadaHora")));
+                $dataHoraTornada = $dataTornada . " " . $horaTornada;
                 $DiesPeriodicsTornada = SaberCheckBoxChekeados("tornadaPeriodicDies");
             }
         }
@@ -95,6 +99,7 @@ class PublicarViatgeController extends BaseController {
         $i = 0;
         $dataFiCurs = "26-05-" . date("Y");
         $dataFiCurs = date("Y-m-d", strtotime($dataFiCurs));
+        $comentaris = "";
 
         if (Input::get('frequencia') == "viatge_periodic") {
             $periodicitat = new Periodicitat();
@@ -141,33 +146,77 @@ class PublicarViatgeController extends BaseController {
         $parsed = date_parse(explode(" ", Input::get("hidden_duration"))[0]);
         $duracio = $parsed['minute'] + $parsed['hour'] * 60;
 
+
         $dataActual = date("Y-m-d");
 
-        if (Input::get('frequencia') != "viatge_periodic") {
+        if (Input::get('frequencia') == "data_concreta") {
             $dataFiCurs = date("Y-m-d", strtotime($dataActual . ' + 1 days'));
         }
 
         while ($dataActual <> $dataFiCurs) {
-
-            InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodicitat, $preu, $numseientdisponible, $numseientrestant, $duracio, $permisos, $dataActual);
-
-            if (Input::get("tipus") == "anada_i_tornada") {
-                InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodicitat, $preu, $numseientdisponible, $numseientrestant, $duracio, $permisos, $dataActual);
+            if (Input::get('frequencia') == "viatge_periodic") {
+                if (ComprobarDiaFecha($dataActual, $DiesPeriodicsAnada)) {
+                    InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodicitat, $preu, $numseientdisponible, $numseientrestant, $duracio, $permisos, $dataActual, $horaAnada);
+                    if (Input::get("tipus") == "anada_i_tornada") {
+                        InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodicitat, $preu, $numseientdisponible, $numseientrestant, $duracio, $permisos, $dataActual, $horaTornada);
+                    }
+                }
+            } else {
+                InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodicitat, $preu, $numseientdisponible, $numseientrestant, $duracio, $permisos, $dataActual, $horaAnada);
+                if (Input::get("tipus") == "anada_i_tornada") {
+                    InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodicitat, $preu, $numseientdisponible, $numseientrestant, $duracio, $permisos, $dataActual, $horaTornada);
+                }
             }
-            $dataActual = date("Y-m-d", strtotime($dataActual . ' + 1 days'));
+            $dataActual = date("Y-m-d", strtotime($dataActual . ' + 1 day'));
         }
 
         return Redirect::to('/');
 
         //*********************  FI INSERTAR  ********************\\
     }
+
 }
 
 ?>
 <?php
 
-function InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodicitat, $preu, $numseientdisponible, $numseientrestant, $duracio, $permisos, $dataActual) {
+function ComprobarDiaFecha($dia, $diasmarcados) {
+    $diaAbreviadoSemana = "";
+    $arrayDias = explode(";", $diasmarcados);
+    $ok = false;
+    $diasemana = date('l', strtotime($dia));
+
+    if ($diasemana == "Monday") {
+        $diaAbreviadoSemana = "Dl";
+    } elseif ($diasemana == "Tuesday") {
+        $diaAbreviadoSemana = "Dm";
+    } elseif ($diasemana == "Wednesday") {
+        $diaAbreviadoSemana = "Dx";
+    } elseif ($diasemana == "Thursday") {
+        $diaAbreviadoSemana = "Dj";
+    } elseif ($diasemana == "Friday") {
+        $diaAbreviadoSemana = "Dv";
+    } elseif ($diasemana == "Saturday") {
+        $diaAbreviadoSemana = "Ds";
+    } elseif ($diasemana == "Sunday") {
+        $diaAbreviadoSemana = "Dg";
+    }
+    for ($i = 0; $i < sizeof($arrayDias); $i++) {
+        if ($diaAbreviadoSemana == $arrayDias[$i]) {
+            $ok = true;
+        }
+    }
+
+    return $ok;
+}
+
+function InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodicitat, $preu, $numseientdisponible, $numseientrestant, $duracio, $permisos, $dataActual, $hora) {
     //******* INSERTA VIATGE *******\\
+    //  return Redirect::back()->withInput()->withErrors($dataActual);
+    $dataActual = $dataActual . " " . $hora;
+    $dataActual = str_replace('/', '-', $dataActual);
+    $dataActual = new DateTime($dataActual);
+
     $viatge = new InsertViatge();
     $viatge->ruta_id = $id_ruta;
     $viatge->usuari_id = $id_usuari;
@@ -175,12 +224,13 @@ function InsertarViatge_Passatger($id_ruta, $id_usuari, $id_vehicle, $id_periodi
     if (Input::get('frequencia') == "viatge_periodic") {
         $viatge->periodicitat_id = $id_periodicitat;
     }
+    //  $viatge->comentaris = Input::get("comentaris");
     $viatge->preu = $preu;
     $viatge->numseientdisponible = $numseientdisponible;
     $viatge->numseientrestant = $numseientrestant;
     $viatge->duracio = $duracio;
     $viatge->permissos = $permisos;
-    $viatge->data = $dataActual;
+    $viatge->data = $dataActual->format('Y-m-d H:i:s');
     $viatge->save();
     $id_viatge = $viatge->id;
     //******* FIN INSERTA VIATGE *****\\

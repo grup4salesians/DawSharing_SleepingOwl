@@ -34,6 +34,8 @@ class RegistreController extends BaseController {
                 return Redirect::back()->withInput()->withErrors($validator);
             }
 
+               
+            
             $usuari = new Usuari();
             $usuari->nom = Input::get('nom');
             $usuari->cognoms = Input::get('cognoms');
@@ -42,8 +44,7 @@ class RegistreController extends BaseController {
             $usuari->fecha_inscripcion = date("d-m-Y H:i:s");
             $usuari->telefon = Input::get('telefon');
             $usuari->save();
-            // return Redirect::to('/');
-
+            
             Mail::send('emails.template', array('firstname'=>Input::get('nom')), function ($message) {
                 $message->subject('DawSharing04');
                 $message->to(Input::get('correu'));
