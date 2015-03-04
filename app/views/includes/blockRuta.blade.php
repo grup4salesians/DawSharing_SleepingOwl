@@ -1,10 +1,9 @@
 <?php
 
 class blockRuta {
+    private $id, $data, $rutaInici, $rutaFi, $preu, $seientsRestants, $permisos, $fotoPerfil;
 
-    private $id, $data, $rutaInici, $rutaFi, $preu, $seientsRestants, $permisos;
-
-    public function __construct($id = 0, $data = null, $rutaInici = "", $rutaFi = "", $preu = 99999, $seientsRestants = 0, $permisos = "") {
+    public function __construct($id = 0, $data = null, $rutaInici = "", $rutaFi = "", $preu = 99999, $seientsRestants = 0, $permisos = "", $fotoPerfil = "") {
         $this->id = $id;
         $this->data = $data;
         $this->rutaInici = $rutaInici;
@@ -12,6 +11,7 @@ class blockRuta {
         $this->preu = $preu;
         $this->seientsRestants = $seientsRestants;
         $this->permisos = $permisos;
+        $this->fotoPerfil = ($fotoPerfil) ? "<img width='150' height='150' src='".Config::get('constants.BaseUrl')."public/img/cache/original/usuaris/$fotoPerfil' />" : "";
     }
 
     public function mostrarMapa() {
@@ -19,7 +19,7 @@ class blockRuta {
         $code = "<a href='detallViatge/$this->id' class='linkViatge'>
             <div class='blockRuta'>
                 <div class='careto'>
-                    <img src='' alt=''>
+                    $this->fotoPerfil
                 </div>
                 <div class='infomio'>
                     <h4>$this->data</h4>

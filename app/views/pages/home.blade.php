@@ -20,8 +20,10 @@ Troba companys per viatjar
             @foreach($viatges as $key => $val)
                 <div class="col-md-6 room-sec">
                     <?php
+                        $userInfo = Usuari::where('id', $val->usuari_id)->get();
+                        $fotoUser = $userInfo[0]->foto;
                         $ruta = Ruta::where('id', '=', $val->ruta_id)->get();
-                        $ruta1 = new blockRuta($val->id, $val->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $val->preu, $val->numSeientRestant, $val->permissos);
+                        $ruta1 = new blockRuta($val->id, $val->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $val->preu, $val->numSeientRestant, $val->permissos, $fotoUser);
                     ?>
                         {{ $ruta1->mostrarMapa() }}
                 </div>
