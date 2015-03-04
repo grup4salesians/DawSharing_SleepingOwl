@@ -28,7 +28,7 @@ else{
 ?>
 <a href="#" id="abrirFiltro">Filtrar</a> | <a href="?nofiltrar">Eliminr Filtre</a> 
 <div id="filtroPerfilVi" style="display:none">
-	{{ Form::open(array('method'=>'GET', 'url' => '/perfil','id'=>'PublicarViatge_Form', 'style' => 'position:relative;')) }}
+	{{ Form::open(array('method'=>'GET', 'url' => '/els-meus-viatges','id'=>'PublicarViatge_Form', 'style' => 'position:relative;')) }}
 	<div id="anadaData" style="float:left; margin:0 18px 15px 0">
 	{{ Form::label('andaData', 'Inici', array('style' => 'display: block;')) }}
 	    <div id="sandbox-container" style="width:188px;display:inline-block;">
@@ -98,13 +98,13 @@ if(isset($_GET['DataAnada']) && isset($_GET['DataTornada'])){
 										->where('data', '>=', date('Y-m-d'))
 										->whereBetween('data', array($date1, $date2))
 										->whereIn('estat', $estatPassVi)
-										->join('passatgers', 'viatges.id', '=', 'passatgers.viatge_id')->orderBy('data')->paginate(20);
+										->join('passatgers', 'viatges.id', '=', 'passatgers.viatge_id')->orderBy('data')->paginate(5);
 }
 else{
 	$viatgesJoin = DB::table('viatges')->where('passatgers.usuari_id', Auth::user()->id)
 										->where('data', '>=', date('Y-m-d'))
 										->join('passatgers', 'viatges.id', '=', 'passatgers.viatge_id')
-										->orderBy('data')->paginate(20);
+										->orderBy('data')->paginate(5);
 }
 echo "<div style='clear:both;'><b>Total:</b> ".$viatgesJoin->getTotal()."</div>";
 echo "<div style='overflow:auto;height: 740px;position: relative;width: 583px;'>";

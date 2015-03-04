@@ -49,10 +49,10 @@ Route::group(array('before' => 'auth'), function() {
 //            return Redirect::to('/');
             return View::make('pages.missatges');
         });
-        Route::get('viatges', function() {
-            //return Redirect::to('/');
-            return View::make('pages.meusViatges');
-        });
+    });
+    Route::get('els-meus-viatges', function() {
+        //return Redirect::to('/');
+        return View::make('pages.meusViatges');
     });
     Route::get('buscar', function() {
         return Redirect::to('/');
