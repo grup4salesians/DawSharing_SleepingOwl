@@ -31,7 +31,7 @@
                             </li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="logout">Sortir</a>
+                                <a role="menuitem" tabindex="-1" href="<?php echo Config::get('constants.BaseUrl') ?>public/logout">Sortir</a>
                             </li>
                         </ul>
 
@@ -59,11 +59,11 @@
                 ?>
 
                 <li>
-                    <select id="country" onchange="change_country(this.value)" class="frm-field required">
+<!--                    <select id="country" onchange="change_country(this.value)" class="frm-field required">
                         <option value="null">CA</option>
                         <option value="null">ES</option>         
                         <option value="AX">EN</option>
-                    </select>
+                    </select>-->
                 </li>
             </ul>
             <script>
