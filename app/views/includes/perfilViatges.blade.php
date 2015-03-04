@@ -22,14 +22,14 @@ if(isset($_POST['DataAnada']) && isset($_POST['DataTornada'])){
 }
 else{
 	$data1=date('d-m-Y');
-	$data2=date('d-m-Y');
+	$data2=date('d-m-Y', strtotime($data1 . ' + 1 day'));
 }
 
 ?>
 <a href="#" id="abrirFiltro">Filtrar</a>
 <div id="filtroPerfilVi" style="display:none">
 	{{ Form::open(array('url' => '/perfil?page=1','id'=>'PublicarViatge_Form', 'style' => 'position:relative;')) }}
-	<div id="anadaData" style="display:inline-block; margin:0 18px 15px 0">
+	<div id="anadaData" style="float:left; margin:0 18px 15px 0">
 	{{ Form::label('andaData', 'Inici', array('style' => 'display: block;')) }}
 	    <div id="sandbox-container" style="width:188px;display:inline-block;">
 	        <div class="input-group date">
@@ -47,7 +47,7 @@ else{
 	            </script>
 	        </div>
 	</div>
-	<div id="tornadaData" style="display:inline-block">
+	<div id="tornadaData" style="float:left; margin:0 18px 15px 0">
 	{{ Form::label('tornadaData', 'Fi', array('style' => 'display: block;')) }}
 	    <div id="sandbox-container" style="width:188px;display:inline-block;">
 	        <div class="input-group date">
@@ -65,7 +65,18 @@ else{
 	        </script>
 	    </div>
 	</div>
-	{{ Form::submit('Filtrar',array('class'=> 'Registre_button','id'=>'filtrar', 'style' => 'width: 150px;position: absolute;bottom: 13px;'))}}
+	<div id="estatViatge"style="float:left; margin:0 18px 15px 0">
+		{{ Form::label('estatViatge', 'Estat del diatge', array('style' => 'display: block;')) }}
+		<select name="estat" class="form-control">
+			<option value="acceptat;creador">Acceptat i/o Creador</option>
+			<option value="acceptat">Acceptat</option>
+			<option value="creador">Creador</option>
+			<option value="pendent">Pendent</option>
+			<option value="denegat">Denegat</option>
+		</select>
+		
+	</div>
+	{{ Form::submit('Filtrar',array('class'=> 'Registre_button','id'=>'filtrar', 'style' => 'width: 150px;margin:17px;'))}}
 	{{ Form::close() }}
 </div>
 
@@ -81,19 +92,21 @@ if(isset($_POST['DataAnada']) && isset($_POST['DataTornada'])){
 	$date2 = str_replace('/', '-', $date2);
 	$date2 = new DateTime($date2);
 	//echo $date2->format('Y-m-d H:i:s');
-	$viatgesJoin = DB::table('viatges')->where('viatges.usuari_id', Auth::user()->id)
+
+	$estatPassVi = explode(';', $_POST['estat']);
+	$viatgesJoin = DB::table('viatges')->where('passatgers.usuari_id', Auth::user()->id)
 										->where('data', '>=', date('Y-m-d'))
 										->whereBetween('data', array($date1, $date2))
+										->whereIn('estat', $estatPassVi)
 										->join('passatgers', 'viatges.id', '=', 'passatgers.viatge_id')->orderBy('data')->paginate(20);
 }
 else{
-	$viatgesJoin = DB::table('viatges')->where('viatges.usuari_id', Auth::user()->id)
-										->where('passatgers.usuari_id', Auth::user()->id)
+	$viatgesJoin = DB::table('viatges')->where('passatgers.usuari_id', Auth::user()->id)
 										->where('data', '>=', date('Y-m-d'))
 										->join('passatgers', 'viatges.id', '=', 'passatgers.viatge_id')
 										->orderBy('data')->paginate(20);
 }
-echo "<div><b>Total:</b> ".$viatgesJoin->getTotal()."</div>";
+echo "<div style='clear:both;'><b>Total:</b> ".$viatgesJoin->getTotal()."</div>";
 echo "<div style='overflow:auto;height: 740px;position: relative;width: 583px;'>";
 foreach ($viatgesJoin as $key => $viatges) {
 	$estatPassatger = $viatges->estat;
