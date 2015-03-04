@@ -53,7 +53,7 @@ class ViatgeDetallsController extends BaseController {
             }
             else{
             }
-            return Redirect::to('perfil');
+            return Redirect::to('detallViatge/'.$idViatge);
         }
         else {
             return Redirect::to('/');
@@ -83,7 +83,7 @@ class ViatgeDetallsController extends BaseController {
             }
             else{
             }
-            return Redirect::to('perfil');
+            return Redirect::to('detallViatge/'.$idViatge);
         }
         else {
             return Redirect::to('/');
