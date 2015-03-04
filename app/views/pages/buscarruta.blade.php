@@ -27,14 +27,14 @@ $año = date("Y");
        $fechaactual = $año.'-'.$mes.'-'.$dia;
        $fechaactual1 = $año.'-'.$mes.'-'.$dia1;
        
-$idrutas = Ruta::where('inici_ruta', 'LIKE', "%$origen%")->where('fi_ruta', 'LIKE', "%$destino%")->get(); 
+$idrutas = Ruta::where('inici_ruta', 'LIKE', "%$origen%")->where('fi_ruta', 'LIKE', "%$destino%")->paginate(10); 
 if(!(empty(Input::get('fecha')))){
   $fecha = Input::get('fecha');  
   $fecha1 = Input::get('fecha1');
    $preumax = Input::get('preumax');
-  $viatges = Viatge::whereBetween('data',array("$fecha","$fecha1"))->where('preu','<=',"$preumax")->orderBy('data','asc')->get();
+  $viatges = Viatge::whereBetween('data',array("$fecha","$fecha1"))->where('preu','<=',"$preumax")->orderBy('data','asc')->paginate(10);
 }else{
-    $viatges = Viatge::where('data','>=',"$fechaactual")->orderBy('data','asc')->get();
+    $viatges = Viatge::where('data','>=',"$fechaactual")->orderBy('data','asc')->paginate(10);
 }
 
 
@@ -57,13 +57,15 @@ else{ ?>
             <?php
             
             ?>
-            @foreach($idrutas as $idruta)
+           
             @foreach($viatges as $key => $val)
             <div class="col-md-1"></div>
             <div class="col-md-4 room-sec">
                 <?php
-                $ruta = Ruta::where('id', '=', $idruta->id)->get();
-                $ruta1 = new blockRuta($val->id, $val->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $val->preu, $val->numSeientRestant, $val->permissos);
+                $userInfo = Usuari::where('id', $val->usuari_id)->get();
+                $fotoUser = $userInfo[0]->foto;
+                $ruta = Ruta::where('id', '=', $idrutas[0]->id)->paginate(10);
+                $ruta1 = new blockRuta($val->id, $val->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $val->preu, $val->numSeientRestant, $val->permissos, $fotoUser);
 
                 ?>
                 {{ $ruta1->mostrarMapa() }}
@@ -75,10 +77,11 @@ else{ ?>
             <div class="clearfix"></div>
             @endif
             @endforeach
-            @endforeach
+            
             <div class="clearfix"></div>
         </div>
-<?php }?>
+       
+<?php echo $viatges->appends(['searchTextField' => $origen,'searchTextFieldFin' => $destino])->links(); }?>
         
         
     </div>
