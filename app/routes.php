@@ -50,8 +50,8 @@ Route::group(array('before' => 'auth'), function() {
             return View::make('pages.missatges');
         });
         Route::get('viatges', function() {
-            return Redirect::to('/');
-            //return View::make('pages.viatges');
+            //return Redirect::to('/');
+            return View::make('pages.meusViatges');
         });
     });
     Route::get('buscar', function() {

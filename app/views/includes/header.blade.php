@@ -18,7 +18,7 @@
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">Els meus viatges</a>
+                                <a role="menuitem" tabindex="-1" href="<?php echo Config::get('constants.BaseUrl') ?>public/perfil/viatges">Els meus viatges</a>
                             </li>
                             <li role="presentation">
                                 <a role="menuitem" tabindex="-1" href="<?php echo Config::get('constants.BaseUrl') ?>public/perfil/missatges">Missatges</a>
