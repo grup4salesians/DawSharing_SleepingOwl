@@ -30,6 +30,7 @@ Route::get('publicarViatge','PublicarViatgeController@showpublicar');
  Route::post('publicarViatge','PublicarViatgeController@InsertarDatos');
  
  Route::get('calculEstalvi','Calculestalvi@showFormulari'); // Nos motrará el ahorro de las rutas compartiendo
+ Route::post('calculEstalvi','Calculestalvi@showcalcul'); // Nos motrará el ahorro de las rutas compartiendo
  
 // Nos indica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function() {

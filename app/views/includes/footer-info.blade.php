@@ -4,7 +4,8 @@
          <div class="hotel-info" style="width: 250px;margin:auto;">
             <h4>Sobre DawSharing </h4>   
             <p>DawSharing és una plataforma per compartir vehicles amb les demes persones del món.Registra't, publica o busca el teu viatge i estalvia diners!</p>
-  <a style="font-weight:bold;font-size:20px" href="../public/contactar">Contacta amb nosaltres!</a>       
+  <a style="font-weight:bold;font-size:20px" href="../public/contactar">Contacta amb nosaltres!</a>  
+   <a style="font-weight:bold;font-size:20px" href="../public/calculEstalvi">Estalvia amb nosaltres!</a>  
          </div>
      
 
