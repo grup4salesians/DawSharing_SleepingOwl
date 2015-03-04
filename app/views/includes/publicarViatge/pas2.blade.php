@@ -55,6 +55,9 @@
         $('#tornadaPeriodic').toggle();
     }
  </script>
+ <?php 
+date_default_timezone_set("Europe/Madrid");
+?>
 <div id="cont-Pas-2" style="display: none" class="testtest PublicarViatge_CampsPas2 col-md-6">
     <div class="form-group" style="display:inline-block;margin-right:200px;">
         {{ Form::label('Freqüencia') }}</br>

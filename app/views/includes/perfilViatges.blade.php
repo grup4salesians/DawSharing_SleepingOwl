@@ -16,6 +16,9 @@
     });
 </script>
 <?php 
+
+date_default_timezone_set("Europe/Madrid");
+
 if(isset($_GET['DataAnada']) && isset($_GET['DataTornada'])){
 	$data1=$_GET['DataAnada'];
 	$data2=$_GET['DataTornada'];
