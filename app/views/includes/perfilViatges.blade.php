@@ -121,7 +121,7 @@ foreach ($viatgesJoin as $key => $viatges) {
 	}
     //$viatges = Viatge::where('id', $val->viatge_id)->where('data', '>=', date('d-m-Y'))->orderBy('id', 'desc')->get(); 
     $ruta = Ruta::where('id', $viatges->ruta_id)->get();
-    $ruta1 = new blockRuta($viatges->id, $viatges->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $viatges->preu, $viatges->numSeientRestant, $viatges->permissos);
+    $ruta1 = new blockRuta($viatges->viatge_id, $viatges->data, $ruta[0]->inici_ruta, $ruta[0]->fi_ruta, $viatges->preu, $viatges->numSeientRestant, $viatges->permissos);
     echo "<div style='width: 550px;background-color: $colorEstat; margin-bottom:10px;'>";
     echo $ruta1->mostrarMapa();
     echo "<span style='text-transform: capitalize;margin: 1px auto;text-align: center;display: block;'>".$estatPassatger."</spam>";
