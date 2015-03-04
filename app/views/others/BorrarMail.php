@@ -1,6 +1,10 @@
 <?php
 
-$con = mysql_connect("jona-PC", "jona", "1234");
+//$con = mysql_connect("jona-PC", "jona", "1234");
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//Poner usuario que haga falta!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$con = mysql_connect("localhost", "jona", "1234");
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 mysql_select_db("dawsharing", $con);
 mysql_set_charset("utf8");
 
