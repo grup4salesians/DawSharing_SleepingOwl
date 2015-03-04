@@ -39,6 +39,11 @@ Route::group(array('before' => 'auth'), function() {
             //return Redirect::to('/');
             return View::make('pages.perfil');
         });
+        //per filtrar viatges
+        Route::post('/', function() {
+            //return Redirect::to('/');
+            return View::make('pages.perfil');
+        });
         Route::get('missatges', function() {
 //            return Redirect::to('/');
             return View::make('pages.missatges');
@@ -60,6 +65,10 @@ Route::group(array('before' => 'auth'), function() {
 
     Route::get('logout', 'AuthController@logOut'); // Esta ruta nos servirá para cerrar sesión.
 });
+Route::get('aaaa', function() {
+//            return Redirect::to('/');
+            return View::make('includes.perfilViatges');
+        });
 
 // ----- //
 Route::get('marca', array('uses' => 'MarcaController@mostrarMarcas'));

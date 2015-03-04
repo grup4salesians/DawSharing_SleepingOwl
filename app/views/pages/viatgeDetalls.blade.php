@@ -65,11 +65,19 @@ Detalls del Viatge
         $seientsTotals = $infoViatge[0]->numSeientDisponible;
         $duracio = $infoViatge[0]->duracio;
 
-        $passatgers = Passatger::where('viatge_id', $idViatge)->where('estat', '!=', 'creador')->get();
+        $passatgers = Passatger::where('viatge_id', $idViatge)->where('estat', '=', 'acceptat')->get();
     } catch (Exception $e) {
+        //echo $e;
         echo '<div class="alert alert-danger">';
         echo 'Error en el viatge!';
         echo '</div>';
+    }
+
+    try {
+        $newPassatger = $_GET['newPassatger'];
+        
+    } catch (Exception $e) {
+        $newPassatger = "";
     }
 
     //$comentari = "Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. Testo testo tes testotes tes te testo testo. ";
@@ -239,19 +247,30 @@ Detalls del Viatge
             </div>
             <div class="passatgers" style="padding: 0 100px;">
                 
-                {{Form::label('Passatges', 'Passatges', array('style' => 'margin:5px 0 0 0;display:block;'))}}
+                {{Form::label('Passatgers', 'Passatgers', array('style' => 'margin:5px 0 0 0;display:block;'))}}
                 
-                <?php foreach ($passatgers as $key => $value) {
-                    # code...
-                    $infoPassatger = Usuari::where('id', $value->usuari_id)->get();
-                    $idPassatger = $infoPassatger[0]->id;
-                    $fotoPassatger = $infoPassatger[0]->foto;
-                    $nomPassatger = $infoPassatger[0]->nom . ' ' . $infoPassatger[0]->cognoms;
-                    echo "<a href='#$idPassatger' style='display:inline-block; margin: 5px;'>
-                            <img alt='$nomPassatger' title='$nomPassatger' width='50' height='50' src='$baseUrl/img/cache/original/usuaris/$fotoPassatger' />
-                          </a>";
+                <?php 
+                try {
+                    foreach ($passatgers as $key => $value) {
+                        # code...
+                        $infoPassatger = Usuari::where('id', $value->usuari_id)->get();
+                        $idPassatger = $infoPassatger[0]->id;
+                        $fotoPassatger = $infoPassatger[0]->foto;
+                        $nomPassatger = $infoPassatger[0]->nom . ' ' . $infoPassatger[0]->cognoms;
+                        echo "<a href='#$idPassatger' style='display:inline-block; margin: 5px;";
+                        if ($newPassatger) {
+                            echo "border: solid 4px #77DD77;";
+                        }
+                        echo "'>
+                                <img alt='$nomPassatger' title='$nomPassatger' width='50' height='50' src='$baseUrl/img/cache/original/usuaris/$fotoPassatger' />
+                              </a>";
+                    }
 
-                } ?>
+                } 
+                catch(Exception $e){
+
+                }
+                ?>
             </div>
         </div>
         <div class="perfilInfo clear">
