@@ -16,9 +16,9 @@
     });
 </script>
 <?php 
-if(isset($_POST['DataAnada']) && isset($_POST['DataTornada'])){
-	$data1=$_POST['DataAnada'];
-	$data2=$_POST['DataTornada'];
+if(isset($_GET['DataAnada']) && isset($_GET['DataTornada'])){
+	$data1=$_GET['DataAnada'];
+	$data2=$_GET['DataTornada'];
 }
 else{
 	$data1=date('d-m-Y');
@@ -26,9 +26,9 @@ else{
 }
 
 ?>
-<a href="#" id="abrirFiltro">Filtrar</a>
+<a href="#" id="abrirFiltro">Filtrar</a> | <a href="?nofiltrar">Eliminr Filtre</a> 
 <div id="filtroPerfilVi" style="display:none">
-	{{ Form::open(array('url' => '/perfil?page=1','id'=>'PublicarViatge_Form', 'style' => 'position:relative;')) }}
+	{{ Form::open(array('method'=>'GET', 'url' => '/perfil','id'=>'PublicarViatge_Form', 'style' => 'position:relative;')) }}
 	<div id="anadaData" style="float:left; margin:0 18px 15px 0">
 	{{ Form::label('andaData', 'Inici', array('style' => 'display: block;')) }}
 	    <div id="sandbox-container" style="width:188px;display:inline-block;">
@@ -83,17 +83,17 @@ else{
 <?php
 $passatgers = Passatger::where('usuari_id', Auth::user()->id)->get();
 //$viatgesJoin = DB::table('viatges')->where('viatges.usuari_id', Auth::user()->id)->join('passatgers', 'viatges.usuari_id', '=', 'passatgers.usuari_id')->orderBy('data')->paginate(20);
-if(isset($_POST['DataAnada']) && isset($_POST['DataTornada'])){
-	$date1 = $_POST['DataAnada'].' '.$_POST['inAnadaHora'];
+if(isset($_GET['DataAnada']) && isset($_GET['DataTornada'])){
+	$date1 = $_GET['DataAnada'].' '.$_GET['inAnadaHora'];
 	$date1 = str_replace('/', '-', $date1);
 	$date1 = new DateTime($date1);
 	//echo $date1->format('Y-m-d H:i:s');
-	$date2 = $_POST['DataTornada'].' '.$_POST['inTornadaHora'];
+	$date2 = $_GET['DataTornada'].' '.$_GET['inTornadaHora'];
 	$date2 = str_replace('/', '-', $date2);
 	$date2 = new DateTime($date2);
 	//echo $date2->format('Y-m-d H:i:s');
 
-	$estatPassVi = explode(';', $_POST['estat']);
+	$estatPassVi = explode(';', $_GET['estat']);
 	$viatgesJoin = DB::table('viatges')->where('passatgers.usuari_id', Auth::user()->id)
 										->where('data', '>=', date('Y-m-d'))
 										->whereBetween('data', array($date1, $date2))
@@ -141,5 +141,12 @@ foreach ($viatgesJoin as $key => $viatges) {
     echo '</div>';
 }
 echo "</div>";
-echo $viatgesJoin->links();
+if (isset($_GET['DataAnada'])) {
+	# code...
+
+	echo $viatgesJoin->appends(['DataAnada' => $_GET['DataAnada'], 'inAnadaHora' => $_GET['inAnadaHora'], 'DataTornada' => $_GET['DataTornada'], 'inTornadaHora' => $_GET['inTornadaHora'], 'estat' => $_GET['estat']])->links();
+}
+else{
+	echo $viatgesJoin->links();
+}
 ?>
