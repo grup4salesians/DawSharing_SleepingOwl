@@ -250,24 +250,22 @@ Detalls del Viatge
                 {{Form::label('Passatgers', 'Passatgers', array('style' => 'margin:5px 0 0 0;display:block;'))}}
                 
                 <?php 
-                try {
+                
                     foreach ($passatgers as $key => $value) {
                         # code...
                         $infoPassatger = Usuari::where('id', $value->usuari_id)->get();
                         $idPassatger = $infoPassatger[0]->id;
-                        $fotoPassatger = $infoPassatger[0]->foto;
-                        $nomPassatger = $infoPassatger[0]->nom . ' ' . $infoPassatger[0]->cognoms;
+                        $fotoPassatger = (isset($infoPassatger[0]->foto)) ? $infoPassatger[0]->foto : "" ; 
+                        $nomPassatger = (isset($infoPassatger[0]->nom)) ? $infoPassatger[0]->nom : "" ;
+                        $nomPassatger = (isset($infoPassatger[0]->cognoms)) ? $nomPassatger." ".$infoPassatger[0]->cognoms : $nomPassatger ;
                         echo "<a href='#$idPassatger' style='display:inline-block; margin: 5px;";
-                        if ($newPassatger) {
+                        if ($newPassatger == $idPassatger) {
                             echo "border: solid 4px #77DD77;";
                         }
                         echo "'><img alt='$nomPassatger' title='$nomPassatger' width='50' height='50' src='$baseUrl/img/cache/original/usuaris/$fotoPassatger' /></a>";
                     }
 
-                } 
-                catch(Exception $e){
-
-                }
+                
                 ?>
             </div>
         </div>
