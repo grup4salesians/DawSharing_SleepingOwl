@@ -261,9 +261,7 @@ Detalls del Viatge
                         if ($newPassatger) {
                             echo "border: solid 4px #77DD77;";
                         }
-                        echo "'>
-                                <img alt='$nomPassatger' title='$nomPassatger' width='50' height='50' src='$baseUrl/img/cache/original/usuaris/$fotoPassatger' />
-                              </a>";
+                        echo "'><img alt='$nomPassatger' title='$nomPassatger' width='50' height='50' src='$baseUrl/img/cache/original/usuaris/$fotoPassatger' /></a>";
                     }
 
                 } 
