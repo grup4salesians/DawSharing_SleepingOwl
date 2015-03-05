@@ -70,7 +70,7 @@ class ViatgeDetallsController extends BaseController {
             $estat = $estat[0]->estat;
             if ($estat != 'denegat'){
               Passatger::where('viatge_id', $idViatge)->where('usuari_id', $idPassatger)->update(array('estat' => 'denegat'));
-              Viatge::where('id', $idViatge)->decrement('numSeientRestant');
+              Viatge::where('id', $idViatge)->increment('numSeientRestant');
 
               //Correu avis
                 $correu = new Correu();
