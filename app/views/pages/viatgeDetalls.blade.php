@@ -250,7 +250,7 @@ Detalls del Viatge
                 {{Form::label('Passatgers', 'Passatgers', array('style' => 'margin:5px 0 0 0;display:block;'))}}
                 
                 <?php 
-                
+		try {
                     foreach ($passatgers as $key => $value) {
                         # code...
                         $infoPassatger = Usuari::where('id', $value->usuari_id)->get();
@@ -265,7 +265,10 @@ Detalls del Viatge
                         echo "'><img alt='$nomPassatger' title='$nomPassatger' width='50' height='50' src='$baseUrl/img/cache/original/usuaris/$fotoPassatger' /></a>";
                     }
 
-                
+                } 
+		catch(Exception $e){
+
+		}
                 ?>
             </div>
         </div>
